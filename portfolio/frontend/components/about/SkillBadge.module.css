@@ -1,0 +1,41 @@
+/** Author: Liliane Schutz */
+
+.badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  gap: 1rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.name {
+  font-size: 1rem;
+  color: #F5F5F7;
+  font-weight: 500;
+}
+
+.level {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(67, 97, 238, 0.3);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.dot.filled {
+  background: #4361EE;
+  border-color: #4361EE;
+}

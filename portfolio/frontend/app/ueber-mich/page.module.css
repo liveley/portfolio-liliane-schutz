@@ -1,34 +1,48 @@
-/* Über mich Page Styles */
+/** Author: Liliane Schutz */
+
 .page {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+}
+
+.page > * {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .section {
-  padding: 2rem 0;
+  margin-bottom: 5rem;
 }
 
-.twoColumn {
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #F5F5F7;
+  margin: 0 0 2rem;
+  line-height: 1.2;
+}
+
+.legend {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 247, 0.5);
+  margin: 0 0 2rem;
+  font-style: italic;
+}
+
+.skillsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 2rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-.twoColumn p {
-  color: rgba(245, 245, 247, 0.5);
-  font-style: italic;
-  padding: 2rem;
-  border: 1px dashed rgba(245, 245, 247, 0.2);
-  border-radius: 8px;
+@media (min-width: 768px) {
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.placeholder {
-  color: rgba(245, 245, 247, 0.5);
-  font-style: italic;
-  padding: 2rem;
-  border: 1px dashed rgba(245, 245, 247, 0.2);
-  border-radius: 8px;
-  margin-top: 1rem;
+@media (max-width: 640px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
 }
