@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio-Website
 
-## Getting Started
+**Autor:** Liliane Schutz  
+**Modul:** Webtechnologien – Praktikum 06  
+**Framework:** Next.js 14 + TypeScript (App Router)
 
-First, run the development server:
+## Projektstruktur
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+portfolio/
+├── frontend/          # Next.js Frontend-Anwendung
+└── backend/           # Backend-Stub (für spätere Integration)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Frontend starten
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Development Mode
+```bash
+cd frontend
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Die Anwendung ist dann unter [http://localhost:3000](http://localhost:3000) erreichbar.
 
-## Learn More
+### Build für Production
+```bash
+cd frontend
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Linting
+```bash
+cd frontend
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Anforderungen
+- Node.js 18+ 
+- npm oder pnpm
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Abgabe
+Die Abgabe erfolgt als **ZIP-Export des gesamten Repositories** über GitLab/GitHub.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Hinweise
+- Das Backend ist aktuell nur ein Stub (siehe `/backend/README.md`)
+- Alle Daten sind als Mock-Daten im Frontend implementiert
+- TypeScript und ESLint sind konfiguriert und müssen ohne Errors laufen

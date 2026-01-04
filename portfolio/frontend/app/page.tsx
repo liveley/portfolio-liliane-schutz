@@ -1,3 +1,7 @@
+/**
+ * Author: Liliane Schutz
+ * Home Page (Placeholder)
+ */
 import Image from "next/image";
 import styles from "./page.module.css";
 
