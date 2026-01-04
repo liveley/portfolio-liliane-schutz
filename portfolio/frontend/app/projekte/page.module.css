@@ -1,0 +1,25 @@
+/* Projekte Page Styles */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.intro {
+  font-size: 1.125rem;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.section {
+  padding: 2rem 0;
+}
+
+.placeholder {
+  color: rgba(245, 245, 247, 0.5);
+  font-style: italic;
+  padding: 2rem;
+  border: 1px dashed rgba(245, 245, 247, 0.2);
+  border-radius: 8px;
+  margin-top: 1rem;
+}

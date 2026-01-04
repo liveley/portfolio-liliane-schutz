@@ -1,0 +1,30 @@
+/* Header Styles */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(224, 224, 227, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #F5F5F7;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: #4361EE;
+}
