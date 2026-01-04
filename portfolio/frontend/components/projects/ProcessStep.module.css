@@ -1,0 +1,35 @@
+/** Author: Liliane Schutz */
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stepNumber {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(67, 97, 238, 0.1);
+  border: 2px solid #4361EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #4361EE;
+  font-size: 0.875rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: #F5F5F7;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(245, 245, 247, 0.7);
+  margin: 0;
+}

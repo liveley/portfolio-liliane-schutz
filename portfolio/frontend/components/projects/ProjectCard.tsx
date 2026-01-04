@@ -1,5 +1,6 @@
 /** Author: Liliane Schutz */
 
+import Link from "next/link";
 import { Project } from "@/lib/types";
 import TagChip from "@/components/ui/TagChip";
 import styles from "./ProjectCard.module.css";
@@ -49,10 +50,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        {/* CTA - Disabled for now (Step 6) */}
-        <div className={styles.cta}>
-          <span className={styles.ctaDisabled}>Case Study folgt →</span>
-        </div>
+        {/* CTA - Link to Detail Page */}
+        <Link href={`/projekte/${project.slug}`} className={styles.cta}>
+          Case Study ansehen →
+        </Link>
       </div>
     </article>
   );

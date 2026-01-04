@@ -1,0 +1,36 @@
+/** Author: Liliane Schutz */
+
+.figure {
+  margin: 0;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: rgba(245, 245, 247, 0.05);
+  border: 1px dashed rgba(245, 245, 247, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderText {
+  color: rgba(245, 245, 247, 0.3);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(245, 245, 247, 0.6);
+  font-style: italic;
+}
