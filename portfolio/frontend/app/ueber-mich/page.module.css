@@ -3,29 +3,35 @@
 .page {
   min-height: 100vh;
   padding: 8rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 .page > * {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .section {
-  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .sectionTitle {
   font-size: 2rem;
   font-weight: 600;
   color: #F5F5F7;
-  margin: 0 0 2rem;
+  margin: 0;
   line-height: 1.2;
 }
 
 .legend {
   font-size: 0.875rem;
   color: rgba(245, 245, 247, 0.5);
-  margin: 0 0 2rem;
+  margin: 0;
   font-style: italic;
 }
 
@@ -42,6 +48,10 @@
 }
 
 @media (max-width: 640px) {
+  .page {
+    gap: 3rem;
+  }
+
   .sectionTitle {
     font-size: 1.5rem;
   }
