@@ -59,19 +59,17 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--s3) var(--s3);
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
+  background: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
   border-radius: var(--r-card);
   text-decoration: none;
   transition: all var(--transition-base);
-  box-shadow: 0 2px 8px var(--color-shadow);
+  box-shadow: var(--wb-shadow-lg);
 }
 
 .socialLink:hover {
   transform: translateY(-2px);
-  box-shadow: 
-    0 4px 16px var(--color-shadow),
-    0 0 24px var(--color-shadow-hover);
+  box-shadow: var(--wb-shadow-hover);
 }
 
 .socialLinkType {
@@ -82,7 +80,7 @@
 
 .socialLinkLabel {
   font-size: var(--font-size-sm);
-  color: var(--color-card-fg-muted);
+  color: var(--wb-card-fg-muted);
 }
 
 @media (max-width: 640px) {

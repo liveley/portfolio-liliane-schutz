@@ -1,0 +1,269 @@
+/**
+ * Author: Liliane Schutz
+ * White-Box Card Styles - Pure CSS (kein Tailwind)
+ * Inspiriert von white-box-pure-css.css, angepasst für Portfolio Design System
+ */
+
+/* ============================================
+   WHITE-BOX DESIGN TOKENS (ergänzend zu globals.css)
+   ============================================ */
+
+:root {
+  /* White-Box spezifische Farben */
+  --wb-card-bg: var(--color-card-bg); /* #F5F5F7 */
+  --wb-card-border: var(--color-card-border); /* #E0E0E3 */
+  --wb-card-fg: var(--color-card-fg); /* #111111 */
+  --wb-card-fg-muted: var(--color-card-fg-muted); /* #555555 */
+  
+  /* Glassmorphism (falls auf dunklem Hintergrund über Glows) */
+  --wb-glass-bg: rgba(255, 255, 255, 0.05);
+  --wb-glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --wb-glass-border: rgba(255, 255, 255, 0.1);
+  --wb-glass-border-hover: rgba(255, 255, 255, 0.2);
+  --wb-glass-blur: 10px;
+  
+  /* Enhanced Shadows für White-Box */
+  --wb-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --wb-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --wb-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --wb-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Hover Glow (mit Accent) */
+  --wb-shadow-hover: 0 4px 16px var(--color-shadow), 0 0 24px var(--color-shadow-hover);
+}
+
+/* ============================================
+   WHITE-BOX CARD KOMPONENTEN
+   ============================================ */
+
+/* Standard White Box - Solide Karte auf dunklem Hintergrund */
+.wb-card {
+  background-color: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
+  border-radius: var(--r-card);
+  padding: var(--s4);
+  box-shadow: var(--wb-shadow-lg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  color: var(--wb-card-fg);
+}
+
+.wb-card h1,
+.wb-card h2,
+.wb-card h3,
+.wb-card h4,
+.wb-card h5,
+.wb-card h6 {
+  color: var(--wb-card-fg);
+}
+
+.wb-card p {
+  color: var(--wb-card-fg-muted);
+}
+
+/* White Box mit Hover-Effekt */
+.wb-card--hover {
+  cursor: pointer;
+}
+
+.wb-card--hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--wb-shadow-hover);
+}
+
+/* Glassmorphism Card (für Overlays auf farbigen Backgrounds) */
+.wb-glass {
+  background-color: var(--wb-glass-bg);
+  backdrop-filter: blur(var(--wb-glass-blur));
+  -webkit-backdrop-filter: blur(var(--wb-glass-blur));
+  border: 1px solid var(--wb-glass-border);
+  border-radius: var(--r-xl);
+  padding: var(--s4);
+  box-shadow: var(--wb-shadow-lg);
+  transition: all var(--transition-base);
+  color: var(--color-fg);
+}
+
+/* Fallback für Browser ohne backdrop-filter Support */
+@supports not (backdrop-filter: blur(10px)) {
+  .wb-glass {
+    background-color: rgba(10, 10, 15, 0.85);
+  }
+}
+
+.wb-glass:hover {
+  background-color: var(--wb-glass-bg-hover);
+  border-color: var(--wb-glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--wb-shadow-xl);
+}
+
+/* Card mit Primary Border (Accent) */
+.wb-card--primary {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(67, 97, 238, 0.3);
+  border-radius: var(--r-card);
+  padding: var(--s4);
+  transition: all var(--transition-base);
+  color: var(--color-fg);
+}
+
+.wb-card--primary:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+  border-color: rgba(67, 97, 238, 0.5);
+}
+
+/* Elevated Card mit starkem Schatten */
+.wb-card--elevated {
+  background-color: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
+  border-radius: var(--r-card);
+  padding: var(--s4);
+  box-shadow: var(--wb-shadow-xl);
+  transition: all var(--transition-base);
+  color: var(--wb-card-fg);
+}
+
+.wb-card--elevated:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 32px -8px rgba(0, 0, 0, 0.12), 0 12px 12px -6px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================
+   WHITE-BOX BUTTON VARIANTEN
+   ============================================ */
+
+/* Icon Button mit White-Box Style */
+.wb-btn-icon {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(67, 97, 238, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-fg-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.wb-btn-icon:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--color-accent);
+  border-color: rgba(67, 97, 238, 0.5);
+}
+
+/* Social Button (rund) */
+.wb-btn-social {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-lg);
+  background-color: var(--color-accent);
+  color: var(--color-fg);
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-base);
+}
+
+.wb-btn-social:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.4);
+}
+
+/* ============================================
+   WHITE-BOX BADGE / TAG KOMPONENTEN
+   ============================================ */
+
+.wb-badge {
+  display: inline-block;
+  padding: var(--s1) var(--s2);
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--color-accent);
+  border: 1px solid rgba(67, 97, 238, 0.2);
+  border-radius: var(--r-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.wb-badge--outline {
+  display: inline-block;
+  padding: var(--s1) var(--s2);
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--r-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+}
+
+.wb-badge--outline:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+/* ============================================
+   SPEZIELLE WHITE-BOX VARIANTEN
+   ============================================ */
+
+/* Contact Info Box */
+.wb-contact-box {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s3);
+  background-color: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
+  border-radius: var(--r-card);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--wb-shadow-md);
+  text-decoration: none;
+}
+
+.wb-contact-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--wb-shadow-hover);
+}
+
+.wb-contact-box .icon-wrapper {
+  padding: var(--s2);
+  background-color: rgba(67, 97, 238, 0.1);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+/* Project Card mit White-Box Style */
+.wb-project-card {
+  background-color: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
+  border-radius: var(--r-card);
+  padding: 0;
+  transition: all var(--transition-base);
+  overflow: hidden;
+  box-shadow: var(--wb-shadow-lg);
+}
+
+.wb-project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--wb-shadow-hover);
+}
+
+/* ============================================
+   UTILITY CLASSES (White-Box konform)
+   ============================================ */
+
+.wb-text-muted {
+  color: var(--wb-card-fg-muted);
+}
+
+.wb-text-primary {
+  color: var(--wb-card-fg);
+}
