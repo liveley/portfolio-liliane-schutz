@@ -2,13 +2,13 @@
 
 .button {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 8px;
+  padding: var(--s2) var(--s4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--r-md);
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
   border: none;
   text-align: center;
 }
@@ -19,21 +19,22 @@
 }
 
 .primary {
-  background: #4361EE;
-  color: #F5F5F7;
+  background: var(--color-accent);
+  color: var(--color-fg);
 }
 
 .primary:hover:not(:disabled) {
-  background: #3651DE;
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
 }
 
 .secondary {
   background: transparent;
-  color: #F5F5F7;
-  border: 1px solid rgba(245, 245, 247, 0.3);
+  color: var(--color-fg);
+  border: 1px solid var(--color-fg-subtle);
 }
 
 .secondary:hover:not(:disabled) {
-  border-color: #4361EE;
-  color: #4361EE;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }

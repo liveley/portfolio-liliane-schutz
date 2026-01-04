@@ -1,46 +1,47 @@
 /** Author: Liliane Schutz */
 
 .meta {
-  background: rgba(245, 245, 247, 0.03);
-  border: 1px solid rgba(245, 245, 247, 0.1);
-  border-radius: 8px;
-  padding: 2rem;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--r-card);
+  padding: var(--s4);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--s4);
   position: sticky;
-  top: 2rem;
+  top: var(--s4);
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--s1);
 }
 
 .label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(245, 245, 247, 0.5);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-card-fg-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0;
 }
 
 .value {
-  font-size: 1rem;
-  color: #F5F5F7;
+  font-size: var(--font-size-sm);
+  color: var(--color-card-fg);
   margin: 0;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--s1);
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--s2);
 }

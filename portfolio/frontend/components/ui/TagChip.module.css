@@ -2,10 +2,11 @@
 
 .tagChip {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  border: 1px solid rgba(245, 245, 247, 0.2);
-  border-radius: 4px;
-  background: rgba(245, 245, 247, 0.05);
-  color: rgba(245, 245, 247, 0.7);
+  padding: var(--s1) var(--s2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--r-sm);
+  background: rgba(67, 97, 238, 0.08);
+  color: var(--color-card-fg);
 }
