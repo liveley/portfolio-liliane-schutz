@@ -1,13 +1,14 @@
 /** Author: Liliane Schutz */
 
 .card {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
+  /* Nutze white-box Tokens für konsistente Card-Behandlung */
+  background: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
   border-radius: var(--r-card);
   padding: var(--s4);
-  box-shadow: 0 2px 8px var(--color-shadow);
+  box-shadow: var(--wb-shadow-lg);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
-  color: var(--color-card-fg);
+  color: var(--wb-card-fg);
 }
 
 .card h1,
@@ -16,11 +17,11 @@
 .card h4,
 .card h5,
 .card h6 {
-  color: var(--color-card-fg);
+  color: var(--wb-card-fg);
 }
 
 .card p {
-  color: var(--color-card-fg-muted);
+  color: var(--wb-card-fg-muted);
 }
 
 .cardHover {
@@ -29,7 +30,5 @@
 
 .cardHover:hover {
   transform: translateY(-2px);
-  box-shadow: 
-    0 4px 16px var(--color-shadow),
-    0 0 24px var(--color-shadow-hover);
+  box-shadow: var(--wb-shadow-hover);
 }

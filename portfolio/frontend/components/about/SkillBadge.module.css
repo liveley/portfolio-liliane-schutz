@@ -16,7 +16,7 @@
 
 .name {
   font-size: var(--font-size-sm);
-  color: var(--color-card-fg);
+  color: var(--wb-card-fg);
   font-weight: var(--font-weight-medium);
 }
 

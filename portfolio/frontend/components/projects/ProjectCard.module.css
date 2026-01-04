@@ -1,21 +1,20 @@
 /** Author: Liliane Schutz */
 
 .card {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
+  /* Nutze white-box Style: solide Karte auf dunklem Hintergrund */
+  background: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
   border-radius: var(--r-card);
   overflow: hidden;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
-  box-shadow: 0 2px 8px var(--color-shadow);
+  box-shadow: var(--wb-shadow-lg);
   display: flex;
   flex-direction: column;
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 
-    0 4px 16px var(--color-shadow),
-    0 0 24px var(--color-shadow-hover);
+  box-shadow: var(--wb-shadow-hover);
 }
 
 .thumbnail {
@@ -25,6 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid var(--wb-card-border);
 }
 
 .thumbnailPlaceholder {
@@ -45,13 +45,13 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   margin: 0;
-  color: var(--color-card-fg);
+  color: var(--wb-card-fg);
 }
 
 .description {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);
-  color: var(--color-card-fg-muted);
+  color: var(--wb-card-fg-muted);
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -64,7 +64,7 @@
   display: flex;
   gap: var(--s2);
   font-size: var(--font-size-xs);
-  color: var(--color-card-fg-muted);
+  color: var(--wb-card-fg-muted);
 }
 
 .year::after {

@@ -22,9 +22,9 @@
 .input {
   padding: var(--s2) var(--s2);
   font-size: var(--font-size-sm);
-  color: var(--color-card-fg);
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
+  color: var(--wb-card-fg);
+  background: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
   border-radius: var(--r-md);
   transition: all var(--transition-base);
   font-family: inherit;

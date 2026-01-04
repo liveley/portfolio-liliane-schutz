@@ -1,8 +1,8 @@
 /** Author: Liliane Schutz */
 
 .meta {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
+  background: var(--wb-card-bg);
+  border: 1px solid var(--wb-card-border);
   border-radius: var(--r-card);
   padding: var(--s4);
   display: flex;
@@ -10,7 +10,7 @@
   gap: var(--s4);
   position: sticky;
   top: var(--s4);
-  box-shadow: 0 2px 8px var(--color-shadow);
+  box-shadow: var(--wb-shadow-lg);
 }
 
 .section {
@@ -22,7 +22,7 @@
 .label {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-card-fg-muted);
+  color: var(--wb-card-fg-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0;
@@ -30,7 +30,7 @@
 
 .value {
   font-size: var(--font-size-sm);
-  color: var(--color-card-fg);
+  color: var(--wb-card-fg);
   margin: 0;
 }
 
