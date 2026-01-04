@@ -1,31 +1,23 @@
 /**
  * Author: Liliane Schutz
- * Projekte Übersichtsseite - Skeleton
+ * Projekte Übersichtsseite - Server Component
+ * Loads project data and passes to FilterChips (Client Component)
  */
-import styles from './page.module.css';
+import { projects } from "@/lib/data/projects";
+import FilterChips from "@/components/projects/FilterChips";
+import styles from "./page.module.css";
 
 export default function ProjektePage() {
   return (
     <div className={styles.page}>
       <h1>Projekte</h1>
       <p className={styles.intro}>
-        Hier findest du eine Auswahl meiner Projekte aus den Bereichen Coding, UX/UI Design 
-        und Datenvisualisierung.
+        Hier findest du eine Auswahl meiner Projekte aus den Bereichen Coding, UI/UX Design 
+        und Datenvisualisierung. Alle Inhalte sind Platzhalter für die Entwicklung.
       </p>
 
-      <section className={styles.section}>
-        <h3>Filter</h3>
-        <p className={styles.placeholder}>
-          [Platzhalter für FilterChips – wird in Step 5 implementiert]
-        </p>
-      </section>
-
-      <section className={styles.section}>
-        <h3>Projekt-Grid</h3>
-        <p className={styles.placeholder}>
-          [Platzhalter für ProjectGrid und ProjectCards – wird in Step 5 implementiert]
-        </p>
-      </section>
+      {/* FilterChips is a Client Component with useState */}
+      <FilterChips projects={projects} />
     </div>
   );
 }
