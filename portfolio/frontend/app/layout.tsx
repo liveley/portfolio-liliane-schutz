@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body>
+      <body suppressHydrationWarning>
         <Header />
         <main className="main-container">
           {children}
