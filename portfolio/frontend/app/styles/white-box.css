@@ -1,49 +1,22 @@
 /**
  * Author: Liliane Schutz
- * White-Box Card Styles - Pure CSS (kein Tailwind)
- * Inspiriert von white-box-pure-css.css, angepasst für Portfolio Design System
+ * Glass Card Styles - Pure CSS (kein Tailwind)
+ * Transparent cards with borders on dark gradient background
+ * Tokens defined in globals.css, this file provides utility classes
  */
 
 /* ============================================
-   WHITE-BOX DESIGN TOKENS (ergänzend zu globals.css)
+   GLASS CARD KOMPONENTEN
    ============================================ */
 
-:root {
-  /* White-Box spezifische Farben */
-  --wb-card-bg: var(--color-card-bg); /* #F5F5F7 */
-  --wb-card-border: var(--color-card-border); /* #E0E0E3 */
-  --wb-card-fg: var(--color-card-fg); /* #111111 */
-  --wb-card-fg-muted: var(--color-card-fg-muted); /* #555555 */
-  
-  /* Glassmorphism (falls auf dunklem Hintergrund über Glows) */
-  --wb-glass-bg: rgba(255, 255, 255, 0.05);
-  --wb-glass-bg-hover: rgba(255, 255, 255, 0.08);
-  --wb-glass-border: rgba(255, 255, 255, 0.1);
-  --wb-glass-border-hover: rgba(255, 255, 255, 0.2);
-  --wb-glass-blur: 10px;
-  
-  /* Enhanced Shadows für White-Box */
-  --wb-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --wb-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --wb-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --wb-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
-  /* Hover Glow (mit Accent) */
-  --wb-shadow-hover: 0 4px 16px var(--color-shadow), 0 0 24px var(--color-shadow-hover);
-}
-
-/* ============================================
-   WHITE-BOX CARD KOMPONENTEN
-   ============================================ */
-
-/* Standard White Box - Solide Karte auf dunklem Hintergrund */
+/* Standard Glass Card - Transparent with border on dark background */
 .wb-card {
   background-color: var(--wb-card-bg);
   border: 1px solid var(--wb-card-border);
   border-radius: var(--r-card);
   padding: var(--s4);
   box-shadow: var(--wb-shadow-lg);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   color: var(--wb-card-fg);
 }
 
