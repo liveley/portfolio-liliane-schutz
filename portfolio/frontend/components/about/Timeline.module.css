@@ -1,0 +1,6 @@
+/** Author: Liliane Schutz */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
