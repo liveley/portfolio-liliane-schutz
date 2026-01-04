@@ -3,41 +3,41 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--s1);
 }
 
 .label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #F5F5F7;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-fg);
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: var(--s1);
 }
 
 .required {
-  color: #4361EE;
+  color: var(--color-accent);
 }
 
 .input {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  color: #F5F5F7;
-  background: rgba(245, 245, 247, 0.05);
-  border: 1px solid rgba(245, 245, 247, 0.2);
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  padding: var(--s2) var(--s2);
+  font-size: var(--font-size-sm);
+  color: var(--color-card-fg);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--r-md);
+  transition: all var(--transition-base);
   font-family: inherit;
 }
 
 .input::placeholder {
-  color: rgba(245, 245, 247, 0.4);
+  color: rgba(100, 100, 100, 0.5);
 }
 
 .input:focus-visible {
-  outline: 2px solid #4361EE;
-  outline-offset: 2px;
-  border-color: #4361EE;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+  border-color: var(--color-accent);
 }
 
 .input:disabled {
@@ -50,11 +50,11 @@
 }
 
 .inputError:focus-visible {
-  outline-color: #EE4343;
+  box-shadow: 0 0 0 3px rgba(238, 67, 67, 0.3);
 }
 
 .error {
-  font-size: 0.875rem;
+  font-size: var(--font-size-xs);
   color: #EE4343;
   display: flex;
   align-items: center;

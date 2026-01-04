@@ -1,22 +1,23 @@
 /** Author: Liliane Schutz */
 
 .group {
-  background: rgba(245, 245, 247, 0.03);
-  border: 1px solid rgba(245, 245, 247, 0.1);
-  border-radius: 8px;
-  padding: 2rem;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--r-card);
+  padding: var(--s4);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--s2);
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #F5F5F7;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-card-fg);
   margin: 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(245, 245, 247, 0.1);
+  padding-bottom: var(--s2);
+  border-bottom: 1px solid var(--color-card-border);
 }
 
 .skills {
