@@ -1,0 +1,39 @@
+/* Footer Styles */
+.footer {
+  margin-top: auto;
+  background: rgba(10, 10, 15, 0.95);
+  border-top: 1px solid rgba(224, 224, 227, 0.1);
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright {
+  color: rgba(245, 245, 247, 0.7);
+  font-size: 0.875rem;
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socialLink {
+  color: rgba(245, 245, 247, 0.7);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.socialLink:hover {
+  color: #4361EE;
+}

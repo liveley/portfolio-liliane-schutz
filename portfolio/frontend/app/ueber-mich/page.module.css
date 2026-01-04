@@ -1,0 +1,34 @@
+/* Über mich Page Styles */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.section {
+  padding: 2rem 0;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.twoColumn p {
+  color: rgba(245, 245, 247, 0.5);
+  font-style: italic;
+  padding: 2rem;
+  border: 1px dashed rgba(245, 245, 247, 0.2);
+  border-radius: 8px;
+}
+
+.placeholder {
+  color: rgba(245, 245, 247, 0.5);
+  font-style: italic;
+  padding: 2rem;
+  border: 1px dashed rgba(245, 245, 247, 0.2);
+  border-radius: 8px;
+  margin-top: 1rem;
+}
