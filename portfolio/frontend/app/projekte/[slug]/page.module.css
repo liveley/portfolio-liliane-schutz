@@ -1,0 +1,39 @@
+/** Author: Liliane Schutz */
+
+.page {
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+  }
+}
+
+.main {
+  min-width: 0; /* Prevent grid blowout */
+}
+
+.sidebar {
+  min-width: 0;
+}
+
+@media (max-width: 1023px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    order: -1; /* Show sidebar above content on mobile */
+  }
+}
