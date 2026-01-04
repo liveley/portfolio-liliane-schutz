@@ -1,0 +1,62 @@
+/** Author: Liliane Schutz */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #F5F5F7;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.required {
+  color: #4361EE;
+}
+
+.input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #F5F5F7;
+  background: rgba(245, 245, 247, 0.05);
+  border: 1px solid rgba(245, 245, 247, 0.2);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.input::placeholder {
+  color: rgba(245, 245, 247, 0.4);
+}
+
+.input:focus-visible {
+  outline: 2px solid #4361EE;
+  outline-offset: 2px;
+  border-color: #4361EE;
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inputError {
+  border-color: #EE4343;
+}
+
+.inputError:focus-visible {
+  outline-color: #EE4343;
+}
+
+.error {
+  font-size: 0.875rem;
+  color: #EE4343;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

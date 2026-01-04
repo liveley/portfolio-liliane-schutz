@@ -9,6 +9,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary";
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 /**
@@ -22,6 +23,7 @@ export default function Button({
   variant = "secondary",
   onClick,
   type = "button",
+  disabled = false,
 }: ButtonProps) {
   const className = `${styles.button} ${variant === "primary" ? styles.primary : styles.secondary}`;
 
@@ -34,7 +36,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} className={className} onClick={onClick}>
+    <button type={type} className={className} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
