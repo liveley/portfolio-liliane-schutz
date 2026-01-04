@@ -1,40 +1,44 @@
-/**
- * Author: Liliane Schutz
- * Kontakt Seite - Skeleton
- */
-import Link from 'next/link';
+/** Author: Liliane Schutz */
+
+import { socialLinks } from '@/lib/data/socials';
+import ContactForm from '@/components/contact/ContactForm';
 import styles from './page.module.css';
 
 export default function KontaktPage() {
   return (
     <div className={styles.page}>
-      <h1>Kontakt</h1>
-      <p className={styles.intro}>
-        Du hast ein Projekt, eine Frage oder möchtest einfach Hallo sagen? 
-        Ich freue mich von dir zu hören!
-      </p>
+      <div className={styles.content}>
+        <section className={styles.intro}>
+          <h1 className={styles.title}>Kontakt</h1>
+          <p className={styles.description}>
+            Du hast ein Projekt, eine Frage oder möchtest einfach Hallo sagen?
+            Ich freue mich von dir zu hören!
+          </p>
+        </section>
 
-      <section className={styles.section}>
-        <h2>Direkt erreichen</h2>
-        <div className={styles.directContact}>
-          <Link href="mailto:kontakt@example.com" className={styles.contactLink}>
-            E-Mail: kontakt@example.com
-          </Link>
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
-            GitHub
-          </Link>
-          <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
-            LinkedIn
-          </Link>
-        </div>
-      </section>
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Direkt erreichen</h2>
+          <div className={styles.socialLinks}>
+            {socialLinks.map((link) => (
+              <a
+                key={link.type}
+                href={link.url}
+                className={styles.socialLink}
+                target={link.type !== 'E-Mail' ? '_blank' : undefined}
+                rel={link.type !== 'E-Mail' ? 'noopener noreferrer' : undefined}
+              >
+                <span className={styles.socialLinkType}>{link.type}</span>
+                <span className={styles.socialLinkLabel}>{link.label}</span>
+              </a>
+            ))}
+          </div>
+        </section>
 
-      <section className={styles.section}>
-        <h2>Kontaktformular</h2>
-        <p className={styles.placeholder}>
-          [Platzhalter für ContactForm mit Validierung – wird in Step 8 implementiert]
-        </p>
-      </section>
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Kontaktformular</h2>
+          <ContactForm />
+        </section>
+      </div>
     </div>
   );
 }

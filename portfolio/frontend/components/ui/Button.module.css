@@ -13,12 +13,17 @@
   text-align: center;
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .primary {
   background: #4361EE;
   color: #F5F5F7;
 }
 
-.primary:hover {
+.primary:hover:not(:disabled) {
   background: #3651DE;
 }
 
@@ -28,7 +33,7 @@
   border: 1px solid rgba(245, 245, 247, 0.3);
 }
 
-.secondary:hover {
+.secondary:hover:not(:disabled) {
   border-color: #4361EE;
   color: #4361EE;
 }
