@@ -58,6 +58,11 @@
   --s8: 64px;
   --s10: 80px;
   
+  /* Section Spacing (standardized) */
+  --space-section: var(--s10); /* 80px - Standard section gap */
+  --space-section-sm: var(--s8); /* 64px - Smaller section gap */
+  --space-paragraph: var(--s3); /* 24px - Paragraph spacing */
+  
   /* Border Radius */
   --r-sm: 6px;
   --r-md: 8px;
@@ -96,6 +101,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  scrollbar-gutter: stable; /* Prevent layout shift from scrollbar */
 }
 
 html,

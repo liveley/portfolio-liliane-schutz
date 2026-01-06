@@ -23,7 +23,6 @@ export default function NotFound() {
         {/* Content */}
         <div className={styles.content}>
           <PageHeader
-            eyebrow="404"
             title="Seite nicht gefunden"
             lead="Die Seite existiert nicht oder ist gerade unter Bearbeitung."
           />

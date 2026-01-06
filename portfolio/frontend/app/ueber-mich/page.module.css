@@ -1,23 +1,11 @@
 /** Author: Liliane Schutz */
 
-.page {
-  min-height: 100vh;
-  padding: 8rem 2rem 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-}
-
-.page > * {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
+/* Über mich Page - Using PageShell for consistent layout */
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--s4); /* Internal section spacing */
 }
 
 .sectionTitle {
