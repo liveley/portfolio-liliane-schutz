@@ -1,16 +1,12 @@
 /** Author: Liliane Schutz */
 
-.page {
-  min-height: 100vh;
-  padding: 8rem 2rem 4rem;
-}
+/* Project Detail Page - Using PageShell for consistent layout */
 
 .container {
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: var(--s6);
 }
 
 @media (min-width: 1024px) {
