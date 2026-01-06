@@ -203,6 +203,19 @@ select:focus-visible {
   margin-top: 0;
 }
 
+/* Text Measure (Readable Line Length) */
+.measure {
+  max-width: 65ch;
+}
+
+.measure-wide {
+  max-width: 80ch;
+}
+
+.measure-narrow {
+  max-width: 50ch;
+}
+
 /* Card Styles (Light cards on dark background) */
 .card {
   background: var(--color-card-bg);

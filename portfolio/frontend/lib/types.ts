@@ -8,6 +8,9 @@
 // Project Categories (matching filter categories from Konzeption)
 export type ProjectCategory = "coding" | "uiux" | "data" | "experiment";
 
+// Project Status
+export type ProjectStatus = "in-progress" | "finished";
+
 // Skill Categories (matching About page structure)
 export type SkillCategory = 
   | "Frontend" 
@@ -35,6 +38,7 @@ export interface Project {
   year: number;
   featured: boolean; // true for Featured Projects on Home page
   category: ProjectCategory;
+  status: ProjectStatus; // Project completion status
   shortDescription: string; // 1-2 sentences for card
   tags: string[]; // Technology/methodology tags (e.g., "React", "Figma")
   image?: string; // Thumbnail image path (optional, placeholder for now)

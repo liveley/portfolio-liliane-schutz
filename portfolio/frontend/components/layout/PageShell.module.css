@@ -1,0 +1,13 @@
+/** Author: Liliane Schutz */
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--s8) var(--s4) var(--s10);
+}
+
+@media (max-width: 768px) {
+  .shell {
+    padding: var(--s6) var(--s3) var(--s8);
+  }
+}

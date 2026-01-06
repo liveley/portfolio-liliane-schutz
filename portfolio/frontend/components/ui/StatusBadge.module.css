@@ -1,0 +1,22 @@
+/** Author: Liliane Schutz */
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--color-fg);
+  border-left-width: 3px;
+  transition: all var(--transition-base);
+}
+
+.badge.in-progress {
+  border-left-color: #FFA500;
+}
+
+.badge.finished {
+  border-left-color: #4CAF50;
+}

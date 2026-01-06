@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Project } from "@/lib/types";
 import TagChip from "@/components/ui/TagChip";
+import StatusBadge from "@/components/ui/StatusBadge";
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
@@ -11,7 +12,7 @@ interface ProjectCardProps {
 
 /**
  * ProjectCard Component
- * Displays project preview with title, description, tags
+ * Displays project preview with title, description, tags, status
  * Used in ProjectGrid on projects overview page
  */
 export default function ProjectCard({ project }: ProjectCardProps) {
@@ -32,7 +33,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.shortDescription}
         </p>
 
-        {/* Meta: Year + Category */}
+        {/* Meta: Year + Category + Status */}
         <div className={styles.meta}>
           <span className={styles.year}>{project.year}</span>
           <span className={styles.category}>
@@ -41,6 +42,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.category === "data" && "Daten"}
             {project.category === "experiment" && "Experiment"}
           </span>
+          <StatusBadge status={project.status} />
         </div>
 
         {/* Tags */}

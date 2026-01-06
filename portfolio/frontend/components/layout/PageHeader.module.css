@@ -1,0 +1,40 @@
+/** Author: Liliane Schutz */
+
+.header {
+  margin-bottom: var(--s8);
+}
+
+.eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin: 0 0 var(--s2) 0;
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-fg);
+  margin: 0 0 var(--s3) 0;
+}
+
+.lead {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-fg-muted);
+  max-width: 65ch; /* Readable line length */
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .lead {
+    font-size: var(--font-size-sm);
+  }
+}
