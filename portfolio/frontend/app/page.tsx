@@ -3,11 +3,13 @@
  * Home Page - Landing mit Hero und CTAs
  */
 import Link from "next/link";
+import PageShell from "@/components/layout/PageShell";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.home}>
+    <PageShell>
+      <div className={styles.home}>
       <section className={styles.hero}>
         <h1>Hallo, ich bin Liliane.</h1>
         <p className={styles.intro}>
@@ -33,6 +35,7 @@ export default function Home() {
           [Platzhalter für Featured Projects – wird in Step 5 implementiert]
         </p>
       </section>
-    </div>
+      </div>
+    </PageShell>
   );
 }

@@ -6,7 +6,7 @@
 }
 
 .hero {
-  padding: 4rem 0;
+  /* Padding handled by PageShell */
 }
 
 .intro {
