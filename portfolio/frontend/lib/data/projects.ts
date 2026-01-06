@@ -22,6 +22,7 @@ export const projects: Project[] = [
     year: 2025,
     featured: true,
     category: "coding",
+    status: "in-progress",
     shortDescription: "Eine moderne Web-Applikation mit React und TypeScript. Placeholder-Beschreibung für Entwicklung.",
     tags: ["React", "TypeScript", "Next.js", "CSS"],
     links: {
@@ -36,6 +37,7 @@ export const projects: Project[] = [
     year: 2024,
     featured: true,
     category: "uiux",
+    status: "finished",
     shortDescription: "UI/UX Design Case Study mit Prototyping in Figma. Placeholder für Designprojekt.",
     tags: ["Figma", "Prototyping", "UI Design", "User Research"],
     links: {
@@ -49,6 +51,7 @@ export const projects: Project[] = [
     year: 2024,
     featured: true,
     category: "data",
+    status: "finished",
     shortDescription: "Datenvisualisierung mit D3.js und interaktiven Charts. Placeholder für Data-Viz-Projekt.",
     tags: ["D3.js", "Data Visualization", "JavaScript", "SVG"],
     links: {
@@ -63,6 +66,7 @@ export const projects: Project[] = [
     year: 2023,
     featured: false,
     category: "experiment",
+    status: "finished",
     shortDescription: "Experimentelles Projekt mit generativer Kunst und Code. Placeholder für Experiment.",
     tags: ["p5.js", "Generative Art", "Creative Coding"],
     links: {
@@ -76,6 +80,7 @@ export const projects: Project[] = [
     year: 2023,
     featured: false,
     category: "coding",
+    status: "in-progress",
     shortDescription: "Backend-API mit Node.js und Express. Placeholder für Backend-Projekt.",
     tags: ["Node.js", "Express", "REST API", "MongoDB"],
     links: {

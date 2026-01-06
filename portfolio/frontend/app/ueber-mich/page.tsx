@@ -2,6 +2,7 @@
 
 import { aboutContent } from '@/lib/data/about';
 import { getSkillsGrouped } from '@/lib/data/skills';
+import PageShell from '@/components/layout/PageShell';
 import AboutHero from '@/components/about/AboutHero';
 import Timeline from '@/components/about/Timeline';
 import SkillGroup from '@/components/about/SkillGroup';
@@ -11,7 +12,7 @@ export default function UeberMichPage() {
   const skillGroups = getSkillsGrouped();
 
   return (
-    <div className={styles.page}>
+    <PageShell>
       {/* Hero Section */}
       <AboutHero content={aboutContent} />
 
@@ -37,6 +38,6 @@ export default function UeberMichPage() {
           ))}
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 }
