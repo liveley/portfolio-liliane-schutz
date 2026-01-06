@@ -58,10 +58,13 @@
   --s8: 64px;
   --s10: 80px;
   
-  /* Section Spacing (standardized) */
-  --space-section: var(--s10); /* 80px - Standard section gap */
-  --space-section-sm: var(--s8); /* 64px - Smaller section gap */
-  --space-paragraph: var(--s3); /* 24px - Paragraph spacing */
+  /* Section Spacing (standardized per requirements) */
+  --space-section: 64px; /* Standard section gap (8px grid) */
+  --space-section-tight: 48px; /* Tighter section gap */
+  --space-section-sm: var(--s8); /* Alternative name (64px) */
+  --space-block: 24px; /* Block spacing */
+  --space-paragraph: 16px; /* Paragraph spacing */
+  --measure: 70ch; /* Readable line length */
   
   /* Border Radius */
   --r-sm: 6px;
@@ -214,7 +217,7 @@ select:focus-visible {
 
 /* Text Measure (Readable Line Length) */
 .measure {
-  max-width: 65ch;
+  max-width: var(--measure); /* 70ch from design tokens */
 }
 
 .measure-wide {

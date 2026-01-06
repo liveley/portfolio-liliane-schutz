@@ -17,17 +17,17 @@ export const socialLinks: SocialLink[] = [
   {
     type: "GitHub",
     label: "GitHub",
-    url: "https://github.com/placeholder-username"
+    url: "https://github.com/liveley"
   },
   {
     type: "LinkedIn",
     label: "LinkedIn",
-    url: "https://linkedin.com/in/placeholder-profile"
+    url: "https://linkedin.com/in/liliane-schutz"
   },
   {
     type: "E-Mail",
     label: "E-Mail",
-    url: "mailto:placeholder@example.com"
+    url: "mailto:lilly.schutz.ls@gmail.com"
   }
 ];
 
