@@ -1,0 +1,35 @@
+/** Author: Liliane Schutz */
+
+.languages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.language {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(245, 245, 247, 0.05);
+  border: 1px solid rgba(245, 245, 247, 0.1);
+  border-radius: 8px;
+  transition: background var(--transition-base);
+}
+
+.language:hover {
+  background: rgba(245, 245, 247, 0.08);
+}
+
+.name {
+  font-weight: 600;
+  color: #F5F5F7;
+}
+
+.level {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 247, 0.7);
+  background: rgba(67, 97, 238, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}

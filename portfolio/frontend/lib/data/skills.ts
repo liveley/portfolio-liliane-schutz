@@ -15,30 +15,31 @@ import { Skill, SkillCategory } from "../types";
 
 export const skills: Skill[] = [
   // Frontend Skills
-  { name: "React", level: 4, category: "Frontend" },
+  { name: "React", level: 3, category: "Frontend" },
   { name: "Next.js", level: 3, category: "Frontend" },
-  { name: "TypeScript", level: 4, category: "Frontend" },
-  { name: "HTML & CSS", level: 5, category: "Frontend" },
-  { name: "JavaScript", level: 5, category: "Frontend" },
+  { name: "TypeScript", level: 3, category: "Frontend" },
+  { name: "HTML & CSS", level: 4, category: "Frontend" },
+  { name: "JavaScript", level: 3, category: "Frontend" },
+  { name: "three.js", level: 3, category: "Frontend" },
   
   // Backend & APIs
   { name: "Node.js", level: 3, category: "Backend & APIs" },
   { name: "Express", level: 3, category: "Backend & APIs" },
-  { name: "REST APIs", level: 4, category: "Backend & APIs" },
-  { name: "MongoDB", level: 2, category: "Backend & APIs" },
+  { name: "REST APIs", level: 3, category: "Backend & APIs" },
+  { name: "n8n", level: 5, category: "Backend & APIs" },
+  { name: "Docker", level: 5, category: "Backend & APIs" },
   
   // Daten & Viz
-  { name: "D3.js", level: 3, category: "Daten & Viz" },
+  { name: "D3.js", level: 4, category: "Daten & Viz" },
   { name: "Python", level: 3, category: "Daten & Viz" },
-  { name: "Data Analysis", level: 3, category: "Daten & Viz" },
+  { name: "Data Analysis", level: 5, category: "Daten & Viz" },
   { name: "Visualization", level: 4, category: "Daten & Viz" },
   
   // Design & Tools
-  { name: "Figma", level: 5, category: "Design & Tools" },
-  { name: "Adobe XD", level: 3, category: "Design & Tools" },
-  { name: "UI/UX Design", level: 4, category: "Design & Tools" },
+  { name: "Figma", level: 4, category: "Design & Tools" },
+  { name: "UI/UX Design", level: 3, category: "Design & Tools" },
   { name: "Prototyping", level: 4, category: "Design & Tools" },
-  { name: "Git", level: 4, category: "Design & Tools" }
+  { name: "Git", level: 5, category: "Design & Tools" }
 ];
 
 /**

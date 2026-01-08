@@ -4,9 +4,13 @@
  */
 import Link from "next/link";
 import PageShell from "@/components/layout/PageShell";
+import ProjectCard from "@/components/projects/ProjectCard";
+import { getFeaturedProjects } from "@/lib/data/projects";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const featuredProjects = getFeaturedProjects();
+
   return (
     <PageShell>
       <section className={styles.hero}>
@@ -28,12 +32,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.featuredSection}>
-        <h2>Featured Projects</h2>
-        <p className={styles.placeholder}>
-          [Platzhalter für Featured Projects – wird in Step 5 implementiert]
-        </p>
-      </section>
+      {featuredProjects.length > 0 && (
+        <section className={styles.featuredSection}>
+          <h2 className={styles.featuredTitle}>Featured Project</h2>
+          <div className={styles.featuredGrid}>
+            <ProjectCard project={featuredProjects[0]} />
+          </div>
+        </section>
+      )}
     </PageShell>
   );
 }

@@ -55,10 +55,15 @@
   /* No extra padding - section spacing handled by PageShell */
 }
 
-.placeholder {
-  color: rgba(245, 245, 247, 0.5);
-  font-style: italic;
-  padding: 2rem;
-  border: 1px dashed rgba(245, 245, 247, 0.2);
-  border-radius: 8px;
+.featuredTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #F5F5F7;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 500px;
 }
