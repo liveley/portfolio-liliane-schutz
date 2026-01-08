@@ -130,7 +130,7 @@ export const projects: Project[] = [
     slug: "studyid-lern-bot",
     title: "studyID Lern-Bot",
     year: 2024,
-    featured: true,
+    featured: false,
     category: "coding",
     status: "finished",
     shortDescription: "KI-gestützter Chatbot für Informatik-und-Design-Studierende der HM mit RAG-basiertem Wissenszugriff.",
@@ -195,7 +195,6 @@ export const projects: Project[] = [
     links: {
       github: undefined, // auf Anfrage
       demo: undefined, // auf Anfrage
-      figma: "https://www.figma.com/design/JRH47zvltUhwvxAj2QCLEF/Walkable-Memory-Hi-Fi-Prototype-5"
     },
     detail: {
       context: "Das Projekt entstand im 3. Semester im Kurs 'Research and Usability' an der Hochschule München. Ziel war es, ein UI/UX-Konzept für eine lokale Geschichts-App mit AR-Funktion zu entwickeln und als funktionsfähigen Prototyp umzusetzen. Der Fokus lag auf der Erkundung historischer Orte des ehemaligen Kriegsgefangenenlagers Stalag VII-A in Moosburg.",

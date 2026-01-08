@@ -3,7 +3,7 @@
  * Root Layout für Portfolio-Website
  */
 import type { Metadata } from "next";
-import { Source_Sans_3, Jua } from "next/font/google";
+import { Source_Sans_3, Fraunces } from "next/font/google";
 import "./globals.css";
 import "./styles/white-box.css";
 import Header from "@/components/layout/Header";
@@ -17,10 +17,10 @@ const sourceSans = Source_Sans_3({
   display: "swap",
 });
 
-// Heading font: Jua
-const jua = Jua({
+// Heading font: Fraunces
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
   variable: "--font-heading-family",
   display: "swap",
 });
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${sourceSans.variable} ${jua.variable}`}>
+    <html lang="de" className={`${sourceSans.variable} ${fraunces.variable}`}>
       <body suppressHydrationWarning>
         <Header />
         <main className="main-container">
