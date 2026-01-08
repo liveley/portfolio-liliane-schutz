@@ -41,10 +41,23 @@ export interface Project {
   status: ProjectStatus; // Project completion status
   shortDescription: string; // 1-2 sentences for card
   tags: string[]; // Technology/methodology tags (e.g., "React", "Figma")
-  image?: string; // Thumbnail image path (optional, placeholder for now)
+  image?: string; // Thumbnail image path (relative to /public)
   links?: {
     github?: string;
     demo?: string;
+    figma?: string;
+  };
+  // Detail page content (optional, for full case studies)
+  detail?: {
+    context?: string; // Background/context paragraph
+    problem?: string; // Problem statement
+    goals?: string[]; // List of project goals
+    role?: string; // Your role/responsibility
+    process?: {
+      title: string;
+      description: string;
+    }[]; // Process steps
+    outcomes?: string[]; // Results/achievements
   };
 }
 
