@@ -32,7 +32,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
             />
           </div>
         )}
-        <h1 className={styles.title}>{project.title}</h1>
+        <h1 className={`${styles.title} heading-colorful`} data-text={project.title}>{project.title}</h1>
         <p className={styles.description}>{project.shortDescription}</p>
         {hasDetailContent && project.detail?.context && (
           <p className={styles.context}>{project.detail.context}</p>
@@ -122,14 +122,6 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
             alt={`${project.title} - Weitere Ansicht`}
             caption="Weitere Ansichten folgen"
           />
-        </div>
-      </section>
-
-      {/* Links */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Links</h2>
-        <div className={styles.content}>
-          <p>Auf Anfrage.</p>
         </div>
       </section>
 

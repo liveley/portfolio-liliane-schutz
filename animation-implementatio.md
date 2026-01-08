@@ -1344,3 +1344,197 @@ Known Limitations:
 ⚠️ Safari <15: backdrop-filter funktioniert nicht (Fallback: solid background)
 ⚠️ Sehr langsame Devices: Aurora kann ruckeln (wird durch Reduced Motion abgefangen)
 
+
+## UI/Logik-Fixes (Januar 2026)
+
+### 1. Featured Projects Bug Fix
+
+**Problem:**
+- Home zeigte nur eaturedProjects[0] → nur 1 Featured Project
+- Ressource Realms (featured=true) erschien nicht, obwohl korrekt markiert
+- Keine Sortierung der Featured Projects
+
+**Lösung:**
+- getFeaturedProjects() sortiert jetzt nach Jahr (descending): .sort((a, b) => b.year - a.year)
+- Home rendert ALLE Featured Projects mit .map() statt nur Index 0
+- Titel geändert von "Featured Project" (Singular) zu "Featured Projects" (Plural)
+
+**Dateien:**
+- lib/data/projects.ts: Sort-Logik in getFeaturedProjects
+- pp/page.tsx: Loop über alle featuredProjects
+
+---
+
+### 2. Links "Auf Anfrage" in Meta-Box
+
+**Problem:**
+- "Links: Auf Anfrage" war als eigene Section im linken Inhaltsbereich (ProjectDetail)
+- Sollte stattdessen in der rechten Meta-Box erscheinen (bei Rolle/Jahr/Kategorie)
+
+**Lösung:**
+- Links-Section aus ProjectDetail.tsx entfernt
+- ProjectMeta.tsx zeigt IMMER "Links"-Section:
+  - WENN echte Links (github/demo/figma) vorhanden → Buttons
+  - SONST → Text "Auf Anfrage"
+- Logik: Ternärer Operator prüft project.links && (project.links.github || ...)
+
+**Dateien:**
+- components/projects/ProjectMeta.tsx: Links-Section immer rendern
+- components/projects/ProjectDetail.tsx: Alte Links-Section gelöscht
+
+---
+
+### 3. Kontaktformular: Betreff-Feld + Body-Format
+
+**Problem:**
+- Kein Betreff-Feld im Formular
+- Body-Format falsch: Name: ...\nE-Mail: ...\nNachricht:\n...
+- Hinweistext suggerierte "Nachricht gesendet", aber Mailprogramm muss noch senden
+
+**Lösung:**
+
+**A) Betreff-Feld hinzugefügt:**
+- Neues Input-Feld "Betreff" (required)
+- Validierung: min. 3 Zeichen
+- State: FormValues, FormErrors, FormTouched um subject erweitert
+- alidateSubject() Funktion analog zu alidateName()
+
+**B) Body-Format korrigiert:**
+`javascript
+const body = \\r\n\r\nGesendet von \;
+`
+- NUR die Nachricht, KEINE Labels
+- Leerzeile + "Gesendet von <Name>"
+- Betreff wird vom Formular-Feld übernommen (nicht mehr auto-generiert)
+
+**C) Hinweistext angepasst:**
+`
+"E-Mail-Entwurf geöffnet. Bitte noch auf 'Senden' klicken. Vielen Dank für deine Nachricht."
+`
+- Klarstellung: Mailprogramm öffnet nur Entwurf
+- Nutzer muss aktiv senden
+
+**Dateien:**
+- components/contact/ContactForm.tsx: Alle State-Interfaces, Validierung, Form-Markup
+
+---
+
+### 4. Bunte Heading-Blobs (Pure CSS)
+
+**Problem:**
+- Große Headings sollten farbige "Blobs" innerhalb der Buchstaben zeigen
+- KEIN Canvas/JavaScript
+- KEIN Tailwind → Pure CSS
+- Reduced Motion respektieren
+
+**Lösung: ackground-clip: text Technik**
+
+**A) CSS-Implementierung (globals.css):**
+`css
+.heading-colorful {
+  position: relative;
+  color: var(--color-fg); /* Base white text (Fallback) */
+  display: inline-block; /* Wichtig für ::before */
+}
+
+.heading-colorful::before {
+  content: attr(data-text); /* Kopiert Text aus data-Attribut */
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.9), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(67, 97, 238, 0.85), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(0, 180, 180, 0.75), transparent 50%);
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.85;
+  animation: heading-blobs-drift 25s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heading-blobs-drift {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 40% 30%; }
+  50% { background-position: 100% 70%; }
+  75% { background-position: 60% 80%; }
+}
+`
+
+**B) Funktionsweise:**
+1. **Base-Text**: Weißer Text (Fallback für alte Browser)
+2. **::before Pseudo-Element**: 
+   - Rendert denselben Text (via ttr(data-text))
+   - Farbige Radial-Gradients als Background
+   - ackground-clip: text clippt Background in Buchstabenform
+   - -webkit-text-fill-color: transparent → nur Background sichtbar
+3. **Animation**: Background-Position driftet langsam (25s Loop)
+4. **Reduced Motion**: Statische Background-Position (50% 50%), keine Animation
+
+**C) Usage:**
+`html
+<h1 class="heading-colorful" data-text="Hallo, ich bin Liliane.">
+  Hallo, ich bin Liliane.
+</h1>
+`
+- Text MUSS doppelt erscheinen: im Tag + im data-text Attribut
+- data-text wird von CSS via ttr() gelesen
+
+**D) Reduced Motion Support:**
+`css
+@media (prefers-reduced-motion: reduce) {
+  .heading-colorful::before {
+    animation: none;
+    background-position: 50% 50%; /* Statisch zentriert */
+  }
+}
+`
+
+**E) Browser-Fallback:**
+`css
+@supports not (-webkit-background-clip: text) {
+  .heading-colorful::before {
+    display: none; /* Nur weißen Base-Text zeigen */
+  }
+}
+`
+
+**Angewendet auf:**
+- Home Hero: <h1>Hallo, ich bin Liliane.</h1>
+- Home Featured: <h2>Featured Projects</h2>
+- PageHeader: Alle Seiten (Projekte, Kontakt)
+- AboutHero: <h1>Über mich</h1>
+- ProjectDetail: <h1>{project.title}</h1>
+
+**Dateien:**
+- pp/globals.css: .heading-colorful + Animation
+- pp/page.tsx: Home Hero + Featured Title
+- components/layout/PageHeader.tsx: Alle Page-Headers
+- components/about/AboutHero.tsx: About-Title
+- components/projects/ProjectDetail.tsx: Projekt-Titel
+
+---
+
+### Performance & Accessibility
+
+**Performance:**
+- ackground-clip: text ist GPU-accelerated (Compositing Layer)
+- Radial-Gradients sind stateless → kein Reflow
+- Animation nur via ackground-position (keine Layout-Shifts)
+- Duration 25s → sehr niedrige Frame-Rate benötigt
+
+**Accessibility:**
+- Base-Text bleibt weiß → immer lesbar (WCAG AAA)
+- Farbige Blobs sind dekorativ (opacity 0.85) → kein Kontrastverlust
+- Reduced Motion: Statische Blobs, keine Bewegung
+- Screen Reader: Lesen Base-Text (::before wird ignoriert)
+
+**Browser Support:**
+- ackground-clip: text: Chrome/Safari/Edge (Webkit/Blink)
+- Firefox: Support seit v49 mit Prefix
+- Fallback: Nur weißer Text (via @supports not)
+
+---
+

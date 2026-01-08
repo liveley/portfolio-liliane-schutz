@@ -46,9 +46,9 @@ export default function ProjectMeta({ project }: ProjectMetaProps) {
         </div>
       </div>
 
-      {project.links && (project.links.github || project.links.demo || project.links.figma) && (
-        <div className={styles.section}>
-          <h4 className={styles.label}>Links</h4>
+      <div className={styles.section}>
+        <h4 className={styles.label}>Links</h4>
+        {project.links && (project.links.github || project.links.demo || project.links.figma) ? (
           <div className={styles.buttons}>
             {project.links.github && (
               <Button href={project.links.github} variant="secondary">
@@ -66,8 +66,10 @@ export default function ProjectMeta({ project }: ProjectMetaProps) {
               </Button>
             )}
           </div>
-        </div>
-      )}
+        ) : (
+          <p className={styles.value}>Auf Anfrage</p>
+        )}
+      </div>
     </aside>
   );
 }

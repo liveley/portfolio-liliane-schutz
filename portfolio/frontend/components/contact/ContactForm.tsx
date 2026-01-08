@@ -10,18 +10,21 @@ import styles from './ContactForm.module.css';
 interface FormValues {
   name: string;
   email: string;
+  subject: string;
   message: string;
 }
 
 interface FormErrors {
   name?: string;
   email?: string;
+  subject?: string;
   message?: string;
 }
 
 interface FormTouched {
   name: boolean;
   email: boolean;
+  subject: boolean;
   message: boolean;
 }
 
@@ -51,6 +54,17 @@ function validateEmail(value: string): string | undefined {
   return undefined;
 }
 
+function validateSubject(value: string): string | undefined {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return 'Betreff ist erforderlich';
+  }
+  if (trimmed.length < 3) {
+    return 'Betreff muss mindestens 3 Zeichen lang sein';
+  }
+  return undefined;
+}
+
 function validateMessage(value: string): string | undefined {
   const trimmed = value.trim();
   if (!trimmed) {
@@ -66,6 +80,7 @@ function validateAll(values: FormValues): FormErrors {
   return {
     name: validateName(values.name),
     email: validateEmail(values.email),
+    subject: validateSubject(values.subject),
     message: validateMessage(values.message),
   };
 }
@@ -74,12 +89,14 @@ export default function ContactForm() {
   const [values, setValues] = useState<FormValues>({
     name: '',
     email: '',
+    subject: '',
     message: '',
   });
 
   const [touched, setTouched] = useState<FormTouched>({
     name: false,
     email: false,
+    subject: false,
     message: false,
   });
 
@@ -100,6 +117,8 @@ export default function ContactForm() {
           ? validateName(value)
           : name === 'email'
           ? validateEmail(value)
+          : name === 'subject'
+          ? validateSubject(value)
           : validateMessage(value);
 
       setErrors((prev) => ({
@@ -121,6 +140,8 @@ export default function ContactForm() {
         ? validateName(value)
         : name === 'email'
         ? validateEmail(value)
+        : name === 'subject'
+        ? validateSubject(value)
         : validateMessage(value);
 
     setErrors((prev) => ({
@@ -145,6 +166,7 @@ export default function ContactForm() {
       setTouched({
         name: true,
         email: true,
+        subject: true,
         message: true,
       });
       setErrors(validationErrors);
@@ -159,8 +181,8 @@ export default function ContactForm() {
     try {
       // Build mailto URL
       const to = 'lilly.schutz.ls@gmail.com';
-      const subject = `Portfolio Anfrage – ${values.name}`;
-      const body = `Name: ${values.name}\r\n\r\nE-Mail: ${values.email}\r\n\r\nNachricht:\r\n${values.message}`;
+      const subject = values.subject;
+      const body = `${values.message}\r\n\r\nGesendet von ${values.name}`;
       
       const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
@@ -172,8 +194,8 @@ export default function ContactForm() {
       setSubmitStatus('success');
 
       // Reset form after success
-      setValues({ name: '', email: '', message: '' });
-      setTouched({ name: false, email: false, message: false });
+      setValues({ name: '', email: '', subject: '', message: '' });
+      setTouched({ name: false, email: false, subject: false, message: false });
       setErrors({});
     } catch {
       setIsSubmitting(false);
@@ -198,7 +220,7 @@ export default function ContactForm() {
               fill="currentColor"
             />
           </svg>
-          <span>Nachricht gesendet! Vielen Dank für deine Nachricht.</span>
+          <span>E-Mail-Entwurf geöffnet. Bitte noch auf ‚Senden' klicken. Vielen Dank für deine Nachricht.</span>
         </div>
       )}
 
@@ -231,6 +253,20 @@ export default function ContactForm() {
           error={touched.email ? errors.email : undefined}
           disabled={isSubmitting}
           autoComplete="email"
+        />
+
+        <Input
+          id="subject"
+          name="subject"
+          label="Betreff"
+          type="text"
+          value={values.subject}
+          placeholder="Projektanfrage / Zusammenarbeit / ..."
+          onChange={handleChange}
+          onBlur={handleBlur}
+          required
+          error={touched.subject ? errors.subject : undefined}
+          disabled={isSubmitting}
         />
 
         <Textarea

@@ -16,7 +16,7 @@ export default function PageHeader({ title, lead, eyebrow }: PageHeaderProps) {
   return (
     <header className={styles.header}>
       {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={`${styles.title} heading-colorful`} data-text={title}>{title}</h1>
       {lead && <p className={styles.lead}>{lead}</p>}
     </header>
   );

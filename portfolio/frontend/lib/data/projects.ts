@@ -244,7 +244,9 @@ export const projects: Project[] = [
  * Helper function to get featured projects (for Home page)
  */
 export function getFeaturedProjects(): Project[] {
-  return projects.filter(p => p.featured);
+  return projects
+    .filter(p => p.featured)
+    .sort((a, b) => b.year - a.year);
 }
 
 /**
