@@ -26,6 +26,13 @@
   --color-shadow-hover: rgba(67, 97, 238, 0.15);
   --color-focus-ring: rgba(67, 97, 238, 0.5);
   
+  /* Aurora Background Animation */
+  --aurora-purple: rgba(138, 43, 226, 0.4); /* Increased from 0.25 */
+  --aurora-blue: rgba(67, 97, 238, 0.35); /* Increased from 0.20 */
+  --aurora-cyan: rgba(0, 180, 180, 0.28); /* Increased from 0.15 */
+  --aurora-blur: 120px; /* Stronger blur for softer edges */
+  --aurora-duration: 90s; /* Ultra-slow drift */
+  
   /* Glass Card Tokens (transparent cards on dark bg) */
   --wb-card-bg: transparent;
   --wb-card-fg: var(--color-fg);
@@ -147,10 +154,11 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--color-bg);
+  /* Static base layer with stronger colors */
   background-image: 
-    radial-gradient(ellipse 900px 700px at 15% 25%, rgba(138, 43, 226, 0.25), transparent 70%),
-    radial-gradient(ellipse 800px 600px at 85% 75%, rgba(67, 97, 238, 0.20), transparent 70%),
-    radial-gradient(ellipse 700px 500px at 50% 95%, rgba(0, 180, 180, 0.15), transparent 60%);
+    radial-gradient(ellipse 900px 700px at 15% 25%, var(--aurora-purple), transparent 70%),
+    radial-gradient(ellipse 800px 600px at 85% 75%, var(--aurora-blue), transparent 70%),
+    radial-gradient(ellipse 700px 500px at 50% 95%, var(--aurora-cyan), transparent 60%);
   background-attachment: fixed;
   color: var(--color-fg);
   font-family: var(--font-body);
@@ -158,6 +166,52 @@ body {
   line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  isolation: isolate; /* Create stacking context for aurora overlay */
+}
+
+/* Aurora Drift Animation Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(var(--aurora-blur));
+  background-image: 
+    radial-gradient(circle 600px at 20% 30%, var(--aurora-purple), transparent 50%),
+    radial-gradient(circle 500px at 80% 70%, var(--aurora-blue), transparent 50%),
+    radial-gradient(circle 550px at 50% 90%, var(--aurora-cyan), transparent 50%);
+  animation: aurora-drift var(--aurora-duration) ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Ultra-slow drift animation */
+@keyframes aurora-drift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(3%, -2%) rotate(1deg);
+  }
+  50% {
+    transform: translate(-2%, 3%) rotate(-0.5deg);
+  }
+  75% {
+    transform: translate(2%, 1%) rotate(0.8deg);
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+    opacity: 0.4; /* Slightly reduced for static version */
+  }
 }
 
 /* Main Content Container */
