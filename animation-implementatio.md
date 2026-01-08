@@ -1538,3 +1538,347 @@ const body = \\r\n\r\nGesendet von \;
 
 ---
 
+
+---
+
+## LIVELEY Intro als eigene Page (Januar 2026)
+
+### Warum Page statt Popup?
+
+**Probleme mit der Popup-Lösung:**
+1. **Verzögerung**: Popup erschien erst nach Home-Load → verzögerter Eindruck
+2. **Timing zu kurz**: 3.5s Gesamt-Animation wirkte gehetzt, kein "Premium"-Gefühl
+3. **Hold-Phase fehlte**: LIVELEY-Schriftzug war zu kurz lesbar (< 1s)
+4. **Entry-Flow unklar**: sessionStorage-Check nach Home-Render → unelegant
+
+**Vorteile der Page-Lösung:**
+- **Sauberer Entry-Flow**: / → Middleware → /intro → Auto-Redirect → / (klar definiert)
+- **Session-Cookie**: Zuverlässiger als sessionStorage (persistiert über Tab-Close im Browser)
+- **3× längeres Timing**: 10s Gesamt-Animation (statt 3.5s) mit klarer Hold-Phase (2.5s)
+- **Kein Layout-Shift**: Intro ist eigene Route → Home wird erst nach Intro geladen
+
+### Implementierung
+
+**Dateien erstellt:**
+- pp/intro/page.tsx: Eigenständige Client Component für Intro-Route
+- pp/intro/page.module.css: CSS mit 3× längeren Timings
+- middleware.ts: Session-Cookie-Check + Redirect-Logik
+
+**Middleware-Flow (Session-Based):**
+
+`	ypescript
+// middleware.ts
+export function middleware(request: NextRequest) {
+  const hasSeenIntro = request.cookies.get('intro_seen');
+  const { pathname } = request.nextUrl;
+
+  // First visit to / → redirect to /intro
+  if (pathname === '/' && !hasSeenIntro) {
+    return NextResponse.redirect(new URL('/intro', request.url));
+  }
+
+  // Direct visit to /intro when already seen → redirect to /
+  if (pathname === '/intro' && hasSeenIntro) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
+  return NextResponse.next();
+}
+`
+
+**Session-Cookie (nicht sessionStorage):**
+- Set in Intro-Page: document.cookie = 'intro_seen=1; path=/; SameSite=Lax'
+- Kein xpires → Session-Cookie (wird beim Browser-Close gelöscht)
+- Middleware prüft Cookie bei jedem Request auf / oder /intro
+
+**Redirect-Trigger:**
+- Nach Fadeout (10s total) → outer.replace('/')
+- Skip-Button: Sofort → outer.replace('/')
+- Reduced Motion: 0.8s statisch → outer.replace('/')
+
+### Neue Timings (3× länger + Hold-Phase)
+
+**Alte Popup-Timings (3.5s total):**
+| Phase | Duration | Start | End |
+|-------|----------|-------|-----|
+| Segments | 1.5s | 0s | 1.5s |
+| Morph | 1.3s | 1.5s | 2.8s |
+| Fadeout | 0.7s | 2.8s | 3.5s |
+
+**Neue Page-Timings (10s total, 3× longer):**
+| Phase | Duration | Start | End | Beschreibung |
+|-------|----------|-------|-----|--------------|
+| Segments | 4.5s | 0s | 4.5s | LI·VE·LEY stagger (3× länger: 1.5s → 4.5s) |
+| Morph | 2s | 4.5s | 6.5s | Crossfade zu LIVELEY (3× länger: 0.7s → 2s) |
+| **Hold** | **2.5s** | 6.5s | 9s | **LIVELEY steht lesbar (NEU!)** |
+| Fadeout | 1s | 9s | 10s | Overlay verschwindet (3× länger: 0.3s → 1s) |
+
+**CSS-Änderungen (segment stagger):**
+`css
+/* Alt (Popup): 0.3s → 0.6s → 0.9s, duration 0.6s */
+.segment1 { animation: segmentIn 0.6s ease-out 0.3s forwards; }
+.segment2 { animation: segmentIn 0.6s ease-out 0.6s forwards; }
+.segment3 { animation: segmentIn 0.6s ease-out 0.9s forwards; }
+
+/* Neu (Page): 0.9s → 1.8s → 2.7s, duration 1.2s (3× länger) */
+.segment1 { animation: segmentIn 1.2s ease-out 0.9s forwards; }
+.segment2 { animation: segmentIn 1.2s ease-out 1.8s forwards; }
+.segment3 { animation: segmentIn 1.2s ease-out 2.7s forwards; }
+`
+
+**Hold-Phase-Implementierung:**
+`	ypescript
+// JS: Neue Phase "hold"
+setTimeout(() => setAnimationPhase('hold'), 6500);
+setTimeout(() => setAnimationPhase('fadeout'), 9000);
+setTimeout(() => router.replace('/'), 10000);
+`
+
+`css
+/* CSS: Hold = morphed bleibt sichtbar, keine Animation */
+.hold .morphed {
+  opacity: 1;
+  animation: none; /* Statisch halten */
+}
+
+.hold .segments,
+.hold .nameHint {
+  opacity: 0; /* Verschwunden */
+}
+`
+
+### Reduced Motion Verhalten
+
+**Reduced Motion Flow:**
+1. Intro-Page zeigt nur phase='hold' (kein Stagger, kein Morph)
+2. LIVELEY erscheint sofort mit kurzer Fade (0.5s)
+3. Nach 0.8s → outer.replace('/')
+4. Kein Aurora-Drift, keine Segment-Animationen
+
+`	ypescript
+if (prefersReducedMotion) {
+  setAnimationPhase('hold'); // Direkt zu LIVELEY
+  setTimeout(() => router.replace('/'), 800); // Kurz halten, dann weiter
+}
+`
+
+### Testfälle
+
+**Szenario 1: First Visit (no cookie)**
+1. Browser öffnet → https://example.com/
+2. Middleware prüft: intro_seen Cookie nicht vorhanden
+3. Redirect → https://example.com/intro
+4. Intro-Page setzt Cookie: intro_seen=1
+5. Animation läuft (10s)
+6. Auto-Redirect → https://example.com/
+7. ✅ Home zeigt sich ohne Intro
+
+**Szenario 2: Reload in Session (cookie exists)**
+1. User auf Home → F5 drückt
+2. Middleware prüft: intro_seen Cookie vorhanden
+3. Kein Redirect → Home lädt direkt
+4. ✅ Kein Intro
+
+**Szenario 3: Skip Button**
+1. Intro-Page lädt
+2. User klickt Skip (oder Escape)
+3. outer.replace('/') sofort
+4. Cookie bleibt gesetzt
+5. ✅ Home lädt, kein Intro mehr
+
+**Szenario 4: Direct visit to /intro with cookie**
+1. User navigiert zu https://example.com/intro
+2. Middleware prüft: intro_seen Cookie vorhanden
+3. Redirect → https://example.com/
+4. ✅ Verhindert Re-Watching
+
+**Szenario 5: New Session (Browser neu geöffnet)**
+1. Browser komplett geschlossen
+2. Neu geöffnet → Session-Cookie gelöscht
+3. https://example.com/ → Intro erscheint wieder
+4. ✅ Pro Session = Pro Browser-Session
+
+### Performance & A11y
+
+**Performance:**
+- Page ist separate Route → kein Home-Rendering während Intro
+- Aurora-Animation GPU-accelerated (transform, blur)
+- No Layout Shifts (Intro = Fullscreen Overlay)
+
+**Accessibility:**
+- ole="dialog" auf Container
+- ria-label="LIVELEY Intro"
+- Skip-Button fokussierbar (Tab-Navigation)
+- Keyboard: Escape/Enter/Space → Skip
+- Reduced Motion: Kein Stagger, kein Drift, 0.8s statisch
+
+**Browser Support:**
+- Middleware: Next.js 12+ (Edge Runtime)
+- Session-Cookie: Alle Browser (kein localStorage/sessionStorage nötig)
+- Fallback: Wenn Middleware nicht läuft → Intro-Page zeigt Skip-Button
+
+---
+
+## Heading Hover-Effekt: Weiß → Bunt (Januar 2026)
+
+### Problem: Dauerhaft bunte Headings
+
+**Vorher:**
+- .heading-colorful::before hatte opacity: 0.85 und nimation: heading-blobs-drift 25s infinite
+- Headings waren **immer bunt** (kein Unterschied zwischen Hover/Non-Hover)
+- Wirkte überladen, lenkte von Inhalten ab
+
+**Ziel:**
+- Standard: **weiß** (sauber, lesbar)
+- Hover: **bunt** mit blurred "bubbles" innerhalb der Schrift
+- Nur während Hover: Animation startet (kein Dauerloop)
+
+### Lösung: Opacity 0 + Hover-Trigger
+
+**CSS-Änderungen (globals.css):**
+
+`css
+/* Vorher */
+.heading-colorful::before {
+  opacity: 0.85; /* Immer sichtbar */
+  animation: heading-blobs-drift 25s ease-in-out infinite; /* Immer animiert */
+}
+
+/* Nachher */
+.heading-colorful::before {
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease; /* Smooth fade */
+  filter: blur(1px); /* Subtle blur for "bubbles" effect */
+  /* Keine animation im Default-State */
+}
+
+.heading-colorful:hover::before {
+  opacity: 0.85; /* Sichtbar nur bei Hover */
+  animation: heading-blobs-drift 25s ease-in-out infinite; /* Animation startet */
+}
+`
+
+**Technik:**
+1. **Base-Text**: color: var(--color-fg) (weiß) bleibt immer sichtbar
+2. **::before Pseudo-Element**: 
+   - Rendert denselben Text via content: attr(data-text)
+   - Farbige Radial-Gradients als Background (Aurora-Palette)
+   - ackground-clip: text clippt Background in Buchstabenform
+   - -webkit-text-fill-color: transparent → nur Background sichtbar
+   - ilter: blur(1px) → "Bubble"-Effekt (weiche Kanten)
+3. **Default**: opacity: 0 → nur weißer Base-Text sichtbar
+4. **Hover**: opacity: 0.85 + Animation → farbige Blobs werden sichtbar und driften
+
+**Reduced Motion:**
+`css
+@media (prefers-reduced-motion: reduce) {
+  .heading-colorful:hover::before {
+    animation: none; /* Kein Drift */
+    background-position: 50% 50%; /* Statisch zentriert */
+  }
+}
+`
+- Bei Hover: Farbe erscheint, aber **keine Bewegung**
+- Nur Fade in/out (opacity transition)
+
+### Angewendet auf:
+
+- **Home Hero**: <h1>Hallo, ich bin Liliane.</h1>
+- **Home Featured**: <h2>Featured Projects</h2>
+- **PageHeader**: Alle Seiten-Titel (Projekte, Kontakt, etc.)
+- **AboutHero**: <h1>Über mich</h1>
+- **ProjectDetail**: Projekt-Titel
+
+**Usage bleibt gleich:**
+`html
+<h1 class="heading-colorful" data-text="Hallo, ich bin Liliane.">
+  Hallo, ich bin Liliane.
+</h1>
+`
+
+### Vorteile
+
+1. **Lesbarkeit**: Standard weiß → immer kontrastreich und lesbar
+2. **Premium-Effekt**: Hover zeigt "versteckte" Farbschicht → Delight
+3. **Performance**: Animation startet nur bei Hover (keine Daueranimation)
+4. **Accessibility**: 
+   - Base-Text immer sichtbar (WCAG AAA)
+   - Hover ist optional (kein essentieller Content versteckt)
+   - Reduced Motion: Keine Bewegung bei Hover
+
+---
+
+## Featured Grid nebeneinander (Januar 2026)
+
+### Problem: Featured Projects untereinander
+
+**Vorher (page.module.css):**
+`css
+.featuredGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* Nur 1 Spalte */
+  max-width: 500px; /* Sehr schmal */
+}
+`
+
+**Resultat:**
+- Featured Projects erschienen untereinander (vertikaler Stack)
+- Verschwendung von Horizontal-Platz auf Desktop
+- max-width 500px → unnötig eng
+
+### Lösung: Responsive Grid mit auto-fit
+
+**Neue Styles (page.module.css):**
+
+`css
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 100%; /* Volle Container-Breite */
+}
+
+/* Single column on narrow screens */
+@media (max-width: 700px) {
+  .featuredGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+`
+
+**Technik: epeat(auto-fit, minmax(320px, 1fr))**
+- **auto-fit**: Grid erstellt so viele Spalten wie Platz vorhanden
+- **minmax(320px, 1fr)**: Jede Karte min. 320px breit, max. 1fr (gleiche Breite)
+- **Resultat Desktop (>1400px)**: 2 Spalten (2 Featured Projects nebeneinander)
+- **Resultat Tablet (700–1400px)**: 2 Spalten (enger)
+- **Resultat Mobile (<700px)**: 1 Spalte (via Media Query Override)
+
+**Breakpoint-Logik:**
+- **700px+**: uto-fit entscheidet (meist 2 Spalten)
+- **<700px**: Explizit 1 Spalte (verhindert zu schmale Cards)
+
+### Vorteile
+
+1. **Desktop**: 2 Featured Projects nebeneinander → effizienter Platz
+2. **Responsive**: Auto-Collapse zu 1 Spalte auf Mobile
+3. **Flexibel**: Wenn 3+ Featured Projects → Grid wächst mit (3 Spalten auf Ultra-Wide)
+4. **Gap**: 2rem zwischen Cards (Desktop), 1.5rem (Mobile)
+
+### Test-Cases
+
+**Desktop (1920px):**
+- ✅ 2 Spalten, Cards gleich breit
+- ✅ Gap 2rem sichtbar
+- ✅ Keine Overflow
+
+**Tablet (768px):**
+- ✅ 2 Spalten (eng, aber lesbar)
+- ✅ auto-fit funktioniert
+
+**Mobile (375px):**
+- ✅ 1 Spalte (Media Query greift)
+- ✅ Gap 1.5rem
+- ✅ Cards füllen Breite (minus Container-Padding)
+
+---
