@@ -30,12 +30,12 @@
   --wb-card-bg: transparent;
   --wb-card-fg: var(--color-fg);
   --wb-card-fg-muted: var(--color-fg-muted);
-  --wb-card-border: rgba(255, 255, 255, 0.15);
+  --wb-card-border: rgba(255, 255, 255, 0.35); /* Increased for better visibility on dark bg */
   
   /* Glass Card Shadows (visible on dark bg) */
   --wb-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
   --wb-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
-  --wb-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --wb-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08); /* Subtle inner highlight */
   --wb-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
   --wb-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 40px rgba(67, 97, 238, 0.25);
   
@@ -66,11 +66,23 @@
   --space-paragraph: 16px; /* Paragraph spacing */
   --measure: 70ch; /* Readable line length */
   
-  /* Page Container Padding (standardized) */
+  /* Page Container Padding (responsive & centralized) */
+  --container-max: 1200px;
+  --container-px: clamp(20px, 4vw, 32px);
+  --page-py: clamp(32px, 6vw, 64px);
+  --section-gap: clamp(40px, 6vw, 72px); /* 8px grid: 40/48/56/64/72 */
+  
+  /* Legacy tokens (keeping for compatibility) */
   --page-max-width: 1200px;
   --page-pad-x: 32px; /* Horizontal padding */
   --page-pad-top: 64px; /* Top padding */
   --page-pad-bottom: 80px; /* Bottom padding */
+  
+  /* Font Families (centralized for easy swapping) */
+  /* Replace {{HEADING_FONT}} and {{BODY_FONT}} with your chosen fonts */
+  /* To use: import via next/font in layout.tsx, then set CSS variables there */
+  --font-heading: var(--font-heading-family, -apple-system, BlinkMacSystemFont, sans-serif);
+  --font-body: var(--font-body-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   
   /* Border Radius */
   --r-sm: 6px;
@@ -114,6 +126,14 @@
 
 html {
   scrollbar-gutter: stable; /* Prevent layout shift from scrollbar */
+  
+  /* Hide scrollbar but keep scrolling (cross-browser) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 html,
@@ -133,7 +153,7 @@ body {
     radial-gradient(ellipse 700px 500px at 50% 95%, rgba(0, 180, 180, 0.15), transparent 60%);
   background-attachment: fixed;
   color: var(--color-fg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
@@ -149,11 +169,20 @@ body {
 /* ========================================
    Typography
    ======================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
 h1 {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  margin-bottom: var(--s3);
+  margin-block: 0 var(--s3); /* Remove top margin for consistency */
   color: var(--color-fg);
 }
 
@@ -161,7 +190,7 @@ h2 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-snug);
-  margin-bottom: var(--s2);
+  margin-block: 0 var(--s2); /* Remove top margin for consistency */
   color: var(--color-fg);
 }
 
@@ -169,7 +198,7 @@ h3 {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-snug);
-  margin-bottom: var(--s2);
+  margin-block: 0 var(--s2); /* Remove top margin for consistency */
   color: var(--color-fg);
 }
 

@@ -1,7 +1,7 @@
 /** Author: Liliane Schutz */
 
 .header {
-  margin-bottom: var(--s8);
+  /* margin-bottom removed - PageShell gap handles section spacing */
 }
 
 .eyebrow {
