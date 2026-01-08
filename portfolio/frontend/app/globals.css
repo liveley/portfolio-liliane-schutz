@@ -31,9 +31,10 @@
   --aurora-blue: rgba(67, 97, 238, 0.35); /* Increased from 0.20 */
   --aurora-cyan: rgba(0, 180, 180, 0.28); /* Increased from 0.15 */
   --aurora-blur: 100px; /* Reduced from 120px for sharper colors */
-  --aurora-duration: 90s; /* Ultra-slow drift */
+  --aurora-duration: 60s; /* Reduced from 90s for more visible movement (was too slow) */
+  --aurora-duration-debug: 15s; /* Debug value: set duration to this for quick verification */
   --aurora-opacity: 0.75; /* Increased from 0.6 for better visibility */
-  --aurora-amplitude: 8%; /* NEW: Control drift distance (was 3%) */
+  --aurora-amplitude: 12%; /* Increased from 8% for more noticeable drift */
   
   /* Glass Card Tokens (transparent cards on dark bg) */
   --wb-card-bg: transparent;
@@ -192,19 +193,19 @@ body::before {
   will-change: transform;
 }
 
-/* Ultra-slow drift animation with increased amplitude */
+/* Aurora drift animation - subtly visible at 60s */
 @keyframes aurora-drift {
   0%, 100% {
     transform: translate(0, 0) rotate(0deg);
   }
   25% {
-    transform: translate(var(--aurora-amplitude), calc(var(--aurora-amplitude) * -0.6)) rotate(2deg);
+    transform: translate(var(--aurora-amplitude), calc(var(--aurora-amplitude) * -0.6)) rotate(3deg);
   }
   50% {
-    transform: translate(calc(var(--aurora-amplitude) * -0.7), var(--aurora-amplitude)) rotate(-1deg);
+    transform: translate(calc(var(--aurora-amplitude) * -0.7), var(--aurora-amplitude)) rotate(-2deg);
   }
   75% {
-    transform: translate(calc(var(--aurora-amplitude) * 0.5), calc(var(--aurora-amplitude) * 0.3)) rotate(1.5deg);
+    transform: translate(calc(var(--aurora-amplitude) * 0.5), calc(var(--aurora-amplitude) * 0.3)) rotate(2.5deg);
   }
 }
 
@@ -456,18 +457,26 @@ select:focus-visible {
 
 /**
  * Crossfade Animation für ausgehende Seite (Old Snapshot)
- * Faded aus mit subtiler Blur-Andeutung (premium feel)
+ * Longer, softer transition with aurora color wash
  */
 ::view-transition-old(main-content) {
-  animation: fade-out 200ms ease-out both;
+  animation: fade-out 450ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 /**
  * Crossfade Animation für eingehende Seite (New Snapshot)
- * Faded ein, startet mit leichter Blur
+ * Faded ein mit subtiler Aurora-Tönung
  */
 ::view-transition-new(main-content) {
-  animation: fade-in 200ms ease-in both;
+  animation: fade-in 450ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/**
+ * Aurora Color Wash - subtle purple/blue tint during transition
+ * Creates "premium" feel without overwhelming content
+ */
+::view-transition-group(main-content) {
+  animation: color-wash 450ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes fade-out {
@@ -477,38 +486,54 @@ select:focus-visible {
   }
   to {
     opacity: 0;
-    filter: blur(2px); /* Sehr subtiler Blur beim Ausblenden */
+    filter: blur(3px); /* Slightly stronger blur for smoother fade */
   }
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
-    filter: blur(2px); /* Startet mit subtiler Unschärfe */
+    filter: blur(3px) saturate(1.1); /* Subtle color boost on entry */
   }
   to {
     opacity: 1;
-    filter: blur(0);
+    filter: blur(0) saturate(1);
+  }
+}
+
+@keyframes color-wash {
+  0% {
+    background: transparent;
+  }
+  50% {
+    /* Aurora gradient wash at peak of transition */
+    background: linear-gradient(
+      135deg,
+      rgba(138, 43, 226, 0.06) 0%,
+      rgba(67, 97, 238, 0.05) 50%,
+      rgba(0, 180, 180, 0.04) 100%
+    );
+  }
+  100% {
+    background: transparent;
   }
 }
 
 /**
- * Reduced Motion: Keine Transitions oder nur minimaler Fade (kein Blur)
+ * Reduced Motion: Minimal fade only (no blur, no color wash)
  * Respektiert User-Preference für weniger Bewegung
  */
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(main-content),
-  ::view-transition-new(main-content) {
-    animation: none; /* Komplett ohne Animation */
-  }
-  
-  /* Alternative: Sehr kurzer Fade ohne Blur */
   ::view-transition-old(main-content) {
-    animation: fade-out-minimal 100ms ease-out both;
+    animation: fade-out-minimal 120ms ease-out both;
   }
   
   ::view-transition-new(main-content) {
-    animation: fade-in-minimal 100ms ease-in both;
+    animation: fade-in-minimal 120ms ease-in both;
+  }
+  
+  ::view-transition-group(main-content) {
+    animation: none; /* No color wash */
   }
   
   @keyframes fade-out-minimal {
