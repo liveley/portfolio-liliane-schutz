@@ -30,8 +30,10 @@
   --aurora-purple: rgba(138, 43, 226, 0.4); /* Increased from 0.25 */
   --aurora-blue: rgba(67, 97, 238, 0.35); /* Increased from 0.20 */
   --aurora-cyan: rgba(0, 180, 180, 0.28); /* Increased from 0.15 */
-  --aurora-blur: 120px; /* Stronger blur for softer edges */
+  --aurora-blur: 100px; /* Reduced from 120px for sharper colors */
   --aurora-duration: 90s; /* Ultra-slow drift */
+  --aurora-opacity: 0.75; /* Increased from 0.6 for better visibility */
+  --aurora-amplitude: 8%; /* NEW: Control drift distance (was 3%) */
   
   /* Glass Card Tokens (transparent cards on dark bg) */
   --wb-card-bg: transparent;
@@ -179,8 +181,8 @@ body::before {
   width: 200%;
   height: 200%;
   z-index: -1;
-  opacity: 0.6;
-  filter: blur(var(--aurora-blur));
+  opacity: var(--aurora-opacity); /* Increased from 0.6 to 0.75 */
+  filter: blur(var(--aurora-blur)); /* 100px for sharper colors */
   background-image: 
     radial-gradient(circle 600px at 20% 30%, var(--aurora-purple), transparent 50%),
     radial-gradient(circle 500px at 80% 70%, var(--aurora-blue), transparent 50%),
@@ -190,27 +192,27 @@ body::before {
   will-change: transform;
 }
 
-/* Ultra-slow drift animation */
+/* Ultra-slow drift animation with increased amplitude */
 @keyframes aurora-drift {
   0%, 100% {
     transform: translate(0, 0) rotate(0deg);
   }
   25% {
-    transform: translate(3%, -2%) rotate(1deg);
+    transform: translate(var(--aurora-amplitude), calc(var(--aurora-amplitude) * -0.6)) rotate(2deg);
   }
   50% {
-    transform: translate(-2%, 3%) rotate(-0.5deg);
+    transform: translate(calc(var(--aurora-amplitude) * -0.7), var(--aurora-amplitude)) rotate(-1deg);
   }
   75% {
-    transform: translate(2%, 1%) rotate(0.8deg);
+    transform: translate(calc(var(--aurora-amplitude) * 0.5), calc(var(--aurora-amplitude) * 0.3)) rotate(1.5deg);
   }
 }
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   body::before {
-    animation: none;
-    opacity: 0.4; /* Slightly reduced for static version */
+    animation: none; /* Stop drift */
+    opacity: 0.5; /* Keep subtle aurora but static */
   }
 }
 
