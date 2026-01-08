@@ -19,7 +19,7 @@ export default function Home() {
       <LiveleyIntro />
       <PageShell>
         <section className={styles.hero}>
-          <h1>Hallo, ich bin Liliane.</h1>
+          <h1 className="heading-colorful" data-text="Hallo, ich bin Liliane.">Hallo, ich bin Liliane.</h1>
           <p className={styles.intro}>
             Ich studiere Informatik und Design und entwickle digitale Produkte mit Fokus auf User Experience und sauberen Code. 
             Hier findest du meine Projekte, meine Skills und wie du mich erreichen kannst.
@@ -39,9 +39,11 @@ export default function Home() {
 
         {featuredProjects.length > 0 && (
           <section className={styles.featuredSection}>
-            <h2 className={styles.featuredTitle}>Featured Project</h2>
+            <h2 className={`${styles.featuredTitle} heading-colorful`} data-text="Featured Projects">Featured Projects</h2>
             <div className={styles.featuredGrid}>
-              <ProjectCard project={featuredProjects[0]} />
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
             </div>
           </section>
         )}

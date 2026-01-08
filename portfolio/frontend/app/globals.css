@@ -546,3 +546,74 @@ select:focus-visible {
     to { opacity: 1; }
   }
 }
+/* ========================================
+   Colorful Heading Blobs (Aurora Colors)
+   ======================================== */
+/**
+ * Bunte Heading-Blobs - Pure CSS Technik
+ * 
+ * Verwendung: <h1 class="heading-colorful">Text</h1>
+ * 
+ * Technik: background-clip:text mit animierten radial-gradients
+ * - Base: weißer Text bleibt sichtbar (Fallback für ältere Browser)
+ * - Overlay (::before): farbige Blobs werden in den Text geclippt
+ * - Animation: sanfte Bewegung der Blobs (Aurora-Farben)
+ * - Reduced Motion: statische Blobs ohne Animation
+ */
+.heading-colorful {
+  position: relative;
+  color: var(--color-fg); /* Base white text */
+  display: inline-block; /* Wichtig für ::before positioning */
+}
+
+.heading-colorful::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.9), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(67, 97, 238, 0.85), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(0, 180, 180, 0.75), transparent 50%);
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.85;
+  animation: heading-blobs-drift 25s ease-in-out infinite;
+  pointer-events: none; /* Click-through to base text */
+}
+
+@keyframes heading-blobs-drift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 40% 30%;
+  }
+  50% {
+    background-position: 100% 70%;
+  }
+  75% {
+    background-position: 60% 80%;
+  }
+}
+
+/**
+ * Reduced Motion: Statische Blobs, keine Animation
+ */
+@media (prefers-reduced-motion: reduce) {
+  .heading-colorful::before {
+    animation: none;
+    background-position: 50% 50%; /* Zentriert */
+  }
+}
+
+/**
+ * Fallback für Browser ohne background-clip: text
+ */
+@supports not (-webkit-background-clip: text) {
+  .heading-colorful::before {
+    display: none; /* Nur weißen Base-Text zeigen */
+  }
+}

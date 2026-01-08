@@ -12,7 +12,7 @@ export default function AboutHero({ content }: AboutHeroProps) {
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Über mich</h1>
+        <h1 className={`${styles.title} heading-colorful`} data-text="Über mich">Über mich</h1>
         
         <p className={styles.bio}>
           {content.bio}
