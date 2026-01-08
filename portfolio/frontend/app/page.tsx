@@ -7,7 +7,6 @@
 import Link from "next/link";
 import PageShell from "@/components/layout/PageShell";
 import ProjectCard from "@/components/projects/ProjectCard";
-import LiveleyIntro from "@/components/intro/LiveleyIntro";
 import { getFeaturedProjects } from "@/lib/data/projects";
 import styles from "./page.module.css";
 
@@ -15,9 +14,7 @@ export default function Home() {
   const featuredProjects = getFeaturedProjects();
 
   return (
-    <>
-      <LiveleyIntro />
-      <PageShell>
+    <PageShell>
         <section className={styles.hero}>
           <h1 className="heading-colorful" data-text="Hallo, ich bin Liliane.">Hallo, ich bin Liliane.</h1>
           <p className={styles.intro}>
@@ -48,6 +45,5 @@ export default function Home() {
           </section>
         )}
       </PageShell>
-    </>
   );
 }

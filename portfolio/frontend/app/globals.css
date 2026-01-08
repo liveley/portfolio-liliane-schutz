@@ -547,23 +547,24 @@ select:focus-visible {
   }
 }
 /* ========================================
-   Colorful Heading Blobs (Aurora Colors)
+   Colorful Heading Blobs on Hover (Aurora Colors)
    ======================================== */
 /**
- * Bunte Heading-Blobs - Pure CSS Technik
+ * Hover-aktivierte Heading-Blobs - Pure CSS Technik
  * 
- * Verwendung: <h1 class="heading-colorful">Text</h1>
+ * Verwendung: <h1 class="heading-colorful" data-text="Text">Text</h1>
  * 
  * Technik: background-clip:text mit animierten radial-gradients
- * - Base: weißer Text bleibt sichtbar (Fallback für ältere Browser)
- * - Overlay (::before): farbige Blobs werden in den Text geclippt
- * - Animation: sanfte Bewegung der Blobs (Aurora-Farben)
- * - Reduced Motion: statische Blobs ohne Animation
+ * - Default: weißer Text (standard)
+ * - Hover: farbige blurred bubbles innerhalb der Buchstaben
+ * - Animation: sanfte Bewegung der Blobs nur während Hover
+ * - Reduced Motion: kein Drift, nur instant Fade
  */
 .heading-colorful {
   position: relative;
   color: var(--color-fg); /* Base white text */
   display: inline-block; /* Wichtig für ::before positioning */
+  cursor: default;
 }
 
 .heading-colorful::before {
@@ -579,9 +580,16 @@ select:focus-visible {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Click-through to base text */
+  filter: blur(1px); /* Subtle blur for "bubbles" effect */
+}
+
+/* Show and animate blobs on hover */
+.heading-colorful:hover::before {
   opacity: 0.85;
   animation: heading-blobs-drift 25s ease-in-out infinite;
-  pointer-events: none; /* Click-through to base text */
 }
 
 @keyframes heading-blobs-drift {
@@ -600,12 +608,12 @@ select:focus-visible {
 }
 
 /**
- * Reduced Motion: Statische Blobs, keine Animation
+ * Reduced Motion: Kein Drift, nur Fade in/out
  */
 @media (prefers-reduced-motion: reduce) {
-  .heading-colorful::before {
+  .heading-colorful:hover::before {
     animation: none;
-    background-position: 50% 50%; /* Zentriert */
+    background-position: 50% 50%; /* Zentriert, statisch */
   }
 }
 
