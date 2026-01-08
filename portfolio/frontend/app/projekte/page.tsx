@@ -13,7 +13,7 @@ export default function ProjektePage() {
     <PageShell>
       <PageHeader
         title="Projekte"
-        lead="Hier findest du eine Auswahl meiner Projekte aus den Bereichen Coding, UI/UX Design und Datenvisualisierung. Alle Inhalte sind Platzhalter für die Entwicklung."
+        lead="Hier findest du eine Auswahl meiner Projekte aus den Bereichen Coding, UI/UX Design und Datenvisualisierung."
       />
 
       {/* FilterChips is a Client Component with useState */}

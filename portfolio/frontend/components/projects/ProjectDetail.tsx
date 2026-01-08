@@ -125,6 +125,14 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
         </div>
       </section>
 
+      {/* Links */}
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Links</h2>
+        <div className={styles.content}>
+          <p>Auf Anfrage.</p>
+        </div>
+      </section>
+
       {/* Outcomes */}
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Ergebnisse</h2>

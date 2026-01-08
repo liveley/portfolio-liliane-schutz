@@ -13,7 +13,7 @@ import { AboutContent, Language, SoftSkill } from "../types";
  */
 
 export const aboutContent: AboutContent = {
-  bio: "Hallo! Ich bin Liliane Schutz, ich studiere Informatik & Design und besitze mit Leidenschaft für innovative digitale Lösungen. Ich verbinde technisches Know-how mit gestalterischer Expertise, um intuitive und datengetriebene Anwendungen zu entwickeln. Mein Fokus liegt auf der Schnittstelle zwischen Design und Code.",
+  bio: "Hallo! Ich bin Liliane Schutz und studiere Informatik und Design an der Hochschule München (aktueller Schnitt 1,6). Ich verbinde technisches Know-how mit gestalterischer Expertise, um intuitive, datengetriebene digitale Produkte zu entwickeln. Mein Fokus liegt an der Schnittstelle zwischen Design und Code – und langfristig möchte ich an der Schnittstelle von AI, Business und Design arbeiten, in einem Umfeld, in dem Künstliche Intelligenz nicht nur entwickelt, sondern strategisch eingesetzt wird.",
   
   focusAreas: [
     "Automation & Workflow-Optimierung",

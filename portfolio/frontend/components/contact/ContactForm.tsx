@@ -152,13 +152,20 @@ export default function ContactForm() {
       return;
     }
 
-    // Simulate submission
+    // Open mailto with form data
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      // Build mailto URL
+      const to = 'lilly.schutz.ls@gmail.com';
+      const subject = `Portfolio Anfrage – ${values.name}`;
+      const body = `Name: ${values.name}\r\n\r\nE-Mail: ${values.email}\r\n\r\nNachricht:\r\n${values.message}`;
+      
+      const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open mail client
+      window.location.href = mailtoUrl;
 
       // Success
       setIsSubmitting(false);
