@@ -266,5 +266,29 @@ export function getProjectsByCategory(category: ProjectCategory | "all"): Projec
   return projects.filter(p => p.category === category);
 }
 
+/**
+ * Helper function to get all projects
+ * Centralized access point for all project data
+ */
+export function getAllProjects(): Project[] {
+  return projects;
+}
+
+/**
+ * Helper function to get previous and next projects for navigation
+ * Returns prev/next projects relative to given slug
+ */
+export function getPrevNextProjects(slug: string): {
+  prevProject: Project | undefined;
+  nextProject: Project | undefined;
+} {
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  
+  return {
+    prevProject: currentIndex > 0 ? projects[currentIndex - 1] : undefined,
+    nextProject: currentIndex < projects.length - 1 ? projects[currentIndex + 1] : undefined,
+  };
+}
+
 // Type import for filter function
 type ProjectCategory = "coding" | "uiux" | "data" | "experiment";

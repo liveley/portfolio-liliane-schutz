@@ -1,7 +1,7 @@
 /** Author: Liliane Schutz */
 
 import { notFound } from 'next/navigation';
-import { projects } from '@/lib/data/projects';
+import { getProjectBySlug, getAllProjects, getPrevNextProjects } from '@/lib/data/projects';
 import PageShell from '@/components/layout/PageShell';
 import ProjectDetail from '@/components/projects/ProjectDetail';
 import ProjectMeta from '@/components/projects/ProjectMeta';
@@ -9,14 +9,10 @@ import styles from './page.module.css';
 
 // Generate static paths for all projects
 export function generateStaticParams() {
+  const projects = getAllProjects();
   return projects.map((project) => ({
     slug: project.slug,
   }));
-}
-
-// Helper to find project by slug
-function getProjectBySlug(slug: string) {
-  return projects.find((project) => project.slug === slug);
 }
 
 // Page component
@@ -29,10 +25,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
-  // Find prev/next projects in the array
-  const currentIndex = projects.findIndex((p) => p.slug === slug);
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : undefined;
-  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : undefined;
+  // Get prev/next projects from data layer
+  const { prevProject, nextProject } = getPrevNextProjects(slug);
 
   return (
     <PageShell>
