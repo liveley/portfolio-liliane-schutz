@@ -1,6 +1,7 @@
 /** Author: Liliane Schutz */
 
 import { AboutContent } from '@/lib/types';
+import Image from 'next/image';
 import styles from './AboutHero.module.css';
 
 interface AboutHeroProps {
@@ -30,9 +31,14 @@ export default function AboutHero({ content }: AboutHeroProps) {
       </div>
 
       <div className={styles.portrait}>
-        <div className={styles.portraitPlaceholder}>
-          <span className={styles.portraitText}>Porträt Placeholder</span>
-        </div>
+        <Image 
+          src="/liliane.jpg" 
+          alt="Liliane Schutz"
+          width={400}
+          height={400}
+          className={styles.portraitImage}
+          priority
+        />
       </div>
     </section>
   );

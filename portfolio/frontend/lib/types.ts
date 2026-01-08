@@ -102,6 +102,24 @@ export interface TimelineItem {
 }
 
 /**
+ * Language Interface
+ * Language proficiency (CEFR levels)
+ */
+export interface Language {
+  name: string; // e.g., "English", "Spanish"
+  level: string; // CEFR level (A1, A2, B1, B2, C1, C2) or "Native"
+}
+
+/**
+ * Soft Skill Interface
+ * Soft skills and competencies
+ */
+export interface SoftSkill {
+  name: string; // e.g., "Kommunikation", "Problemlösung"
+  description?: string; // Optional detailed description
+}
+
+/**
  * About Content Interface
  * All content for About page (/ueber-mich)
  */
@@ -109,4 +127,6 @@ export interface AboutContent {
   bio: string; // Introduction paragraph (2-3 sentences)
   focusAreas: string[]; // Bullet points for "Meine Focus Areas"
   timeline: TimelineItem[]; // Education/career timeline
+  languages?: Language[]; // Language proficiency
+  softSkills?: SoftSkill[]; // Soft skills
 }

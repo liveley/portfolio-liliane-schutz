@@ -1,5 +1,22 @@
 /** Author: Liliane Schutz */
 
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: opacity var(--transition-base);
+}
+
+.cardLink:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--r-card);
+}
+
+.cardLink:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .card {
   /* Glass-style Card: transparent with border on dark background */
   background: var(--wb-card-bg);
@@ -10,9 +27,10 @@
   box-shadow: var(--wb-shadow-lg);
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
-.card:hover {
+.cardLink:hover .card {
   transform: translateY(-4px);
   box-shadow: var(--wb-shadow-hover);
   border-color: rgba(255, 255, 255, 0.25);
@@ -94,23 +112,4 @@
   font-size: var(--font-size-xs);
   color: var(--wb-card-fg-muted);
   padding: 0.25rem 0.5rem;
-}
-
-.cta {
-  margin-top: var(--s1);
-  color: var(--color-accent);
-  text-decoration: none;
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  display: inline-block;
-  transition: color var(--transition-base);
-}
-
-.cta:hover {
-  color: var(--color-accent-hover);
-}
-
-.cta:hover {
-  color: #5A7BFF;
-  text-decoration: underline;
 }

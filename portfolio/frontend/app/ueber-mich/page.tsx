@@ -6,6 +6,8 @@ import PageShell from '@/components/layout/PageShell';
 import AboutHero from '@/components/about/AboutHero';
 import Timeline from '@/components/about/Timeline';
 import SkillGroup from '@/components/about/SkillGroup';
+import Languages from '@/components/about/Languages';
+import SoftSkills from '@/components/about/SoftSkills';
 import styles from './page.module.css';
 
 export default function UeberMichPage() {
@@ -38,6 +40,22 @@ export default function UeberMichPage() {
           ))}
         </div>
       </section>
+
+      {/* Languages Section */}
+      {aboutContent.languages && aboutContent.languages.length > 0 && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Sprachen</h2>
+          <Languages languages={aboutContent.languages} />
+        </section>
+      )}
+
+      {/* Soft Skills Section */}
+      {aboutContent.softSkills && aboutContent.softSkills.length > 0 && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Soft Skills</h2>
+          <SoftSkills skills={aboutContent.softSkills} />
+        </section>
+      )}
     </PageShell>
   );
 }
