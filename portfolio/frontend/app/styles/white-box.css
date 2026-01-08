@@ -12,7 +12,7 @@
 /* Standard Glass Card - Transparent with border on dark background */
 .wb-card {
   background-color: var(--wb-card-bg);
-  border: 1px solid var(--wb-card-border);
+  border: 2px solid var(--wb-card-border); /* Increased from 1px for better visibility */
   border-radius: var(--r-card);
   padding: var(--s4);
   box-shadow: var(--wb-shadow-lg);
@@ -48,7 +48,7 @@
   background-color: var(--wb-glass-bg);
   backdrop-filter: blur(var(--wb-glass-blur));
   -webkit-backdrop-filter: blur(var(--wb-glass-blur));
-  border: 1px solid var(--wb-glass-border);
+  border: 2px solid var(--wb-glass-border); /* Increased from 1px */
   border-radius: var(--r-xl);
   padding: var(--s4);
   box-shadow: var(--wb-shadow-lg);
@@ -73,7 +73,7 @@
 /* Card mit Primary Border (Accent) */
 .wb-card--primary {
   background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(67, 97, 238, 0.3);
+  border: 2px solid rgba(67, 97, 238, 0.3); /* Increased from 1px */
   border-radius: var(--r-card);
   padding: var(--s4);
   transition: all var(--transition-base);
@@ -88,7 +88,7 @@
 /* Elevated Card mit starkem Schatten */
 .wb-card--elevated {
   background-color: var(--wb-card-bg);
-  border: 1px solid var(--wb-card-border);
+  border: 2px solid var(--wb-card-border); /* Increased from 1px */
   border-radius: var(--r-card);
   padding: var(--s4);
   box-shadow: var(--wb-shadow-xl);

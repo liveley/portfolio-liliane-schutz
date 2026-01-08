@@ -1,17 +1,10 @@
 /** Author: Liliane Schutz */
 
 .shell {
-  max-width: var(--page-max-width);
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--page-pad-top) var(--page-pad-x) var(--page-pad-bottom);
+  padding: var(--page-py) var(--container-px);
   display: flex;
   flex-direction: column;
-  gap: var(--space-section); /* 64px - Consistent section spacing */
-}
-
-@media (max-width: 768px) {
-  .shell {
-    padding: 40px 24px 64px; /* Responsive: smaller padding */
-    gap: var(--space-section-tight); /* 48px on mobile */
-  }
+  gap: var(--section-gap); /* Responsive section spacing (40-72px) */
 }

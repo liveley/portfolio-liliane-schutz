@@ -1,9 +1,5 @@
 /* Home Page Styles */
-.home {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
+/* Note: gap between sections is handled by PageShell's --section-gap */
 
 .hero {
   /* Padding handled by PageShell */
@@ -54,7 +50,7 @@
 }
 
 .featuredSection {
-  padding: 2rem 0;
+  /* No extra padding - section spacing handled by PageShell */
 }
 
 .placeholder {

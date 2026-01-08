@@ -24,7 +24,7 @@
   font-size: var(--font-size-sm);
   color: var(--wb-card-fg);
   background: var(--wb-card-bg);
-  border: 1px solid var(--wb-card-border);
+  border: 2px solid var(--wb-card-border); /* Increased from 1px for better visibility */
   border-radius: var(--r-md);
   transition: all var(--transition-base);
   font-family: inherit;
@@ -33,7 +33,7 @@
 }
 
 .textarea::placeholder {
-  color: rgba(100, 100, 100, 0.5);
+  color: rgba(245, 245, 247, 0.5); /* Clear but distinguishable from input text */
 }
 
 .textarea:focus-visible {

@@ -22,13 +22,49 @@
   gap: 1rem;
 }
 
+/* Icon Links (replaces socialLinks) */
+.iconLinks {
+  display: flex;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--wb-card-bg);
+  border: 2px solid var(--wb-card-border);
+  border-radius: var(--r-md);
+  color: var(--color-fg);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  box-shadow: var(--wb-shadow-lg);
+}
+
+.iconLink:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--wb-shadow-hover);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.iconLink svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Legacy styles (keep for backwards compatibility if needed) */
+
 .socialLink {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--s3) var(--s3);
   background: var(--wb-card-bg);
-  border: 1px solid var(--wb-card-border);
+  border: 2px solid var(--wb-card-border); /* Increased from 1px */
   border-radius: var(--r-card);
   text-decoration: none;
   transition: all var(--transition-base);
