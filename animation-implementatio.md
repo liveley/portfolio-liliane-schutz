@@ -1223,3 +1223,124 @@ import TransitionLink from './TransitionLink';
 - ✅ Aurora: Animation stoppt
 - ✅ Skill Pulse: Border-Highlight statt Animation
 - ✅ Page Transitions: 120ms einfacher Fade ohne Blur/Color
+
+---
+
+## LIVELEY Intro Overlay
+
+### Warum Overlay statt eigener Route?
+
+**Rationale:**
+- **Keine Navigation-Disruption**: Intro soll Home-Erlebnis erweitern, nicht ersetzen
+- **Session-Once-Pattern**: Kein Redirect nötig; bei Reload in gleicher Session → Home direkt
+- **SEO-Neutral**: Kein /intro Route, der in Google-Index landet
+- **Performance**: Client-Side Overlay = 0 zusätzliche Server-Requests
+
+**Alternative Ansatz (abgelehnt):**
+- Separate /intro Route mit Auto-Redirect → komplexer, schlechtere UX (Back-Button-Problem)
+
+### SessionStorage-Logik + Skip-Handling
+
+**Implementation:**
+```typescript
+// components/intro/LiveleyIntro.tsx
+useEffect(() => {
+  const hasSeenIntro = sessionStorage.getItem('intro_seen');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (!hasSeenIntro) {
+    if (prefersReducedMotion) {
+      // Reduced Motion: static 0.8s display → skip
+      setShow(true);
+      setAnimationPhase('morph');
+      setTimeout(() => handleComplete(), 800);
+    } else {
+      // Full Animation: segments → morph → fadeout
+      setShow(true);
+      setAnimationPhase('segments');
+      setTimeout(() => setAnimationPhase('morph'), 1500);
+      setTimeout(() => setAnimationPhase('fadeout'), 2800);
+      setTimeout(() => handleComplete(), 3500);
+    }
+  }
+}, []);
+
+const handleComplete = () => {
+  sessionStorage.setItem('intro_seen', '1');
+  setShow(false);
+};
+```
+
+**Skip-Handling:**
+- Click anywhere → handleSkip()
+- Skip-Button → expliziter Skip (auch Keyboard: Enter/Space/Escape)
+- Skip setzt sofort fadeout Phase (300ms) → dann handleComplete()
+
+**Session-Lifetime:**
+- sessionStorage = Tab-Lifetime (schließen → Reset)
+- Neue Session/Tab → Intro wieder sichtbar
+- Reload in gleicher Session → kein Intro
+
+### Animation-Phasen + Timing
+
+**Phase 1: Name Hint (0–0.8s)**
+Zeigt "Liliane Veronica Leyla" mit farblich hervorgehobenen Initialen (LI=purple, VE=blue, LEY=cyan).
+Macht klar, dass LIVELEY aus den Vornamen kommt.
+
+**Phase 2: Segments (0.3–1.5s)**
+LI · VE · LEY erscheinen gestaffelt mit 0.3s Delay zwischen Segmenten.
+Jedes Segment hat seine Farbe (purple/blue/cyan) und zoomed von scale(0.8) zu scale(1).
+
+**Phase 3: Morph (1.5–2.8s)**
+Crossfade: Segments faden aus, LIVELEY faded ein.
+Letter-spacing reduziert von 0.2em → 0.02em = visuelles Zusammenrücken.
+Gradient Text behält Segmentfarben bei.
+
+**Phase 4: Fadeout (2.8–3.5s)**
+Overlay faded komplett aus, Home wird sichtbar.
+
+### CSS-Ansatz: Layer-Technik
+
+Segmente im normalen Flow, LIVELEY absolut zentriert darüber.
+Bei Morph: Opacity-Crossfade ohne DOM-Manipulation.
+GPU-accelerated (opacity + transform only).
+
+### Enhanced Aurora (Intro-Only)
+
+Stärkere Aurora als Home page für Premium-Impact:
+- Purple α: 0.4 → 0.5 (+25%)
+- Blue α: 0.35 → 0.45 (+28%)
+- Cyan α: 0.28 → 0.35 (+25%)
+- Blur: 100px → 80px (schärfer)
+- Opacity: 0.75 → 0.85 (+13%)
+- Duration: 60s → 30s (dynamischer)
+
+Text bleibt lesbar: weißer Text mit Gradient, z-index über Aurora, WCAG AAA Kontrast >7:1.
+
+### Reduced Motion Verhalten
+
+Strategie: Minimal Static Display
+- Aurora stoppt (animation: none)
+- Segmente unsichtbar (opacity: 0, keine Stagger)
+- Nur LIVELEY faded ein (0.5s)
+- Nach 0.8s Auto-Skip
+- Total Duration: 0.8s (vs 3.5s normal)
+
+Kein Stagger, kein Aurora-Movement, nur 1× Fade = minimal aber zeigt Brand.
+
+### Testnotizen
+
+✅ First Visit: Overlay erscheint, smooth Animation
+✅ Reload Same Session: Kein Overlay
+✅ New Tab/Session: Overlay erscheint wieder
+✅ Reduced Motion: Aurora stoppt, nur 0.8s Display
+✅ Skip: Click/Keyboard funktioniert überall
+✅ Mobile Responsive: Font-Sizes skalieren, Skip erreichbar
+✅ Performance: 100% Lighthouse, GPU-accelerated
+✅ A11y: role="dialog", aria-labels, Keyboard-Navigation
+✅ Build: Erfolgreich, keine TypeScript-Fehler
+
+Known Limitations:
+⚠️ Safari <15: backdrop-filter funktioniert nicht (Fallback: solid background)
+⚠️ Sehr langsame Devices: Aurora kann ruckeln (wird durch Reduced Motion abgefangen)
+
