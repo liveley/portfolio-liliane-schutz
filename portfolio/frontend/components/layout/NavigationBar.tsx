@@ -1,11 +1,11 @@
 /**
  * Author: Liliane Schutz
- * Navigation Bar mit Active State
+ * Navigation Bar mit Active State + Page Transitions
  */
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import TransitionLink from './TransitionLink';
 import styles from './NavigationBar.module.css';
 
 export default function NavigationBar() {
@@ -26,12 +26,12 @@ export default function NavigationBar() {
           
           return (
             <li key={link.href}>
-              <Link 
+              <TransitionLink 
                 href={link.href}
                 className={isActive ? styles.navLinkActive : styles.navLink}
               >
                 {link.label}
-              </Link>
+              </TransitionLink>
             </li>
           );
         })}

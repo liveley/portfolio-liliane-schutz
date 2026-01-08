@@ -442,3 +442,82 @@ select:focus-visible {
   font-weight: var(--font-weight-medium);
 }
 
+/* ========================================
+   View Transitions – Page Crossfade
+   ======================================== */
+
+/**
+ * View Transition Name für Main-Content
+ * Nur der Hauptinhalt (<main>) wird animiert, Header/Footer bleiben statisch
+ */
+.main-container {
+  view-transition-name: main-content;
+}
+
+/**
+ * Crossfade Animation für ausgehende Seite (Old Snapshot)
+ * Faded aus mit subtiler Blur-Andeutung (premium feel)
+ */
+::view-transition-old(main-content) {
+  animation: fade-out 200ms ease-out both;
+}
+
+/**
+ * Crossfade Animation für eingehende Seite (New Snapshot)
+ * Faded ein, startet mit leichter Blur
+ */
+::view-transition-new(main-content) {
+  animation: fade-in 200ms ease-in both;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    filter: blur(2px); /* Sehr subtiler Blur beim Ausblenden */
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    filter: blur(2px); /* Startet mit subtiler Unschärfe */
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/**
+ * Reduced Motion: Keine Transitions oder nur minimaler Fade (kein Blur)
+ * Respektiert User-Preference für weniger Bewegung
+ */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(main-content),
+  ::view-transition-new(main-content) {
+    animation: none; /* Komplett ohne Animation */
+  }
+  
+  /* Alternative: Sehr kurzer Fade ohne Blur */
+  ::view-transition-old(main-content) {
+    animation: fade-out-minimal 100ms ease-out both;
+  }
+  
+  ::view-transition-new(main-content) {
+    animation: fade-in-minimal 100ms ease-in both;
+  }
+  
+  @keyframes fade-out-minimal {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
+  @keyframes fade-in-minimal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
