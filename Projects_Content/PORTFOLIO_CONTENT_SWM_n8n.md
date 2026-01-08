@@ -43,7 +43,7 @@ Next.js, n8n, TypeScript, OpenAI GPT-4, Workflow-Automation, LLM-Integration
 Ein KI-gestütztes Automatisierungssystem für Change-Management-Prozesse bei Stadtwerke München.
 
 **Kontext:**  
-Universitätsprojekt im Modul "Web-Projektmodul". Entwickelt für Praxispartner SWM, um Change-Anfragen strukturiert zu erfassen und automatisiert weiterzuverarbeiten. Teamarbeit über 4 Monate mit wöchentlichem Austausch und iterativem Aufbau von vier Use Cases.
+Laufendes Universitätsprojekt im Modul "Web-Projektmodul". Entwickelt für Praxispartner SWM, um Change-Anfragen strukturiert zu erfassen und automatisiert weiterzuverarbeiten. Teamarbeit über 4 Monate mit wöchentlichem Austausch und iterativem Aufbau von vier Use Cases.
 
 ---
 
@@ -175,24 +175,23 @@ Das System folgt einer Client-Server-Architektur. Next.js-Frontend (App Router, 
 
 ---
 
-### B7) Ergebnisse / Outcome
+### B7) Aktueller Stand & nächste Schritte
 
-**Ergebnis:**  
-Vollständig funktionsfähiges Proof-of-Concept für alle vier Use Cases. UC1 (Anfragenerfassung) unterstützt Hybrid-Modus: Formular-basierte vollständige Eingabe mit optionalem Chat-Widget zur Unterstützung. UC3 und UC4 generieren automatisch strukturierte Dokumente (Change Story, Kommunikationspläne, RFP) basierend auf den in UC1 erfassten Daten. Dashboard ermöglicht Workflow-Monitoring und Trigger-Interface. System wurde vom SWM Change-Management-Team positiv aufgenommen. Technische Herausforderungen (Auto-Save-Bugs, JSON-Parsing-Fehler) wurden iterativ gelöst.
+**Entwicklungsstand (Januar 2026):**  
+Funktionsfähiges Proof-of-Concept für UC1 (Hybrid-System) weitgehend implementiert. Formular-basierte Eingabe mit dynamischer Feldkonfiguration läuft stabil, Chat-Widget funktioniert als optionale Hilfe. UC3 und UC4 (Kommunikationsplanung, Partner-Auswahl) sind von Teammitgliedern in Entwicklung, nutzen UC1-Sessions als Input. Dashboard zeigt Session-Übersicht. Aktuell in Testing-Phase: Iterative Bug-Fixes für Auto-Save-Stabilität, Session-Persistence, Frontend-Validierung.
+
+**Offene Arbeiten:**
+- **Frontend-Polish:** UX-Verbesserungen im Formular-Flow (z.B. Progress-Indicator zwischen Sektionen)
+- ...
 
 **Impact nicht gemessen:**  
 Keine Produktivdaten oder Nutzertests. Projekt blieb im universitären Kontext.
 
-**Was man messen würde (Vorschläge):**
-- **Erfassungszeit:** Zeit bis vollständiger Anfrage (Ziel: <10 Min. für Standard-Projekte)
-- **Vollständigkeit:** Anteil Anfragen mit allen Pflichtfeldern beim ersten Submit (Ziel: >80%)
-- **Chat-Nutzung:** Prozentsatz der Nutzer, die Chat-Widget aktivieren (Hypothese: 20-40% für Hilfe bei komplexen Feldern)
-
 ---
 
-### B8) Learnings
+### B8) Bisherige Learnings & Reflexion
 
-**Learnings:**
+**Technische Erkenntnisse:**
 - **Hybrid-Systeme erfordern klare Mental Models:** Nutzer müssen verstehen, wann Formular vs. Chat sinnvoll ist. Floating-Widget-Design half, Chat als "optionale Hilfe" zu framen statt als Hauptkanal. Lesson: UX muss Hierarchie deutlich machen.
 - **n8n Data Tables sind nicht für komplexe Queries geeignet:** Fehlende Joins, keine Aggregationen, langsame Updates bei großen Tabellen. Nächstes Projekt: PostgreSQL + n8n Connector für relationale Daten.
 - **JSON-Parsing in n8n ist fehleranfällig:** Viele Bugs durch `JSON.parse()` auf bereits geparsten Objekten. Lesson: Immer `typeof` prüfen, defensive Programming. n8n-interne Nodes (Set, Code) haben unterschiedliche Parsing-Regeln → viel Debugging.
@@ -200,8 +199,8 @@ Keine Produktivdaten oder Nutzertests. Projekt blieb im universitären Kontext.
 - **Scope Creep vermeiden:** Ursprünglich 2 Use Cases geplant, 4 implementiert. Lesson: Klare Priorisierung mit Stakeholdern essentiell. 80/20-Regel anwenden: Lieber weniger Features vollständig implementiert als viele halbfertige Baustellen.
 - **Dokumentation parallel schreiben spart Zeit:** README/Diagramme während Implementation → leichter nachzuvollziehen als Post-hoc. n8n-Workflows sind visuell, aber Node-Logik (Code-Nodes) benötigt Inline-Kommentare.
 
-**Nächstes sinnvolles Improvement:**  
-**Progressive Disclosure im Formular:** Sektion-für-Sektion-Ansicht statt All-at-once (Wizard-Pattern). Nutzer füllen pro Schritt 1-2 Sektionen aus, System speichert per Auto-Save, am Ende Review-Screen. Reduktion Cognitive Load. Technisch: React State für Step-Navigation, Backend bleibt gleich.
+**Nächste geplante Improvements (vor Projektabschluss):**
+- **Direkte Anmeldung:** Nutzer sollen sich direkt anmelden können, ohne dass vorher eine E-Mail-Anfrage mit Session-ID notwendig ist.
 
 ---
 
