@@ -26,6 +26,14 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid var(--wb-card-border);
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thumbnailPlaceholder {
@@ -79,6 +87,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--s1);
+  align-items: center;
+}
+
+.moreTags {
+  font-size: var(--font-size-xs);
+  color: var(--wb-card-fg-muted);
+  padding: 0.25rem 0.5rem;
 }
 
 .cta {

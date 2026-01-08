@@ -1,6 +1,7 @@
 /** Author: Liliane Schutz */
 
 import Link from "next/link";
+import Image from "next/image";
 import { Project } from "@/lib/types";
 import TagChip from "@/components/ui/TagChip";
 import StatusBadge from "@/components/ui/StatusBadge";
@@ -12,17 +13,27 @@ interface ProjectCardProps {
 
 /**
  * ProjectCard Component
- * Displays project preview with title, description, tags, status
+ * Displays project preview with image, title, description, tags, status
  * Used in ProjectGrid on projects overview page
  */
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className={styles.card}>
-      {/* Thumbnail Placeholder */}
+      {/* Thumbnail */}
       <div className={styles.thumbnail}>
-        <div className={styles.thumbnailPlaceholder}>
-          {project.title.substring(0, 2).toUpperCase()}
-        </div>
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            width={400}
+            height={250}
+            className={styles.image}
+          />
+        ) : (
+          <div className={styles.thumbnailPlaceholder}>
+            {project.title.substring(0, 2).toUpperCase()}
+          </div>
+        )}
       </div>
 
       {/* Content */}
@@ -47,9 +58,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Tags */}
         <div className={styles.tags}>
-          {project.tags.map((tag) => (
+          {project.tags.slice(0, 4).map((tag) => (
             <TagChip key={tag} label={tag} />
           ))}
+          {project.tags.length > 4 && (
+            <span className={styles.moreTags}>+{project.tags.length - 4}</span>
+          )}
         </div>
 
         {/* CTA - Link to Detail Page */}
