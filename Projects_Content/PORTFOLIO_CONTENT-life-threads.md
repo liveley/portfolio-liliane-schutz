@@ -11,7 +11,7 @@ Life Threads – Interaktive Datenvisualisierung persönlicher Lebensdaten
 life-threads-data-vis
 
 **Jahr:**  
-2025
+WiSe 2025/26
 
 **Status:**  
 In Arbeit
@@ -23,7 +23,7 @@ data
 Scrollytelling-Visualisierung meines Jahres: Schlaf, Sport, Lesen und Uni – in interaktiven Datengeschichten.
 
 **Kurzbeschreibung (2–3 Sätze, sachlich):**  
-Life Threads visualisiert ein Jahr meiner persönlicher Gesundheits- und Aktivitätsdaten durch eine interaktive Scrollytelling-Erfahrung. Das Projekt verbindet Schlafdaten, Sportaktivitäten, Lesegewohnheiten und Unipläne zu einer narrativen Datenvisualisierung. Mit Canvas-basierten Charts, Svelte-Stores und einem selbstgebauten Scrollytelling-System zeigt es die Geschichte von Gewohnheitsbildung, Überlastung und der Suche nach Balance.
+Life Threads visualisiert ein Jahr meiner persönlichen Gesundheits- und Aktivitätsdaten durch eine interaktive Scrollytelling-Erfahrung. Das Projekt verbindet Schlafdaten, Sportaktivitäten, Lesegewohnheiten und Unipläne zu einer narrativen Datenvisualisierung. Mit Canvas-basierten Charts, Svelte-Stores und einem selbstgebauten Scrollytelling-System zeigt es die Geschichte von Gewohnheitsbildung, Überlastung und der Suche nach Balance.
 
 **Tags (max 6):**  
 SvelteKit, TypeScript, Data Visualization, D3.js, Canvas API, Scrollytelling
@@ -95,7 +95,7 @@ Scrollytelling-Struktur: Intro (KPI-Übersicht) → Year at a Glance (365-Tage-K
 SvelteKit mit TypeScript als Framework. CSV-Parser in `utils/parsers.ts`, Datenladen in `utils/dataLoader.ts`, State Management mit Svelte Stores (`health.ts`, `phase.ts`, `annotations.ts`). Scrollytelling-Pattern: `ScrollySection` als Wrapper, `ScrollyStep` als Cards + Triggers, IntersectionObserver mit `rootMargin: '-30% 0px -50% 0px'` für smooth Transitions. Entscheidung gegen externe Libraries (Scrollama, D3-Charts), um mehr Kontrolle zu behalten.
 
 **Schritt 4: Implementierung der Visualisierungen**  
-Start mit SVG-basierten Charts, dann Migration zu Canvas für Performance (insbesondere bei `ThreadOfYearFlow` mit 365 Tagen und `DayClockAtlasCanvas` mit 24h-Slots). Custom D3.js-inspirierte Utils für Skalen, aber manuelles Canvas-Drawing. Farbcodierung: Sleep = Indigo, High Intensity = Orange, Low Intensity = Emerald, Reading = Gold, University = Cyan. Iterative Arbeit: Erst statische Charts, dann Interaktivität (Hover-Tooltips, Phase-Filter, Monatsscrubber).
+Start mit SVG-basierten Charts, dann Migration zu Canvas für Performance (insbesondere bei `ThreadOfYearFlow` mit 365 Tagen und `DayClockAtlasCanvas` mit 24h-Slots). Custom D3.js-inspirierte Utils für Skalen, aber manuelles Canvas-Drawing. Farbcodierung: Sleep = Indigo (#5A5DFF), Pilates = Soft Purple (#B18AFF), Stretching = Warm Yellow (#FFD85E), Strength = Orange (#FF8A2B), Running = Cyan (#2EDCFF), Cycling = Medium Green (#39D98A), University = Soft Pink (#E65BB7), Reading = Warm Bronze (#D9A86C). Iterative Arbeit: Erst statische Charts, dann Interaktivität (Hover-Tooltips, Phase-Filter, Monatsscrubber).
 
 **Schritt 5: Scrollytelling-Feinschliff**  
 Problem: Text-Cards überlagern Header. Lösung: `updateClip()` misst Header-Höhe dynamisch, setzt CSS-Variable `--clip-top`, `mask-image` blendet Karten unter dem Header aus. Problem: Mehrere Visualisierungen erscheinen gleichzeitig beim Scrollen. Lösung: `min-height: 400vh` pro Sektion, um klare Trennung zu schaffen. Vertical Centering mit `top: 50vh; transform: translateY(-50%)` für ausgewogene Komposition.
@@ -117,7 +117,7 @@ Cross-Browser-Tests (Chrome, Firefox, Safari), Responsive Testing (Desktop, Tabl
 - **Data Pipeline:** CSV-Parser für Samsung Health (Activity-ID-Mapping: Running, Cycling, Strength, Pilates, Stretching, Swimming), StoryGraph (nur "read"-Status + valid finish date), Uni (Recurring vs. Date-specific)
 
 **Wichtige technische Entscheidungen:**
-- **Canvas statt SVG:** Initial war alles SVG, aber bei 365 Tagen × mehrere Metriken wurde das DOM zu groß → Performance-Probleme. Canvas reduzierte Load-Zeit um ~60% (gemessen mit Lighthouse, keine exakte Metrik im Repo).
+- **Canvas statt SVG:** Initial war alles SVG, aber bei 365 Tagen × mehrere Metriken wurde das DOM zu groß → Performance-Probleme. Canvas lieferte deutlich bessere Performance bei großen Datensätzen.
 - **Kein Scrollama:** Entscheidung gegen externes Framework, um mehr Kontrolle über IntersectionObserver, Root Margin und Step-Logik zu haben. Erlaubt custom "trigger"-Mode (unsichtbare Spacer) + "card"-Mode (sichtbare Text-Panels).
 - **Phase-basierter State:** Ein globaler `phaseStore` (Svelte writable), auf den alle Visualisierungen reagieren. Ermöglicht synchronisierte Filter-Übergänge (z.B. Day Clock + Weekly Flow zeigen beide Phase 2, wenn Nutzer Phase 2 auswählt).
 - **Static Deployment:** SvelteKit adapter-static, da Daten lokal als CSV vorliegen. Kein Backend nötig, aber auch keine Echtzeit-Updates möglich.
@@ -175,13 +175,7 @@ Das Projekt folgt einer Store-basierten Architektur: Alle Daten (Sleep, Activiti
 ### B7) Ergebnisse / Outcome
 
 **Ergebnis:**  
-Das Projekt wurde erfolgreich im Universitätskurs präsentiert und als vollständige, produktionsreife Anwendung abgeschlossen. Die Scrollytelling-Erfahrung funktioniert smooth über alle Sektionen, Canvas-Rendering liefert Performance auch bei großen Datensätzen, und die narrative Struktur macht abstrakte Daten nachvollziehbar. Die technische Dokumentation (über 1000 Zeilen in Markdown) ermöglicht es anderen, die Architektur zu verstehen und weiterzuentwickeln. Das Projekt zeigt, dass persönliche Daten nicht nur "Dashboard-Material" sind, sondern eine Geschichte erzählen können – in diesem Fall die Geschichte von Gewohnheitsbildung, Überlastung und der Suche nach Balance.
-
-**Impact nicht gemessen (keine Nutzermetriken vorhanden)**  
-Es gibt keine erhobenen Nutzermetriken (z.B. Engagement-Time, Scroll-Depth, Absprungrate), da das Projekt nicht öffentlich deployed ist. Hier wären sinnvolle Metriken:
-- **Scroll-Depth:** Wie viele Nutzer erreichen die letzten Sektionen (Outro)?
-- **Interaction-Rate:** Wie viele Nutzer klicken auf Phase-Filter im Phase Explorer?
-- **Time-on-Page:** Durchschnittliche Verweildauer (Ziel: > 3 Minuten für vollständige Story)
+Das Projekt ist aktuell in aktiver Entwicklung als Universitätsprojekt. Die Scrollytelling-Erfahrung funktioniert smooth über alle Sektionen, Canvas-Rendering liefert Performance auch bei großen Datensätzen, und die narrative Struktur macht abstrakte Daten nachvollziehbar. Die technische Dokumentation (über 1000 Zeilen in Markdown) ermöglicht es, die Architektur zu verstehen und weiterzuentwickeln. Das Projekt zeigt, dass persönliche Daten nicht nur "Dashboard-Material" sind, sondern eine Geschichte erzählen können – in diesem Fall die Geschichte von Gewohnheitsbildung, Überlastung und der Suche nach Balance.
 
 ---
 
@@ -203,18 +197,16 @@ Ein **"Guided Tour"-Modus** mit animierten Auto-Scroll-Übergängen zwischen Ste
 
 ---
 
-## C) OFFENE PUNKTE (Rückfragen an mich)
+## C) HINWEISE ZUR VERWENDUNG
 
-1. **GitHub-Link:** Ist das Projekt öffentlich auf GitHub? Falls ja: URL? Falls nein: Soll ich "GitHub: Private Repository" schreiben?
-2. **Deployment-URL:** Gibt es eine Live-Demo (z.B. GitHub Pages, Vercel, Netlify)? Falls ja: URL?
-3. **Projektzeitraum:** Nur "2025" oder genauer (z.B. "Oktober 2025 – Dezember 2025" oder "WiSe 2025/26")?
-4. **Team oder Solo:** Du hast geschrieben, dass es ein Uni-Projekt ist – war es definitiv ein Solo-Projekt, oder gab es Gruppenarbeit, die ich nicht erwähnen soll?
-5. **Performance-Metriken:** Ich habe "~60% schnellere Load-Zeit durch Canvas" geschätzt – hast du echte Lighthouse-Werte oder soll ich das vaguer formulieren ("deutlich performanter")?
-6. **Browser-Bugs:** Ich erwähne Safari Rendering-Bugs bei `mask-image` – waren die kritisch, oder soll ich das rauslassen?
-7. **Mobile Testing:** Hast du auf echten Devices getestet (iPhone, Android) oder nur DevTools? (Für Case Study egal, aber ich könnte es präziser formulieren.)
-8. **Präsentation/Note:** Wurde das Projekt benotet? Falls ja und du stolz auf die Note bist, könnte ich das in "Outcome" erwähnen (z.B. "Note: 1.0" oder "Top 3% des Kurses").
-9. **Figma/Design-Prototypen:** Gibt es Figma-Files oder Wireframes, die ich als "Link" oder "Screenshot" vorschlagen soll?
-10. **Zielgruppe der Portfolio-Website:** Richtet sich dein Portfolio an Tech-Companies (Dev-Jobs), Design-Studios, oder Data-Science-Rollen? Je nach Zielgruppe würde ich Tech vs. Design vs. Data-Story anders gewichten.
+**Angepasst basierend auf Projektkontext:**
+- **Links:** GitHub und Demo auf Anfrage verfügbar (noch nicht öffentlich deployed)
+- **Zeitraum:** WiSe 2025/26
+- **Projektart:** Solo-Projekt
+- **Performance:** Vage formuliert, da keine exakten Metriken gemessen
+- **Browser-Kompatibilität:** Chrome Rendering-Bugs bei `mask-image` erwähnt (Teil der technischen Realität)
+- **Status:** In Arbeit
+- **Zielgruppe:** Universal (Tech, Design, Data Science) – Balance zwischen technischen Details und Design-/Story-Aspekten
 
 ---
 
@@ -263,13 +255,8 @@ Ein **"Guided Tour"-Modus** mit animierten Auto-Scroll-Übergängen zwischen Ste
 
 ---
 
-**Hinweise zur Verwendung:**
-- A) Project Card: Copy-Paste in `projects.ts` Array
-- B) Case Study: Sections B1–B8 als einzelne Markdown-Sections in Case-Study-Page
-- C) Offene Punkte: Bitte durchgehen und mir beantworten, dann Update ich das Dokument
-- D) Quellenhinweise: Für "Methodology"-Section im Portfolio, falls du Transparenz über deine Arbeitsweise zeigen willst
 
 **Nächste Schritte:**
-1. Beantworte die 10 offenen Punkte (C)
-2. Erstelle die 5–6 Screenshots (B6) – ich kann dir dafür auch genaue Scroll-Positionen/Breakpoints nennen
-3. Entscheide: Soll ich eine kürzere Version (300–400 Wörter) für Case Study erstellen, oder passt diese Länge (~650 Wörter)?
+1. Erstelle die 5–6 Screenshots (B6) – verwende die Anweisungen für genaue Scroll-Positionen und Viewports
+2. Optional: Kürzere Version (300–400 Wörter) für Case Study, falls gewünscht (aktuelle Version: ~650 Wörter)
+3. Copy-Paste Content in dein Portfolio-Projekt
