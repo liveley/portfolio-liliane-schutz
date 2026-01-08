@@ -6,6 +6,13 @@
   align-items: center;
   padding: var(--s2) 0;
   gap: var(--s2);
+  cursor: default;
+  transition: background-color var(--transition-base);
+}
+
+/* Hover effect on entire badge */
+.badge:hover {
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .info {
@@ -38,4 +45,37 @@
 .dot.filled {
   background: var(--color-accent);
   border-color: var(--color-accent);
+}
+
+/* Pulse animation on hover - wave effect with nth-child delays */
+.badge:hover .dot:nth-child(1) { animation: skill-pulse 500ms ease-out; animation-delay: 0ms; }
+.badge:hover .dot:nth-child(2) { animation: skill-pulse 500ms ease-out; animation-delay: 50ms; }
+.badge:hover .dot:nth-child(3) { animation: skill-pulse 500ms ease-out; animation-delay: 100ms; }
+.badge:hover .dot:nth-child(4) { animation: skill-pulse 500ms ease-out; animation-delay: 150ms; }
+.badge:hover .dot:nth-child(5) { animation: skill-pulse 500ms ease-out; animation-delay: 200ms; }
+
+@keyframes skill-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--color-accent);
+  }
+  50% {
+    transform: scale(1.25);
+    box-shadow: 0 0 8px 2px rgba(67, 97, 238, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .badge:hover .dot {
+    animation: none;
+  }
+  .badge:hover .dot.filled {
+    /* Subtle highlight only, no animation */
+    border-color: var(--color-accent-hover);
+  }
 }
