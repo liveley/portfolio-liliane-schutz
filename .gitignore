@@ -2,3 +2,12 @@ Webtech/**
 inspo/**
 Elegantdatavisualizationwebsite/
 references/
+# Wrangler local state
+.wrangler/
+.env.local
+.env.*.local
+
+# Next.js build outputs
+portfolio/frontend/out/
+portfolio/frontend/.next/
+node_modules/
