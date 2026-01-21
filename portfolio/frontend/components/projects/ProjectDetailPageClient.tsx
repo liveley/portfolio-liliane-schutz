@@ -6,7 +6,6 @@ import { fetchProjectBySlug, fetchProjects } from '@/lib/api';
 import PageShell from '@/components/layout/PageShell';
 import ProjectDetail from '@/components/projects/ProjectDetail';
 import ProjectMeta from '@/components/projects/ProjectMeta';
-import styles from '@/app/projekte/[...slug]/page.module.css';
 
 export default function ProjectDetailPageClient() {
   // Extract slug from URL pathname
@@ -54,11 +53,11 @@ export default function ProjectDetailPageClient() {
 
   return (
     <PageShell>
-      <div className={styles.container}>
-        <main className={styles.main}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '3rem', padding: '2rem 0' }}>
+        <main>
           <ProjectDetail project={project} prevProject={prevProject} nextProject={nextProject} />
         </main>
-        <aside className={styles.sidebar}>
+        <aside style={{ position: 'sticky', top: '100px', alignSelf: 'start' }}>
           <ProjectMeta project={project} />
         </aside>
       </div>
