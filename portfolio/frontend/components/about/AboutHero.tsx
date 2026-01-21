@@ -2,6 +2,7 @@
 
 import { AboutContent } from '@/lib/types';
 import Image from 'next/image';
+import AuroraHeading from '@/components/ui/AuroraHeading';
 import styles from './AboutHero.module.css';
 
 interface AboutHeroProps {
@@ -12,7 +13,7 @@ export default function AboutHero({ content }: AboutHeroProps) {
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
-        <h1 className={`${styles.title} heading-colorful`} data-text="Über mich">Über mich</h1>
+        <AuroraHeading as="h1" size="large" className={styles.title}>Über mich</AuroraHeading>
         
         <p className={styles.bio}>
           {content.bio}

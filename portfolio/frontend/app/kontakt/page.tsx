@@ -4,6 +4,7 @@ import { socialLinks } from '@/lib/data/socials';
 import PageShell from '@/components/layout/PageShell';
 import PageHeader from '@/components/layout/PageHeader';
 import ContactForm from '@/components/contact/ContactForm';
+import AuroraHeading from '@/components/ui/AuroraHeading';
 import styles from './page.module.css';
 
 export default function KontaktPage() {
@@ -15,7 +16,7 @@ export default function KontaktPage() {
       />
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Direkt erreichen</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Direkt erreichen</AuroraHeading>
         <div className={styles.iconLinks}>
           <a
             href="https://github.com/liveley"
@@ -58,7 +59,7 @@ export default function KontaktPage() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Kontaktformular</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Kontaktformular</AuroraHeading>
         <ContactForm />
       </section>
     </PageShell>

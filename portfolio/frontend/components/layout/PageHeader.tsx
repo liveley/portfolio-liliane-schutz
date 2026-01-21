@@ -1,5 +1,6 @@
 /** Author: Liliane Schutz */
 
+import AuroraHeading from '@/components/ui/AuroraHeading';
 import styles from "./PageHeader.module.css";
 
 interface PageHeaderProps {
@@ -16,7 +17,7 @@ export default function PageHeader({ title, lead, eyebrow }: PageHeaderProps) {
   return (
     <header className={styles.header}>
       {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
-      <h1 className={`${styles.title} heading-colorful`} data-text={title}>{title}</h1>
+      <AuroraHeading as="h1" size="large" className={styles.title}>{title}</AuroraHeading>
       {lead && <p className={styles.lead}>{lead}</p>}
     </header>
   );

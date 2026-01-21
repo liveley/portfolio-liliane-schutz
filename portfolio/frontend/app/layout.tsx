@@ -15,6 +15,8 @@ const sourceSans = Source_Sans_3({
   weight: ["400", "500", "600", "700"],
   variable: "--font-body-family",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 // Heading font: Fraunces
@@ -23,11 +25,16 @@ const fraunces = Fraunces({
   weight: ["400", "500", "600", "700"],
   variable: "--font-heading-family",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
   title: "Liliane Schutz – Portfolio",
   description: "Portfolio von Liliane Schutz – Informatik & Design",
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default function RootLayout({
@@ -36,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${sourceSans.variable} ${fraunces.variable}`}>
+    <html lang="de" translate="no" className={`${sourceSans.variable} ${fraunces.variable}`}>
       <body suppressHydrationWarning>
         <Header />
         <main className="main-container">

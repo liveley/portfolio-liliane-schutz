@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, FormEvent, ChangeEvent, FocusEvent } from 'react';
+import { submitContactForm } from '@/lib/api';
 import Input from '../ui/Input';
 import Textarea from '../ui/Textarea';
 import Button from '../ui/Button';
@@ -174,20 +175,17 @@ export default function ContactForm() {
       return;
     }
 
-    // Open mailto with form data
+    // Submit to Backend API
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // Build mailto URL
-      const to = 'lilly.schutz.ls@gmail.com';
-      const subject = values.subject;
-      const body = `${values.message}\r\n\r\nGesendet von ${values.name}`;
-      
-      const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      // Open mail client
-      window.location.href = mailtoUrl;
+      await submitContactForm({
+        name: values.name,
+        email: values.email,
+        subject: values.subject,
+        message: values.message
+      });
 
       // Success
       setIsSubmitting(false);
@@ -197,7 +195,8 @@ export default function ContactForm() {
       setValues({ name: '', email: '', subject: '', message: '' });
       setTouched({ name: false, email: false, subject: false, message: false });
       setErrors({});
-    } catch {
+    } catch (error) {
+      console.error('Contact form submission failed:', error);
       setIsSubmitting(false);
       setSubmitStatus('error');
     }
@@ -220,7 +219,13 @@ export default function ContactForm() {
               fill="currentColor"
             />
           </svg>
-          <span>E-Mail-Entwurf geöffnet. Bitte noch auf ‚Senden' klicken. Vielen Dank für deine Nachricht.</span>
+          <span>Vielen Dank für deine Nachricht! Ich melde mich so schnell wie möglich zurück.</span>
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className={styles.errorBanner} role="alert">
+          <span>Fehler beim Senden. Bitte versuche es erneut oder kontaktiere mich direkt per E-Mail.</span>
         </div>
       )}
 
