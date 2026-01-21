@@ -9,6 +9,7 @@ import "./styles/white-box.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProjectDetailRouter from "@/components/projects/ProjectDetailRouter";
+import IntroRedirect from "@/components/IntroRedirect";
 
 // Body font: Source Sans 3
 const sourceSans = Source_Sans_3({
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="de" translate="no" className={`${sourceSans.variable} ${fraunces.variable}`}>
       <body suppressHydrationWarning>
+        <IntroRedirect />
         <Header />
         <main className="main-container">
           <ProjectDetailRouter />

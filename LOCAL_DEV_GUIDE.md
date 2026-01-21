@@ -39,7 +39,7 @@ cd C:\Users\lilly\Documents\Aaa Main My file system\Github My Projects\portfolio
 npm run build
 
 # Start Wrangler Pages Dev
-npx wrangler pages dev .next --binding DB=portfoliodb --port=8788
+npx wrangler pages dev out --binding DB=portfoliodb --port=8788
 
 # Open browser
 start http://127.0.0.1:8788
@@ -87,7 +87,7 @@ $env:CLOUDFLARE_API_TOKEN = "_0cac19LNHaDcO8wbpQ84wIF6nSyRQTaY1TCbULw"
 # Start wrangler pages dev in background
 cd portfolio/frontend
 npm run build
-Start-Process npx -ArgumentList "wrangler pages dev .next --binding DB=portfoliodb --port=8788"
+Start-Process npx -ArgumentList "wrangler pages dev out --binding DB=portfoliodb --port=8788"
 
 # Wait for server to start
 Start-Sleep -Seconds 5
