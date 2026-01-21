@@ -5,7 +5,7 @@
   "scripts": {
     "migrate:local": "wrangler d1 execute portfoliodb --local --file=./migrations/0001_initial.sql",
     "migrate:prod": "wrangler d1 execute portfoliodb --remote --file=./migrations/0001_initial.sql",
-    "seed:generate": "cd scripts && npx tsx seed-d1.ts > seed-d1-output.sql && cd ..",
+    "seed:generate": "cd scripts && npx tsx seed-d1.ts && cd ..",
     "seed:local": "npm run seed:generate && wrangler d1 execute portfoliodb --local --file=./scripts/seed-d1-output.sql",
     "seed:prod": "npm run seed:generate && wrangler d1 execute portfoliodb --remote --file=./scripts/seed-d1-output.sql",
     "db:query:local": "wrangler d1 execute portfoliodb --local --command",
