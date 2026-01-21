@@ -57,7 +57,10 @@ export interface Project {
       title: string;
       description: string;
     }[]; // Process steps
-    outcomes?: string[]; // Results/achievements
+    challenges?: string[]; // Challenges faced
+    results?: string[]; // Results/achievements
+    learnings?: string[]; // Lessons learned
+    images?: string[]; // Image URLs for detail page
   };
 }
 

@@ -5,7 +5,21 @@
  * Zentrale Fetch-Funktionen für Projects und Contact
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+// Helper to get the correct API base URL
+function getApiBaseUrl(): string {
+  // In browser (client-side), use relative URLs
+  if (typeof window !== 'undefined') {
+    return '';
+  }
+  
+  // In server-side rendering (development)
+  if (process.env.NODE_ENV === 'development') {
+    return 'http://localhost:3000';
+  }
+  
+  // In production (Cloudflare Pages)
+  return process.env.NEXT_PUBLIC_API_URL || '';
+}
 
 // Error Handling for API Requests
 class ApiError extends Error {
@@ -27,7 +41,10 @@ async function apiFetch<T>(
   options?: RequestInit
 ): Promise<T> {
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const baseUrl = getApiBaseUrl();
+    const url = `${baseUrl}${endpoint}`;
+    
+    const response = await fetch(url, {
       ...options,
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +52,7 @@ async function apiFetch<T>(
       }
     });
 
-    const data = await response.json();
+    const data = await response.json() as any;
 
     if (!response.ok) {
       throw new ApiError(
@@ -50,8 +67,12 @@ async function apiFetch<T>(
     if (error instanceof ApiError) {
       throw error;
     }
-    // Network errors
-    throw new ApiError('Netzwerk-Fehler: Backend nicht erreichbar', 503);
+    // Better error handling for network and JSON errors
+    if (error instanceof TypeError || error instanceof SyntaxError) {
+      console.error('Network or parsing error:', error);
+      throw new ApiError('Netzwerk-Fehler: Backend nicht erreichbar', 503);
+    }
+    throw new ApiError('Unbekannter Fehler', 500);
   }
 }
 

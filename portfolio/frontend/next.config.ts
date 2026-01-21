@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
   /* turbopack: {
     root: __dirname
   }*/
+  
+  // Cloudflare Pages compatibility
+  images: {
+    unoptimized: true, // Cloudflare Pages doesn't support Next.js Image Optimization
+  },
+  
+  // Output standalone for easier deployment
+  output: 'standalone',
 };
 
 export default nextConfig;
