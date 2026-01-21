@@ -1,0 +1,9 @@
+# Author: Liliane Schutz
+
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+coverage/
+.vscode/

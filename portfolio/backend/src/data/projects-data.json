@@ -1,0 +1,300 @@
+[
+  {
+    "slug": "life-threads-data-vis",
+    "title": "Life Threads – Interaktive Datenvisualisierung",
+    "year": 2025,
+    "category": "data",
+    "featured": true,
+    "status": "in-progress",
+    "shortDescription": "Scrollytelling-Visualisierung meines Jahres: Schlaf, Sport, Lesen und Uni – in interaktiven Datengeschichten.",
+    "tags": ["SvelteKit", "TypeScript", "D3.js", "Canvas API", "Scrollytelling", "Data Visualization"],
+    "role": "Solo-Entwicklerin und Information Designerin",
+    "techStack": ["SvelteKit", "TypeScript", "D3.js", "Canvas API", "IntersectionObserver"],
+    "coverImage": "/projects/life-threads.png",
+    "links": {
+      "note": "auf Anfrage"
+    },
+    "detail": {
+      "context": "Universitätsprojekt im Rahmen des Kurses 'Information Design'. Ziel war es, persönliche Daten nicht nur zu visualisieren, sondern eine nachvollziehbare Geschichte zu erzählen.",
+      "problem": "Rohdaten aus verschiedenen Quellen liegen als CSV-Dateien vor, aber die Geschichte dahinter bleibt unsichtbar.",
+      "goals": [
+        "Persönliche Daten aus drei Quellen in einer konsistenten Visualisierung zusammenführen",
+        "Scroll-basiertes Storytelling-Format entwickeln",
+        "Canvas-basierte Visualisierungen für Performance bei großen Datensätzen"
+      ],
+      "role": "Solo-Entwicklerin und Information Designerin: Datenaufbereitung, CSV-Parser-Entwicklung, Scrollytelling-System mit Svelte, Canvas-Rendering.",
+      "process": [
+        {
+          "title": "Research & Datenanalyse",
+          "description": "Rohdaten runtergeladen und Data Wrangling durchgeführt. Erste explorative Visualisierungen in Python/Pandas."
+        },
+        {
+          "title": "Konzept & Wireframing",
+          "description": "Scrollytelling-Struktur definiert: Intro → Year at a Glance → A Day in My Life → Weekly Rhythm."
+        },
+        {
+          "title": "Technische Architektur",
+          "description": "SvelteKit mit TypeScript. CSV-Parser in utils/, State Management mit Svelte Stores."
+        },
+        {
+          "title": "Implementierung der Visualisierungen",
+          "description": "Start mit SVG-basierten Charts, Migration zu Canvas für Performance."
+        }
+      ],
+      "results": [
+        "Funktionsfähige Scrollytelling-Visualisierung mit 4 interaktiven Charts",
+        "Performance-optimiert: 365 Tage Daten in Canvas mit 60fps",
+        "Custom Scrollytelling-System ohne externe Dependencies"
+      ]
+    }
+  },
+  {
+    "slug": "ressource-realms-3d",
+    "title": "Ressource Realms – 3D-Strategiespiel",
+    "year": 2025,
+    "category": "coding",
+    "featured": true,
+    "status": "finished",
+    "shortDescription": "Browser-basiertes 3D-Strategiespiel mit WebGL-Rendering, interaktivem Spielbrett und komplexer Spiellogik.",
+    "tags": ["Three.js", "JavaScript", "WebGL", "Blender", "Vite", "Game Development"],
+    "role": "Full-Stack Game Developer im 4-Personen-Team",
+    "techStack": ["Three.js", "JavaScript", "Vite", "Blender", "WebGL"],
+    "coverImage": "/projects/ressource-realms.png",
+    "links": {
+      "note": "auf Anfrage"
+    },
+    "detail": {
+      "context": "Entwickelt im Rahmen des Projektmoduls 'Prozesse' (Hochschule München) als Teamprojekt über ein Semester.",
+      "problem": "Brettspiele erfordern physisches Material, Platz und oft lange Setupzeiten.",
+      "goals": [
+        "Vollständig spielbare Implementierung mit automatisierter Regelverwaltung",
+        "3D-Visualisierung einer hexagonalen Spielwelt",
+        "Modulare, erweiterbare Code-Architektur"
+      ],
+      "role": "Full-Stack Game Developer: Siegpunktezählung, Räuber-Mechanik, UX-Features, Spielbrett-Dynamik, Bugfixing.",
+      "process": [
+        {
+          "title": "Konzeption & Technologie-Setup",
+          "description": "Analyse bestehender Brettspiel-Regeln. Setup von Vite und Three.js."
+        },
+        {
+          "title": "3D-Umgebung & Asset-Integration",
+          "description": "Erstellung der hexagonalen Spielwelt. Integration von Blender-Modellen."
+        },
+        {
+          "title": "Spiellogik-Implementierung",
+          "description": "Core-Mechaniken: Bauvalidierung, Ressourcenverwaltung, Handelssysteme."
+        },
+        {
+          "title": "UI & Interaktionssysteme",
+          "description": "Benutzeroberfläche mit Ressourcenanzeigen, Baumenü, Hover-Previews."
+        }
+      ],
+      "results": [
+        "Vollständig spielbare 3D-Umsetzung für 2 Spieler im Browser",
+        "Automatisierte Regelverwaltung reduziert Fehlerquellen",
+        "Modulare Architektur ermöglicht einfache Erweiterungen"
+      ]
+    }
+  },
+  {
+    "slug": "studyid-lern-bot",
+    "title": "studyID Lern-Bot",
+    "year": 2024,
+    "category": "coding",
+    "featured": false,
+    "status": "finished",
+    "shortDescription": "KI-gestützter Chatbot für Informatik-und-Design-Studierende mit RAG-basiertem Wissenszugriff.",
+    "tags": ["Python", "LlamaIndex", "OpenAI", "RAG", "Gradio", "LLM"],
+    "role": "Full-Stack-Entwicklung und UI/UX-Design",
+    "techStack": ["Python", "LlamaIndex", "OpenAI GPT-4o-mini", "Gradio"],
+    "coverImage": "/projects/studyid-chatbot.png",
+    "links": {
+      "note": "auf Anfrage"
+    },
+    "detail": {
+      "context": "Entwickelt im Projektmodul Start (1. Semester) als Teamprojekt. Ziel: KI-Lösung für 24/7 Wissenszugriff.",
+      "problem": "Erstsemester haben Schwierigkeiten, schnell Antworten auf fachspezifische Fragen zu finden.",
+      "goals": [
+        "Schnellen, kontextbezogenen Zugang zu fachspezifischem Wissen bieten",
+        "Lernmotivation durch interaktive Übungsaufgaben erhöhen",
+        "Eigene Materialien hochladen und integrieren"
+      ],
+      "role": "Full-Stack: Gradio-UI, LlamaIndex-Integration, RAG-System, System-Prompt, Chat-Speicher.",
+      "process": [
+        {
+          "title": "Research & Anforderungsanalyse",
+          "description": "Analyse der Lernbedürfnisse durch Interviews. Recherche bestehender Lern-Chatbots."
+        },
+        {
+          "title": "Konzept & Architektur",
+          "description": "Entscheidung für RAG-System. LlamaIndex als Framework für PDF-Indexierung."
+        },
+        {
+          "title": "Implementierung",
+          "description": "Gradio-UI mit Chat-Interface. Backend mit LlamaIndex: PDF-Indexierung, Streaming-Antworten."
+        }
+      ],
+      "results": [
+        "Funktionsfähiger RAG-basierter Chatbot mit Gradio-UI",
+        "Automatische PDF-Indexierung",
+        "Chat-Historie-Verwaltung mit JSON-Persistierung"
+      ]
+    }
+  },
+  {
+    "slug": "walkable-memory-moosburg",
+    "title": "Walkable Memory – Digitale Erinnerungstour",
+    "year": 2025,
+    "category": "uiux",
+    "featured": false,
+    "status": "in-progress",
+    "shortDescription": "App-Prototyp für eine selbstgeführte Walking-Tour zu 13 historischen Orten in Moosburg.",
+    "tags": ["React", "TypeScript", "Figma", "Vite", "UX Design", "Prototyping"],
+    "role": "UI/UX-Designer und Frontend-Developer",
+    "techStack": ["React", "TypeScript", "Vite", "Leaflet", "Figma"],
+    "coverImage": "/projects/walkable-memory.png",
+    "links": {
+      "note": "auf Anfrage"
+    },
+    "detail": {
+      "context": "Projekt im 3. Semester im Kurs 'Research and Usability'. UI/UX-Konzept für eine lokale Geschichts-App.",
+      "problem": "Die Geschichte des Stalag VII-A ist in Moosburg heute kaum noch sichtbar.",
+      "goals": [
+        "Historische Orte digital kartieren und mit Geschichten verknüpfen",
+        "Benutzerfreundliche, selbsterklärende App-Oberfläche entwickeln",
+        "Flexibles Erkundungskonzept schaffen"
+      ],
+      "role": "UI/UX-Designer und Frontend-Developer: Figma-Design in React umsetzen, Navigation, Komponenten, Leaflet-Karte.",
+      "process": [
+        {
+          "title": "Research und Problemanalyse",
+          "description": "Recherche zur Geschichte des Stalag VII-A. Interviews mit Anwohnern."
+        },
+        {
+          "title": "Wireframes und Entscheidung für App + AR",
+          "description": "Low-Fidelity-Wireframes. Entscheidung für mobile Web-App mit AR-Simulation."
+        },
+        {
+          "title": "Technische Umsetzung",
+          "description": "React/TypeScript mit Vite. Leaflet-Integration. Responsive Design."
+        }
+      ],
+      "results": [
+        "Voll funktionsfähiger Hi-Fi-Prototyp mit 13 interaktiven Stationen",
+        "Leaflet-Karte mit individuellen Markern",
+        "Flexible Navigation: Nutzer können an beliebiger Station starten",
+        "Bildergalerien mit historischen Fotos für jede Station",
+        "AR-Overlay-Simulation für historischen Kontext",
+        "Mehrsprachige Unterstützung (Deutsch/Englisch)",
+        "Responsive Design optimiert für mobile Nutzung vor Ort"
+      ]
+    }
+  },
+  {
+    "slug": "readera-vocabulary-learning",
+    "title": "ReadEra Vocabulary Learning System",
+    "year": 2025,
+    "category": "coding",
+    "featured": false,
+    "status": "finished",
+    "shortDescription": "Persönliches Vokabeltraining aus E-Book-Lesehistorie mit Spaced-Repetition-Algorithmus.",
+    "tags": ["n8n", "Docker", "spaCy", "AnkiConnect", "API-Integration", "NLP"],
+    "role": "Solo Developer (Workflow Automation & Backend)",
+    "techStack": ["n8n", "Docker", "spaCy", "Flask", "LibreTranslate", "AnkiConnect"],
+    "coverImage": "/projects/readera-vocabulary.png",
+    "links": {
+      "note": "auf Anfrage"
+    },
+    "detail": {
+      "context": "Privates Lernprojekt: Automatisierte ETL-Pipeline, die Vokabular aus ReadEra E-Reader-Backups extrahiert und direkt in Anki importiert.",
+      "problem": "ReadEra speichert markiertes Vokabular nur als JSON in .bak-Backup-Dateien. Manuelle Extraktion und Duplikatbehandlung waren ineffizient.",
+      "goals": [
+        "Vollautomatische Pipeline: ReadEra .bak → Anki ohne manuelle Schritte",
+        "Lemmatisierung mit spaCy zur Reduzierung von Wortformen auf Grundformen",
+        "Multi-API-Anreicherung: Definitionen, Übersetzungen, Beispiele aus verschiedenen Quellen",
+        "Kontexterhaltung: Zitate aus E-Books als Karteninhalt für besseres kontextuelles Lernen"
+      ],
+      "role": "Solo-Entwickler: n8n-Workflow-Design, Docker-Setup für spaCy und LibreTranslate-Services, AnkiConnect-Integration, Python-Service-Entwicklung.",
+      "process": [
+        {
+          "title": "Initialer Flask-Prototyp",
+          "description": "Ursprüngliche Architektur: Flask-App mit SQLite-Datenbank und individuellem Web-Interface. Pivot zu n8n nach Erkenntnis, dass Anki das primäre Lerntool ist."
+        },
+        {
+          "title": "Migration zu n8n-Workflow",
+          "description": "Modulare Pipeline: Trigger (Google Drive) → Extraktion (Python) → Transformation (JSON) → Anreicherung (Multi-API) → Lemmatisierung (spaCy) → Export (AnkiConnect)."
+        },
+        {
+          "title": "Docker-Services (Offline-Infrastruktur)",
+          "description": "Zwei Docker-Container: spaCy-Service (Flask-API für Lemmatisierung) und LibreTranslate (selbst gehostete Übersetzungs-API)."
+        },
+        {
+          "title": "Lemmatisierung als Kernfunktion",
+          "description": "spaCy-Integration reduziert Wortformen auf Lemmas. Duplikaterkennung basierend auf Lemmas, nicht auf Originalformen."
+        }
+      ],
+      "results": [
+        "Produktions-n8n-Workflow verarbeitet über 2000 Vokabeleinträge aus ReadEra-Backups",
+        "Unterstützung für 4 Sprachen (Deutsch, Englisch, Spanisch, Französisch)",
+        "Lemmatisierung via spaCy reduziert Duplikate erheblich",
+        "Multi-API-Integration liefert hochwertige Definitionen mit Fallback-Logik",
+        "Docker-Services ermöglichen vollständige Offline-Fähigkeit",
+        "Pivot von Flask zu n8n reduzierte Wartungsaufwand"
+      ]
+    }
+  },
+  {
+    "slug": "swm-change-management-automation",
+    "title": "SWM Change Management – KI-gestützte Changebegleitung",
+    "year": 2025,
+    "category": "coding",
+    "featured": true,
+    "status": "in-progress",
+    "shortDescription": "Automatisierte Change-Anfragen mit hybridem Form/Chat-System und n8n-Workflow-Ökosystem",
+    "tags": ["Next.js", "n8n", "TypeScript", "OpenAI GPT-4", "Workflow-Automation", "LLM-Integration"],
+    "role": "Full-Stack Developer (Frontend + Backend Workflows)",
+    "techStack": ["Next.js", "n8n", "TypeScript", "OpenAI GPT-4", "Tailwind CSS"],
+    "coverImage": "/projects/swm-change-management.png",
+    "links": {
+      "note": "auf Anfrage"
+    },
+    "detail": {
+      "context": "Universitätsprojekt-Modul für Stadtwerke München (SWM): Ein hybrides System zur strukturierten Erfassung von Change-Anfragen.",
+      "problem": "Change Management in großen Organisationen erfordert strukturierte Informationserfassung (bis zu 20 Felder). Bisherige Praxis umfasste E-Mail-Anfragen und manuelle Meetings mit hohem administrativem Aufwand.",
+      "goals": [
+        "Strukturierte, vollständige Erfassung von Change-Anfragen mit dynamischer Feldkonfiguration",
+        "Flexible Interaktion: Formular als Hauptkanal, Chat-Assistent als optionale Hilfe",
+        "Automatisierte Dokumentengenerierung (Word-Export, Markdown-Berichte) nach Abschluss",
+        "Workflow-Ökosystem: Datenübergabe an nachgelagerte Use Cases"
+      ],
+      "role": "Full-Stack-Developer verantwortlich für ~95% von UC1 (Hybrid-System): Frontend-Implementierung, n8n-Workflows, Session-Management, LLM-Integration, dynamische Formularregeln.",
+      "process": [
+        {
+          "title": "Anforderungsanalyse & Use-Case-Definition",
+          "description": "Kick-off mit SWM-Change-Management-Team: 4 vordefinierte Use Cases basierend auf echten Prozessen. Entscheidung für n8n als zentrale Workflow-Engine."
+        },
+        {
+          "title": "Prototyp UC1 – Chat-basierte Anfragenerfassung",
+          "description": "Initialer Prototyp: reine Chat-Lösung. Problem: unstrukturiert, keine klare Navigation. Entscheidung zum Pivot: Formular als Hauptkanal."
+        },
+        {
+          "title": "Hybrid-System-Konzept (Formular + Chat)",
+          "description": "Formular mit 8 Sektionen als Primärkanal, Chat als optionales Hilfe-Widget. Regel-Engine: 4 Meta-Fragen bestimmen Projektklasse → dynamische Feldkonfiguration."
+        },
+        {
+          "title": "Frontend- & Backend-Implementierung",
+          "description": "Next.js-Frontend mit TypeScript und Tailwind CSS. n8n-Haupt-Workflow: Session-Management, Switch-Node-Architektur, LLM-Integration."
+        }
+      ],
+      "results": [
+        "Funktionsfähiger Proof-of-Concept für UC1 (Hybrid-System) weitgehend implementiert",
+        "Formularbasierte Eingabe mit dynamischer Feldkonfiguration läuft stabil",
+        "Chat-Widget funktioniert als optionale Hilfe",
+        "Session-basierte Persistenz via n8n Data Tables",
+        "Integration mit nachgelagerten Use Cases (UC3 Kommunikationsplanung, UC4 Partnerauswahl)",
+        "Aktuell in Testphase mit iterativen Bugfixes"
+      ]
+    }
+  }
+]
