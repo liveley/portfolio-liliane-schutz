@@ -3,14 +3,11 @@
  * Projekte Übersichtsseite - Server Component
  * Loads project data from Backend REST API
  */
-import { fetchProjects } from "@/lib/api";
 import PageShell from "@/components/layout/PageShell";
 import PageHeader from "@/components/layout/PageHeader";
-import FilterChips from "@/components/projects/FilterChips";
+import ProjectsListClient from "@/components/projects/ProjectsListClient";
 
-export default async function ProjektePage() {
-  const projects = await fetchProjects();
-  
+export default function ProjektePage() {
   return (
     <PageShell>
       <PageHeader
@@ -18,8 +15,7 @@ export default async function ProjektePage() {
         lead="Hier findest du eine Auswahl meiner Projekte aus den Bereichen Coding, UI/UX Design und Datenvisualisierung."
       />
 
-      {/* FilterChips is a Client Component with useState */}
-      <FilterChips projects={projects} />
+      <ProjectsListClient />
     </PageShell>
   );
 }

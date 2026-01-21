@@ -1,4 +1,5 @@
 /** Author: Liliane Schutz */
+'use client';
 
 import { Project } from "@/lib/types";
 import TagChip from "@/components/ui/TagChip";

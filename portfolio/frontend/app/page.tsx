@@ -5,13 +5,11 @@
 
 import Link from "next/link";
 import PageShell from "@/components/layout/PageShell";
-import ProjectCard from "@/components/projects/ProjectCard";
 import AuroraHeading from "@/components/ui/AuroraHeading";
-import { fetchProjects } from "@/lib/api";
+import FeaturedProjectsClient from "@/components/projects/FeaturedProjectsClient";
 import styles from "./page.module.css";
 
-export default async function Home() {
-  const featuredProjects = await fetchProjects({ featured: true });
+export default function Home() {
 
   return (
     <PageShell>
@@ -36,16 +34,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {featuredProjects.length > 0 && (
-          <section className={styles.featuredSection}>
-            <AuroraHeading as="h2" size="large" className={styles.featuredTitle}>Featured Projects</AuroraHeading>
-            <div className={styles.featuredGrid}>
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </section>
-        )}
+        <FeaturedProjectsClient />
       </PageShell>
   );
 }
