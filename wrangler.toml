@@ -5,7 +5,7 @@ name = "portfolio-website"
 compatibility_date = "2024-01-01"
 
 # Pages Configuration
-pages_build_output_dir = "./portfolio/frontend/.vercel/output/static"
+pages_build_output_dir = "./portfolio/frontend/out"
 
 # D1 Database Binding
 [[d1_databases]]
