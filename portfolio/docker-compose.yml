@@ -1,0 +1,50 @@
+# Author: Liliane Schutz
+# Docker Compose Setup for Portfolio MongoDB (Praktikum 07)
+#
+# MongoDB Standalone with Authentication
+# - Single container (no replica set needed for P07)
+# - Username/Password authentication enabled
+# - MongoDB Compass compatible
+# - mongodump ready
+#
+# Start:  docker compose up -d
+# Stop:   docker compose down
+# Reset:  docker compose down -v (deletes data!)
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: portfolio-mongodb
+    hostname: portfolio-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      # Root credentials (admin access)
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-portfolio2026}
+      # Initial database
+      MONGO_INITDB_DATABASE: portfoliodb
+    volumes:
+      # Persistent data storage
+      - portfolio-mongodb-data:/data/db
+      - portfolio-mongodb-config:/data/configdb
+    networks:
+      - portfolio-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  portfolio-mongodb-data:
+    name: portfolio-mongodb-data
+  portfolio-mongodb-config:
+    name: portfolio-mongodb-config
+
+networks:
+  portfolio-network:
+    name: portfolio-network
+    driver: bridge
