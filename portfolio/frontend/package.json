@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:local": "set CLOUDFLARE_API_TOKEN=_0cac19LNHaDcO8wbpQ84wIF6nSyRQTaY1TCbULw && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:dev": "start /B npm run dev:local && timeout /T 5 && wrangler pages dev --proxy=3000 --binding DB=portfoliodb",
+    "pages:deploy": "npm run build && wrangler pages deploy .next --project-name=portfolio-website"
   },
   "dependencies": {
     "next": "16.1.1",
@@ -14,6 +17,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260120.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
