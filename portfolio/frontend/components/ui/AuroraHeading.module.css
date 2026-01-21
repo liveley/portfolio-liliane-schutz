@@ -1,0 +1,171 @@
+/** Author: Liliane Schutz */
+
+/**
+ * AuroraHeading Styles
+ * 
+ * Localized "blur bubble splash" effect:
+ * - Base text: white
+ * - Aura text: aurora gradient (purple, blue, cyan)
+ * - Mask: radial gradient around cursor position (--mx, --my)
+ * - Blur: soft circles via multiple radial-gradients
+ */
+
+.heading {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-heading-family);
+  font-weight: 700;
+  margin: 0;
+  
+  /* Cursor fix: arrow instead of I-beam */
+  cursor: default;
+  user-select: none;
+  
+  /* Default CSS vars (centered) */
+  --mx: 50%;
+  --my: 50%;
+  --radius: 110px; /* Bubble radius */
+}
+
+/* Size variants */
+.size-large {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: -0.02em;
+}
+
+.size-medium {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+}
+
+.size-small {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0;
+}
+
+/* Base text layer: always white */
+.baseText {
+  position: relative;
+  z-index: 1;
+  color: var(--color-fg); /* White */
+  display: block;
+  cursor: default; /* Ensure arrow cursor */
+}
+
+/* Aura text layer: aurora gradient, masked to cursor radius */
+.auraText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  
+  /* Aurora gradient with blur bubbles */
+  background-image: 
+    /* Bubble 1: Purple (offset top-left) */
+    radial-gradient(
+      circle 60px at calc(var(--mx) - 25px) calc(var(--my) - 20px),
+      rgba(138, 43, 226, 0.9),
+      rgba(138, 43, 226, 0.4) 40%,
+      transparent 70%
+    ),
+    /* Bubble 2: Blue (offset right) */
+    radial-gradient(
+      circle 70px at calc(var(--mx) + 30px) var(--my),
+      rgba(67, 97, 238, 0.85),
+      rgba(67, 97, 238, 0.35) 45%,
+      transparent 75%
+    ),
+    /* Bubble 3: Cyan (offset bottom-left) */
+    radial-gradient(
+      circle 65px at calc(var(--mx) - 15px) calc(var(--my) + 25px),
+      rgba(0, 180, 180, 0.8),
+      rgba(0, 180, 180, 0.3) 40%,
+      transparent 70%
+    );
+  
+  /* Clip gradient to text shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  
+  /* Mask: only show in radius around cursor */
+  -webkit-mask-image: radial-gradient(
+    circle var(--radius) at var(--mx) var(--my),
+    black 0%,
+    black 50%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle var(--radius) at var(--mx) var(--my),
+    black 0%,
+    black 50%,
+    transparent 100%
+  );
+  
+  /* Initially hidden */
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+  pointer-events: none;
+}
+
+/* Hovered: show aura layer */
+.hovered .auraText {
+  opacity: 1;
+}
+
+/* Splash animation on hover enter (optional) */
+.hovered .auraText {
+  animation: splashIn 0.5s ease-out;
+}
+
+@keyframes splashIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Reduced motion: no splash, optional subtle opacity only */
+.reducedMotion .auraText {
+  transition: opacity 0.2s ease;
+  animation: none;
+}
+
+.reducedMotion.hovered .auraText {
+  opacity: 0.6; /* Subtle hint only */
+  animation: none;
+}
+
+/* Responsive: smaller radius on mobile */
+@media (max-width: 768px) {
+  .heading {
+    --radius: 80px;
+  }
+  
+  .size-large {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .size-medium {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+  
+  .size-small {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+  }
+}
+
+/* Disable effect on touch devices (optional) */
+@media (hover: none) and (pointer: coarse) {
+  .auraText {
+    display: none; /* Simplified for touch */
+  }
+}

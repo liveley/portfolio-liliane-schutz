@@ -22,9 +22,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <article className={styles.card}>
         {/* Thumbnail */}
         <div className={styles.thumbnail}>
-          {project.image ? (
+          {project.coverImage ? (
             <Image
-              src={project.image}
+              src={project.coverImage}
               alt={project.title}
               width={400}
               height={250}

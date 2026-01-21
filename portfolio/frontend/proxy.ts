@@ -4,17 +4,19 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 /**
- * Middleware for LIVELEY Intro Session Handling
+ * Proxy for LIVELEY Intro Session Handling
  * 
  * Logic:
  * - First visit to / (no intro_seen cookie) → redirect to /intro
  * - Intro page sets intro_seen cookie
  * - Subsequent visits to / → show home directly
  * - Direct visit to /intro with cookie → redirect to / (prevent re-watching)
+ * - Exception: /intro?force=1 → always show intro (replay on demand)
  */
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const hasSeenIntro = request.cookies.get('intro_seen');
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
+  const forceIntro = searchParams.get('force') === '1';
 
   // First visit to home → redirect to intro
   if (pathname === '/' && !hasSeenIntro) {
@@ -22,7 +24,8 @@ export function middleware(request: NextRequest) {
   }
 
   // Direct visit to intro when already seen → redirect to home
-  if (pathname === '/intro' && hasSeenIntro) {
+  // UNLESS force parameter is present (allows replay)
+  if (pathname === '/intro' && hasSeenIntro && !forceIntro) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
@@ -30,7 +33,7 @@ export function middleware(request: NextRequest) {
 }
 
 /**
- * Matcher: only run middleware on root and intro routes
+ * Matcher: only run proxy on root and intro routes
  * Don't run on static files, API routes, etc.
  */
 export const config = {

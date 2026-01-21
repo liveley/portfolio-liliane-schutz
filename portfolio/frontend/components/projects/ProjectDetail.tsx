@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { Project } from '@/lib/types';
+import AuroraHeading from '@/components/ui/AuroraHeading';
 import styles from './ProjectDetail.module.css';
 import ProcessStep from './ProcessStep';
 import ImageWithCaption from '../ui/ImageWithCaption';
@@ -20,10 +21,10 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
     <article className={styles.detail}>
       {/* Intro Section with Main Image */}
       <section className={styles.intro}>
-        {project.image && (
+        {project.coverImage && (
           <div className={styles.heroImage}>
             <Image
-              src={project.image}
+              src={project.coverImage}
               alt={project.title}
               width={1200}
               height={600}
@@ -32,7 +33,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
             />
           </div>
         )}
-        <h1 className={`${styles.title} heading-colorful`} data-text={project.title}>{project.title}</h1>
+        <AuroraHeading as="h1" size="large" className={styles.title}>{project.title}</AuroraHeading>
         <p className={styles.description}>{project.shortDescription}</p>
         {hasDetailContent && project.detail?.context && (
           <p className={styles.context}>{project.detail.context}</p>
@@ -41,7 +42,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
 
       {/* Problem & Goals */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Problem & Ziele</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Problem & Ziele</AuroraHeading>
         <div className={styles.content}>
           {hasDetailContent && project.detail?.problem ? (
             <>
@@ -73,7 +74,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
       {/* Role (if available) */}
       {hasDetailContent && project.detail?.role && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Meine Rolle</h2>
+          <AuroraHeading as="h2" className={styles.sectionTitle}>Meine Rolle</AuroraHeading>
           <div className={styles.content}>
             <p>{project.detail.role}</p>
           </div>
@@ -82,7 +83,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
 
       {/* Process */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Prozess</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Prozess</AuroraHeading>
         <div className={styles.processSteps}>
           {hasDetailContent && project.detail?.process && project.detail.process.length > 0 ? (
             project.detail.process.map((step, index) => (
@@ -108,11 +109,11 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
 
       {/* Screens - Placeholder Images */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Screens & Designs</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Screens & Designs</AuroraHeading>
         <div className={styles.screens}>
-          {project.image && (
+          {project.coverImage && (
             <ImageWithCaption
-              src={project.image}
+              src={project.coverImage}
               alt={`${project.title} - Hauptansicht`}
               caption="Hauptansicht der Anwendung"
             />
@@ -125,14 +126,14 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
         </div>
       </section>
 
-      {/* Outcomes */}
+      {/* Results */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Ergebnisse</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Ergebnisse</AuroraHeading>
         <div className={styles.content}>
-          {hasDetailContent && project.detail?.outcomes && project.detail.outcomes.length > 0 ? (
+          {hasDetailContent && project.detail?.results && project.detail.results.length > 0 ? (
             <ul className={styles.list}>
-              {project.detail.outcomes.map((outcome, index) => (
-                <li key={index}>{outcome}</li>
+              {project.detail.results.map((result, index) => (
+                <li key={index}>{result}</li>
               ))}
             </ul>
           ) : (

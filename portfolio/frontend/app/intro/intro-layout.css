@@ -1,0 +1,32 @@
+/** 
+ * Intro Layout Overrides
+ * Hides Header/Footer on intro page for clean full-screen experience
+ * Author: Liliane Schutz
+ * 
+ * CRITICAL: Scoped to .intro-page to prevent CSS persistence after navigation
+ * 
+ * BROWSER REQUIREMENT: :has() selector requires modern browsers
+ *   - Chrome 105+ (Sept 2022)
+ *   - Firefox 121+ (Dec 2023)  
+ *   - Safari 15.4+ (March 2022)
+ *   - Edge 105+ (Sept 2022)
+ * 
+ * Fallback: On older Safari versions, header/footer remain visible during intro.
+ * This is acceptable as it doesn't break functionality - just less immersive.
+ * See: https://caniuse.com/css-has (97.4% global support as of 2024)
+ */
+
+/* Hide Header and Footer ONLY when intro-page class is present */
+.intro-page ~ header,
+.intro-page ~ footer,
+body:has(.intro-page) header,
+body:has(.intro-page) footer {
+  display: none !important;
+}
+
+/* Remove main container constraints for full-screen intro */
+body:has(.intro-page) .main-container {
+  padding: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+}

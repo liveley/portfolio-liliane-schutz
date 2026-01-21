@@ -3,6 +3,7 @@
 /* 
  * LIVELEY Intro Page Styles
  * Standalone route with 3× longer timing + hold phase
+ * Optimized for fast initial render
  */
 
 .container {
@@ -61,18 +62,19 @@
 
 /* Full name hint */
 .nameHint {
-  font-size: 1rem;
-  color: rgba(245, 245, 247, 0.4);
+  font-size: clamp(1.25rem, 3vw, 2rem); /* Responsive, larger for better visibility */
+  color: rgba(255, 255, 255, 0.95); /* Near-white for maximum contrast */
   margin: 0;
-  font-weight: 300;
-  letter-spacing: 0.05em;
+  font-weight: 400; /* Slightly bolder for readability */
+  letter-spacing: 0.1em; /* Increased for premium look */
   opacity: 0;
   transform: translateY(10px);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
-.idle .nameHint,
+/* Show name immediately when animation starts */
 .segments .nameHint {
-  animation: fadeInUp 1.2s ease-out forwards; /* Slower: 0.8s → 1.2s */
+  animation: fadeInUp 1.2s ease-out forwards;
 }
 
 .nameHint .li,
@@ -82,15 +84,15 @@
 }
 
 .nameHint .li {
-  color: rgba(138, 43, 226, 0.8); /* Purple */
+  color: rgba(138, 43, 226, 0.9); /* Purple (lila) */
 }
 
 .nameHint .ve {
-  color: rgba(67, 97, 238, 0.8); /* Blue */
+  color: rgba(0, 200, 120, 0.9); /* Green (grün) - was incorrectly blue */
 }
 
 .nameHint .ley {
-  color: rgba(0, 180, 180, 0.8); /* Cyan */
+  color: rgba(67, 97, 238, 0.9); /* Blue (blau) - was incorrectly cyan */
 }
 
 /* Segmented version: LI · VE · LEY */
@@ -98,11 +100,13 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  font-size: 4rem;
+  font-size: clamp(3.5rem, 10vw, 7rem); /* Responsive, larger on desktop */
   font-weight: 700;
   font-family: var(--font-heading-family);
   letter-spacing: 0.1em;
   opacity: 0;
+  will-change: opacity, transform;
+  contain: layout style paint;
 }
 
 .idle .segments {
@@ -124,17 +128,17 @@
 
 /* 3× longer: 0.3s → 0.9s, 0.6s → 1.8s, duration 0.6s → 1.2s */
 .segments .segment1 {
-  color: rgba(138, 43, 226, 1);
+  color: rgba(138, 43, 226, 1); /* Purple - matches LI */
   animation: segmentIn 1.2s ease-out 0.9s forwards;
 }
 
 .segments .segment2 {
-  color: rgba(67, 97, 238, 1);
+  color: rgba(0, 200, 120, 1); /* Green - matches VE */
   animation: segmentIn 1.2s ease-out 1.8s forwards;
 }
 
 .segments .segment3 {
-  color: rgba(0, 180, 180, 1);
+  color: rgba(67, 97, 238, 1); /* Blue - matches LEY */
   animation: segmentIn 1.2s ease-out 2.7s forwards;
 }
 
@@ -158,12 +162,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  font-size: 5rem;
+  font-size: clamp(4rem, 12vw, 8.5rem); /* Responsive, larger on desktop */
   font-weight: 700;
   font-family: var(--font-heading-family);
   letter-spacing: 0.02em;
   opacity: 0;
   pointer-events: none;
+  will-change: opacity, transform;
+  contain: layout style paint;
 }
 
 /* Morph phase: 3× longer (1s → 2s) */
@@ -176,7 +182,8 @@
 }
 
 .morph .nameHint {
-  animation: fadeOut 1.2s ease-out forwards;
+  opacity: 0.8; /* Keep visible but slightly reduced */
+  animation: none; /* Don't fade out */
 }
 
 /* Hold phase: morphed stays visible, no animation */
@@ -185,9 +192,12 @@
   animation: none;
 }
 
-.hold .segments,
-.hold .nameHint {
+.hold .segments {
   opacity: 0;
+}
+
+.hold .nameHint {
+  opacity: 0.6; /* Keep visible but more subtle during hold */
 }
 
 @keyframes morphIn {
@@ -232,21 +242,21 @@
 }
 
 .morphLi {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 1), rgba(138, 43, 226, 0.8));
+  background: linear-gradient(135deg, rgba(138, 43, 226, 1), rgba(138, 43, 226, 0.8)); /* Purple */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .morphVe {
-  background: linear-gradient(135deg, rgba(67, 97, 238, 1), rgba(67, 97, 238, 0.8));
+  background: linear-gradient(135deg, rgba(0, 200, 120, 1), rgba(0, 200, 120, 0.8)); /* Green */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .morphLey {
-  background: linear-gradient(135deg, rgba(0, 180, 180, 1), rgba(0, 180, 180, 0.8));
+  background: linear-gradient(135deg, rgba(67, 97, 238, 1), rgba(67, 97, 238, 0.8)); /* Blue */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -257,44 +267,14 @@
   animation: containerFadeOut 1s ease-out forwards;
 }
 
+.fadeout .nameHint {
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
 @keyframes containerFadeOut {
   to {
     opacity: 0;
   }
-}
-
-/* Skip button */
-.skipButton {
-  position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(245, 245, 247, 0.1);
-  border: 1px solid rgba(245, 245, 247, 0.2);
-  border-radius: 8px;
-  color: rgba(245, 245, 247, 0.7);
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  z-index: 2;
-  backdrop-filter: blur(10px);
-}
-
-.skipButton:hover {
-  background: rgba(245, 245, 247, 0.15);
-  border-color: rgba(245, 245, 247, 0.3);
-  color: var(--color-fg);
-  transform: translateY(-2px);
-}
-
-.skipButton:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
-.skipButton:focus:not(:focus-visible) {
-  outline: none;
 }
 
 /* Reduced motion: no stagger, simplified */
@@ -335,25 +315,14 @@
   }
 }
 
-/* Responsive */
+/* Responsive - using clamp() for fluid typography, minimal overrides needed */
 @media (max-width: 768px) {
   .segments {
-    font-size: 2.5rem;
     gap: 1rem;
   }
 
-  .morphed {
-    font-size: 3rem;
-  }
-
   .nameHint {
-    font-size: 0.875rem;
-  }
-
-  .skipButton {
-    bottom: 2rem;
-    right: 2rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.8125rem;
+    text-align: center;
+    padding: 0 1rem;
   }
 }

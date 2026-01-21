@@ -41,7 +41,7 @@ export interface Project {
   status: ProjectStatus; // Project completion status
   shortDescription: string; // 1-2 sentences for card
   tags: string[]; // Technology/methodology tags (e.g., "React", "Figma")
-  image?: string; // Thumbnail image path (relative to /public)
+  coverImage?: string; // Thumbnail image path (relative to /public)
   links?: {
     github?: string;
     demo?: string;
@@ -115,7 +115,7 @@ export interface Language {
  * Soft skills and competencies
  */
 export interface SoftSkill {
-  name: string; // e.g., "Kommunikation", "Problemlösung"
+  name: string; // e.g., "Communication", "Problem Solving"
   description?: string; // Optional detailed description
 }
 

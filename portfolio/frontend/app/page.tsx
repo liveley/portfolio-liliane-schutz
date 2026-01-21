@@ -2,21 +2,23 @@
  * Author: Liliane Schutz
  * Home Page - Landing mit Hero und CTAs
  */
-'use client';
 
 import Link from "next/link";
 import PageShell from "@/components/layout/PageShell";
 import ProjectCard from "@/components/projects/ProjectCard";
-import { getFeaturedProjects } from "@/lib/data/projects";
+import AuroraHeading from "@/components/ui/AuroraHeading";
+import { fetchProjects } from "@/lib/api";
 import styles from "./page.module.css";
 
-export default function Home() {
-  const featuredProjects = getFeaturedProjects();
+export default async function Home() {
+  const featuredProjects = await fetchProjects({ featured: true });
 
   return (
     <PageShell>
         <section className={styles.hero}>
-          <h1 className="heading-colorful" data-text="Hallo, ich bin Liliane.">Hallo, ich bin Liliane.</h1>
+          <AuroraHeading as="h1" size="large">
+            Hallo, ich bin Liliane.
+          </AuroraHeading>
           <p className={styles.intro}>
             Ich studiere Informatik und Design und entwickle digitale Produkte mit Fokus auf User Experience und sauberen Code. 
             Hier findest du meine Projekte, meine Skills und wie du mich erreichen kannst.
@@ -36,7 +38,7 @@ export default function Home() {
 
         {featuredProjects.length > 0 && (
           <section className={styles.featuredSection}>
-            <h2 className={`${styles.featuredTitle} heading-colorful`} data-text="Featured Projects">Featured Projects</h2>
+            <AuroraHeading as="h2" size="large" className={styles.featuredTitle}>Featured Projects</AuroraHeading>
             <div className={styles.featuredGrid}>
               {featuredProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />

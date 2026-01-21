@@ -8,6 +8,7 @@ import Timeline from '@/components/about/Timeline';
 import SkillGroup from '@/components/about/SkillGroup';
 import Languages from '@/components/about/Languages';
 import SoftSkills from '@/components/about/SoftSkills';
+import AuroraHeading from '@/components/ui/AuroraHeading';
 import styles from './page.module.css';
 
 export default function UeberMichPage() {
@@ -20,13 +21,13 @@ export default function UeberMichPage() {
 
       {/* Timeline Section */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Werdegang</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Werdegang</AuroraHeading>
         <Timeline items={aboutContent.timeline} />
       </section>
 
       {/* Skills Section */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Skills & Tools</h2>
+        <AuroraHeading as="h2" className={styles.sectionTitle}>Skills & Tools</AuroraHeading>
         <p className={styles.legend}>
           Bewertungsskala: 1 = Grundkenntnisse, 5 = Expertin
         </p>
@@ -44,7 +45,7 @@ export default function UeberMichPage() {
       {/* Languages Section */}
       {aboutContent.languages && aboutContent.languages.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Sprachen</h2>
+          <AuroraHeading as="h2" className={styles.sectionTitle}>Sprachen</AuroraHeading>
           <Languages languages={aboutContent.languages} />
         </section>
       )}
@@ -52,7 +53,7 @@ export default function UeberMichPage() {
       {/* Soft Skills Section */}
       {aboutContent.softSkills && aboutContent.softSkills.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Soft Skills</h2>
+          <AuroraHeading as="h2" className={styles.sectionTitle}>Soft Skills</AuroraHeading>
           <SoftSkills skills={aboutContent.softSkills} />
         </section>
       )}
