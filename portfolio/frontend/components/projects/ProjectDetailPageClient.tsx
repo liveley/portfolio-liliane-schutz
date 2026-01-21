@@ -2,16 +2,19 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'next/navigation';
 import { fetchProjectBySlug, fetchProjects } from '@/lib/api';
 import PageShell from '@/components/layout/PageShell';
 import ProjectDetail from '@/components/projects/ProjectDetail';
 import ProjectMeta from '@/components/projects/ProjectMeta';
-import styles from '@/app/projekte/[slug]/page.module.css';
+import styles from '@/app/projekte/[...slug]/page.module.css';
 
 export default function ProjectDetailPageClient() {
-  const params = useParams<{ slug: string }>();
-  const slug = useMemo(() => (typeof params?.slug === 'string' ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : ''), [params]);
+  // Extract slug from URL pathname
+  const slug = useMemo(() => {
+    if (typeof window === 'undefined') return '';
+    const parts = window.location.pathname.split('/');
+    return parts[parts.length - 1] || '';
+  }, []);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

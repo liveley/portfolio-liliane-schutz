@@ -8,6 +8,7 @@ import "./globals.css";
 import "./styles/white-box.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ProjectDetailRouter from "@/components/projects/ProjectDetailRouter";
 
 // Body font: Source Sans 3
 const sourceSans = Source_Sans_3({
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <Header />
         <main className="main-container">
+          <ProjectDetailRouter />
           {children}
         </main>
         <Footer />
