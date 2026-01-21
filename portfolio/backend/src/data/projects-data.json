@@ -1,7 +1,7 @@
 [
   {
     "slug": "life-threads-data-vis",
-    "title": "Life Threads - Interaktive Datenvisualisierung",
+    "title": "Life Threads – Interaktive Datenvisualisierung",
     "year": 2025,
     "category": "data",
     "featured": true,
@@ -50,7 +50,7 @@
   },
   {
     "slug": "ressource-realms-3d",
-    "title": "Ressource Realms - 3D-Strategiespiel",
+    "title": "Ressource Realms – 3D-Strategiespiel",
     "year": 2025,
     "category": "coding",
     "featured": true,
@@ -144,7 +144,7 @@
   },
   {
     "slug": "walkable-memory-moosburg",
-    "title": "Walkable Memory - Digitale Erinnerungstour",
+    "title": "Walkable Memory – Digitale Erinnerungstour",
     "year": 2025,
     "category": "uiux",
     "featured": false,
@@ -246,7 +246,7 @@
   },
   {
     "slug": "swm-change-management-automation",
-    "title": "SWM Change Management - KI-gestuetzte Changebegleitung",
+    "title": "SWM Change Management – KI-gestützte Changebegleitung",
     "year": 2025,
     "category": "coding",
     "featured": true,

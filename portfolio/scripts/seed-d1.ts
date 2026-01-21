@@ -6,7 +6,7 @@
  * Usage: npm run seed-d1
  */
 
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 // This script is designed to be run with wrangler:
@@ -122,15 +122,24 @@ function generateSeedSql(): string {
   return statements.join('\n');
 }
 
-// Generate and print SQL
-console.log('-- ============================================================================');
-console.log('-- D1 Seed Data');
-console.log('-- Generated from projects-data.json');
-console.log(`-- Date: ${new Date().toISOString()}`);
-console.log(`-- Projects: ${projectsData.length}`);
-console.log('-- ============================================================================');
-console.log('');
-console.log(generateSeedSql());
+// Generate and write SQL file with UTF-8 BOM
+const sqlContent = [
+  '-- ============================================================================',
+  '-- D1 Seed Data',
+  '-- Generated from projects-data.json',
+  `-- Date: ${new Date().toISOString()}`,
+  `-- Projects: ${projectsData.length}`,
+  '-- ============================================================================',
+  '',
+  generateSeedSql()
+].join('\n');
 
-console.error(`\n✓ Generated seed SQL for ${projectsData.length} projects`);
-console.error(`✓ To apply: wrangler d1 execute portfoliodb --local --file=./portfolio/scripts/seed-d1-output.sql`);
+// Write with UTF-8 BOM to ensure proper encoding
+const outputPath = join(__dirname, 'seed-d1-output.sql');
+const bom = '\uFEFF'; // UTF-8 BOM
+writeFileSync(outputPath, bom + sqlContent, { encoding: 'utf8' });
+
+console.log(`✓ Generated seed SQL for ${projectsData.length} projects`);
+console.log(`✓ Written to: ${outputPath}`);
+console.log(`✓ To apply locally: wrangler d1 execute portfoliodb --local --file=./scripts/seed-d1-output.sql`);
+console.log(`✓ To apply to prod: wrangler d1 execute portfoliodb --remote --file=./scripts/seed-d1-output.sql`);
