@@ -1,8 +1,9 @@
 /**
  * Author: Liliane Schutz
- * Projekte Übersichtsseite - Server Component
- * Loads project data from Backend REST API
+ * Projekte Übersichtsseite - Client Component
+ * Loads project data from REST API via Pages Functions
  */
+
 import PageShell from "@/components/layout/PageShell";
 import PageHeader from "@/components/layout/PageHeader";
 import ProjectsListClient from "@/components/projects/ProjectsListClient";
