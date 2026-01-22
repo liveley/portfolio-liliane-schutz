@@ -19,6 +19,13 @@
   align-items: center;
 }
 
+@media (max-width: 767px) {
+  .container {
+    padding: 1rem 1.25rem; /* Reduced padding (matches nav links padding roughly) */
+  }
+}
+
+
 .logo {
   font-size: 1.25rem;
   font-weight: 600;

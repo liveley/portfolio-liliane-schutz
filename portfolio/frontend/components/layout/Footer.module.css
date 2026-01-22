@@ -19,6 +19,19 @@
   gap: 1rem;
 }
 
+@media (max-width: 767px) {
+  .container {
+    padding: 0 1rem;
+    justify-content: center; /* Center horizontally */
+    flex-direction: column-reverse; /* Stack items (Socials on top or bottom? usually copyright bottom) -> use column-reverse or column */
+  }
+
+  .copyright {
+    text-align: center;
+  }
+}
+
+
 .copyright {
   color: rgba(245, 245, 247, 0.7);
   font-size: 0.875rem;
