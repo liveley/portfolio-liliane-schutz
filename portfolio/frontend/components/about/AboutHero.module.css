@@ -12,9 +12,29 @@
     grid-template-columns: 1.5fr 1fr;
     gap: 4rem;
   }
+  
+  /* Reset mobile specific wrappers for desktop */
+  .mobileTitleWrapper {
+    display: contents;
+  }
+  
+  .mobileSplitContent {
+    display: contents; /* Allows children to participate in the main grid */
+  }
+
+  /* Target content inside what used to be .content */
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
 
 .content {
+  display: none; /* Deprecated/Replaced class */
+}
+
+.textContent {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -88,15 +108,66 @@
 }
 
 @media (max-width: 767px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
   .title {
     font-size: 2rem;
+    margin: 0;
   }
 
+  /* Split Layout: Text Left, Image Right */
+  .mobileSplitContent {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr; /* Text larger than image */
+    gap: 1rem;
+    align-items: start;
+    
+    /* Make this grid container wrap its children differently if we want focus areas full width 
+       actually, because focus areas is INSIDE textContent, we cannot easily break it out via grid
+       unless we use display: contents on textContent. */
+  }
+
+  /* CRITICAL FIX: Unlock children of textContent to participate in the main grid */
+  .textContent {
+    display: contents; 
+  }
+
+  /* Define placement for children of textContent (bio, focusAreas) + portrait */
   .bio {
-    font-size: 1rem;
+    grid-column: 1; /* Left */
+    grid-row: 1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .portrait {
+     grid-column: 2; /* Right */
+     grid-row: 1;
+  }
+  
+  .focusAreas {
+    grid-column: 1 / span 2; /* Full width below */
+    grid-row: 2;
   }
 
-  .portrait {
-    order: -1;
+  .portraitImage {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .focusTitle {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .focusItem {
+    font-size: 0.85rem;
   }
 }

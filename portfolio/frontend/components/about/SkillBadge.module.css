@@ -37,6 +37,15 @@
   transition: all var(--transition-base);
 }
 
+@media (max-width: 767px) {
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-width: 1px;
+  }
+}
+
+
 .dot.filled {
   background: var(--color-accent);
   border-color: var(--color-accent);

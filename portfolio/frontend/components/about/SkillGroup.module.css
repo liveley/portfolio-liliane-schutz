@@ -24,3 +24,22 @@
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 767px) {
+  .group {
+    padding: var(--s3);
+    min-width: 0; /* Prevent flex/grid overflow */
+  }
+  
+  .title {
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Compacter vertical spacing for skills on mobile */
+  .skills > div {
+     padding: 0.25rem 0; /* Reduce padding of SkillBadge (from var(--s2) 0) */
+     gap: 0.5rem;
+  }
+}

@@ -55,9 +55,6 @@ export default function ProjectDetailPageClient() {
         <main className={styles.main}>
           <ProjectDetail project={project} prevProject={prevProject} nextProject={nextProject} />
         </main>
-        <aside className={styles.aside}>
-          <ProjectMeta project={project} />
-        </aside>
       </div>
     </PageShell>
   );
