@@ -158,7 +158,7 @@ body {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg);
+  background-color: transparent; /* Changed from var(--color-bg) to let ::after show through */
   /* Static base layer MOVED to ::after for better mobile support */
   color: var(--color-fg);
   font-family: var(--font-body);
@@ -210,23 +210,22 @@ body::before {
   will-change: transform;
 }
 
-/* Static Background Gradient Layer (Fixed)
-   Solves "black box" scrolling issue on mobile/tablet by using fixed element 
-   instead of background-attachment: fixed which is buggy on iOS */
+/* Static Background Gradient Layer (Fixed) */
 body::after {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh; /* Fallback */
+  height: 100vh;
   height: 100dvh;
-  z-index: -2; /* Behind animation */
+  z-index: -2; 
+  /* Fallback color + Gradients */
+  background-color: var(--color-bg); 
   background-image: 
     radial-gradient(ellipse 900px 700px at 15% 25%, var(--aurora-purple), transparent 70%),
     radial-gradient(ellipse 800px 600px at 85% 75%, var(--aurora-blue), transparent 70%),
     radial-gradient(ellipse 700px 500px at 50% 95%, var(--aurora-cyan), transparent 60%);
-  background-color: var(--color-bg);
   pointer-events: none;
 }
 
