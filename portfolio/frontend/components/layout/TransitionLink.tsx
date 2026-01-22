@@ -7,8 +7,6 @@
  */
 'use client';
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { MouseEvent, ReactNode } from 'react';
 
 interface TransitionLinkProps {
@@ -32,8 +30,6 @@ function hasModifierKey(event: MouseEvent): boolean {
 }
 
 export default function TransitionLink({ href, className, children }: TransitionLinkProps) {
-  const router = useRouter();
-
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     // Natürliches Link-Verhalten bei Modifier-Keys oder Middle-Click
     if (hasModifierKey(event)) {
@@ -45,20 +41,20 @@ export default function TransitionLink({ href, className, children }: Transition
 
     // Fallback: Keine View Transition API → normale Navigation
     if (!supportsViewTransitions()) {
-      router.push(href);
+      window.location.assign(href);
       return;
     }
 
     // View Transition API vorhanden → Transition starten
     // @ts-ignore – startViewTransition ist noch nicht in allen TS-Definitionen
     document.startViewTransition(() => {
-      router.push(href);
+      window.location.assign(href);
     });
   };
 
   return (
-    <Link href={href} className={className} onClick={handleClick}>
+    <a href={href} className={className} onClick={handleClick}>
       {children}
-    </Link>
+    </a>
   );
 }

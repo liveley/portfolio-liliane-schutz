@@ -3,7 +3,7 @@
  * Home Page - Landing mit Hero und CTAs
  */
 
-import Link from "next/link";
+import TransitionLink from "@/components/layout/TransitionLink";
 import PageShell from "@/components/layout/PageShell";
 import AuroraHeading from "@/components/ui/AuroraHeading";
 import FeaturedProjectsClient from "@/components/projects/FeaturedProjectsClient";
@@ -22,15 +22,15 @@ export default function Home() {
             Hier findest du meine Projekte, meine Skills und wie du mich erreichen kannst.
           </p>
           <div className={styles.ctas}>
-            <Link href="/projekte" className={styles.primaryButton}>
+            <TransitionLink href="/projekte" className={styles.primaryButton}>
               Meine Projekte
-            </Link>
-            <Link href="/ueber-mich" className={styles.secondaryButton}>
+            </TransitionLink>
+            <TransitionLink href="/ueber-mich" className={styles.secondaryButton}>
               Über mich
-            </Link>
-            <Link href="/kontakt" className={styles.secondaryButton}>
+            </TransitionLink>
+            <TransitionLink href="/kontakt" className={styles.secondaryButton}>
               Kontakt
-            </Link>
+            </TransitionLink>
           </div>
         </section>
 

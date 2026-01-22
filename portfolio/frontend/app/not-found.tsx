@@ -1,6 +1,6 @@
 /** Author: Liliane Schutz */
 
-import Link from "next/link";
+import TransitionLink from "@/components/layout/TransitionLink";
 import PageShell from "@/components/layout/PageShell";
 import PageHeader from "@/components/layout/PageHeader";
 import Button from "@/components/ui/Button";
@@ -28,12 +28,12 @@ export default function NotFound() {
           />
 
           <div className={styles.actions}>
-            <Link href="/">
-              <Button variant="primary">Zur Startseite</Button>
-            </Link>
-            <Link href="/projekte">
+               <TransitionLink href="/" className={styles.link}>
+                 <Button variant="primary">Zur Startseite</Button>
+               </TransitionLink>
+            <TransitionLink href="/projekte" className={styles.link}>
               <Button variant="secondary">Zu den Projekten</Button>
-            </Link>
+            </TransitionLink>
           </div>
         </div>
       </div>
