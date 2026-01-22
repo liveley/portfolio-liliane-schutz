@@ -4,6 +4,7 @@
 import Image from 'next/image';
 import { Project } from '@/lib/types';
 import AuroraHeading from '@/components/ui/AuroraHeading';
+import ProjectMeta from './ProjectMeta';
 import styles from './ProjectDetail.module.css';
 import ProcessStep from './ProcessStep';
 import ImageWithCaption from '../ui/ImageWithCaption';
@@ -35,11 +36,23 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
           </div>
         )}
         <AuroraHeading as="h1" size="large" className={styles.title}>{project.title}</AuroraHeading>
-        <p className={styles.description}>{project.shortDescription}</p>
-        {hasDetailContent && project.detail?.context && (
-          <p className={styles.context}>{project.detail.context}</p>
-        )}
+        
+        {/* Mobile View: side-by-side grid split */}
+        <div className={styles.mobileGrid}>
+            <div className={styles.introText}>
+                <p className={styles.description}>{project.shortDescription}</p>
+                {hasDetailContent && project.detail?.context && (
+                <p className={styles.context}>{project.detail.context}</p>
+                )}
+            </div>
+             {/* Project Meta - Mobile View */}
+            <div className={styles.metaSection}>
+                <ProjectMeta project={project} />
+            </div>
+        </div>
       </section>
+
+      {/* Project Meta - Tablet (non-mobile but < 1024px) handled via CSS hiding */}
 
       {/* Problem & Goals */}
       <section className={styles.section}>

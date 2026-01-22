@@ -61,6 +61,50 @@
   gap: 1.5rem;
 }
 
+/* Meta Section Styles */
+.metaSection {
+  display: none; /* Default hidden, only shown inside Sidebar on Desktop */
+}
+
+@media (max-width: 1024px) {
+  .metaSection {
+    display: block; /* Show on Tablet/Mobile */
+  }
+}
+
+/* Mobile Specific Layout */
+@media (max-width: 767px) {
+  /* Order: Image -> Title -> (Intro + Meta) */
+  .detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .intro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Force Image to top */
+  .heroImage {
+    order: -1; 
+    margin-bottom: 1rem;
+  }
+
+  /* Grid for Text and Meta side-by-side */
+  .mobileGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .metaSection {
+    font-size: 0.8rem;
+  }
+}
+
 .sectionTitle {
   font-size: 1.75rem;
   font-weight: 600;

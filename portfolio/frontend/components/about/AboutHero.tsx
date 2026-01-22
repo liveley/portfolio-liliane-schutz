@@ -12,34 +12,39 @@ interface AboutHeroProps {
 export default function AboutHero({ content }: AboutHeroProps) {
   return (
     <section className={styles.hero}>
-      <div className={styles.content}>
+      {/* Mobile Title Wrapper to allow ordering */}
+      <div className={styles.mobileTitleWrapper}>
         <AuroraHeading as="h1" size="large" className={styles.title}>Über mich</AuroraHeading>
-        
-        <p className={styles.bio}>
-          {content.bio}
-        </p>
-
-        <div className={styles.focusAreas}>
-          <h2 className={styles.focusTitle}>Meine Schwerpunkte</h2>
-          <ul className={styles.focusList}>
-            {content.focusAreas.map((area, index) => (
-              <li key={index} className={styles.focusItem}>
-                {area}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
 
-      <div className={styles.portrait}>
-        <Image 
-          src="/liliane.jpg" 
-          alt="Liliane Schutz"
-          width={400}
-          height={400}
-          className={styles.portraitImage}
-          priority
-        />
+      <div className={styles.mobileSplitContent}>
+        <div className={styles.textContent}>
+          <p className={styles.bio}>
+            {content.bio}
+          </p>
+
+          <div className={styles.focusAreas}>
+            <h2 className={styles.focusTitle}>Meine Schwerpunkte</h2>
+            <ul className={styles.focusList}>
+              {content.focusAreas.map((area, index) => (
+                <li key={index} className={styles.focusItem}>
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className={styles.portrait}>
+          <Image 
+            src="/liliane.jpg" 
+            alt="Liliane Schutz"
+            width={400}
+            height={400}
+            className={styles.portraitImage}
+            priority
+          />
+        </div>
       </div>
     </section>
   );
