@@ -19,8 +19,8 @@ export const dynamic = 'error'; // Ensure this only generates static pages
  */
 export async function generateStaticParams() {
   try {
-    // Load projects from JSON file directly (no API call at build time)
-    const projectsPath = join(process.cwd(), '..', 'backend', 'src', 'data', 'projects-data.json');
+    // Load projects from JSON file in frontend/data
+    const projectsPath = join(process.cwd(), 'data', 'projects-data.json');
     const projectsData = JSON.parse(readFileSync(projectsPath, 'utf-8'));
     
     if (!Array.isArray(projectsData) || projectsData.length === 0) {

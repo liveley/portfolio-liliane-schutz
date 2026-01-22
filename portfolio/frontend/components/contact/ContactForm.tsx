@@ -2,7 +2,6 @@
 'use client';
 
 import { useState, FormEvent, ChangeEvent, FocusEvent } from 'react';
-import { submitContactForm } from '@/lib/api';
 import Input from '../ui/Input';
 import Textarea from '../ui/Textarea';
 import Button from '../ui/Button';
@@ -175,19 +174,15 @@ export default function ContactForm() {
       return;
     }
 
-    // Submit to Backend API
+    // Mock submission (no backend available in static export)
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      await submitContactForm({
-        name: values.name,
-        email: values.email,
-        subject: values.subject,
-        message: values.message
-      });
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Success
+      // Success (form data is only validated, not sent anywhere)
       setIsSubmitting(false);
       setSubmitStatus('success');
 
