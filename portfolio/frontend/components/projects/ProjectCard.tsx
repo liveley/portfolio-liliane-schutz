@@ -1,7 +1,7 @@
 /** Author: Liliane Schutz */
 'use client';
 
-import Link from "next/link";
+import TransitionLink from "@/components/layout/TransitionLink";
 import Image from "next/image";
 import { Project } from "@/lib/types";
 import TagChip from "@/components/ui/TagChip";
@@ -19,7 +19,7 @@ interface ProjectCardProps {
  */
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Link href={`/projekte/${project.slug}`} className={styles.cardLink}>
+    <TransitionLink href={`/projekte/${project.slug}`} className={styles.cardLink}>
       <article className={styles.card}>
         {/* Thumbnail */}
         <div className={styles.thumbnail}>
@@ -69,6 +69,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       </article>
-    </Link>
+    </TransitionLink>
   );
 }

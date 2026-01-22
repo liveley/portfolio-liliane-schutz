@@ -1,6 +1,6 @@
 /** Author: Liliane Schutz */
 
-import Link from "next/link";
+import TransitionLink from "@/components/layout/TransitionLink";
 import styles from "./Button.module.css";
 
 interface ButtonProps {
@@ -29,9 +29,9 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={className}>
+      <TransitionLink href={href} className={className}>
         {children}
-      </Link>
+      </TransitionLink>
     );
   }
 
