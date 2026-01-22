@@ -31,6 +31,39 @@ export default function NavigationBar() {
     }
   };
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // 1. Check modifiers (standard browser behavior)
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) {
+      return;
+    }
+
+    e.preventDefault();
+
+    // 2. Determine if we need to close the menu and wait
+    const isMobileMenuOpen = menuOpen;
+    setMenuOpen(false);
+
+    // 3. Logic: Delay navigation if menu was open to allow closing animation
+    const delay = isMobileMenuOpen ? 300 : 0;
+
+    setTimeout(() => {
+      // 4. Perform Navigation
+      const performNavigation = () => {
+        window.location.assign(href);
+      };
+
+      // @ts-ignore - ViewTransition API
+      if ('startViewTransition' in document) {
+        // @ts-ignore
+        document.startViewTransition(() => {
+          performNavigation();
+        });
+      } else {
+        performNavigation();
+      }
+    }, delay);
+  };
+
   return (
     <>
       {/* Burger Button - visible on mobile */}
@@ -58,12 +91,13 @@ export default function NavigationBar() {
             
             return (
               <li key={link.href}>
-                <TransitionLink 
+                <a 
                   href={link.href}
                   className={isActive ? styles.navLinkActive : styles.navLink}
+                  onClick={(e) => handleLinkClick(e, link.href)}
                 >
                   {link.label}
-                </TransitionLink>
+                </a>
               </li>
             );
           })}
