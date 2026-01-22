@@ -1,6 +1,6 @@
 /** Author: Liliane Schutz */
 
-/* Navigation Bar Styles */
+/* Navigation Bar Styles - Desktop First */
 .nav {
   display: flex;
   align-items: center;
@@ -38,4 +38,109 @@
   border-radius: var(--r-sm);
   position: relative;
   border-bottom: 2px solid var(--color-accent);
+}
+
+/* Burger Button - Hidden by default (desktop) */
+.burgerButton {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.burgerButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.burgerLine {
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-fg);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+/* Overlay - Hidden by default */
+.overlay {
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .burgerButton {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(224, 224, 227, 0.1);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 99;
+  }
+
+  .nav.navOpen {
+    max-height: 100vh;
+  }
+
+  .navList {
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+  }
+
+  .navLink,
+  .navLinkActive {
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    border-radius: 0;
+    font-size: 1rem;
+  }
+
+  .navLink {
+    color: var(--color-fg-muted);
+    border-left-color: transparent;
+  }
+
+  .navLink:hover {
+    color: var(--color-fg);
+    background-color: rgba(67, 97, 238, 0.1);
+  }
+
+  .navLinkActive {
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+    background-color: rgba(67, 97, 238, 0.05);
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 98;
+  }
 }
