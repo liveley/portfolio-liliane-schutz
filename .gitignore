@@ -10,9 +10,6 @@ references/
 # Scripts and seed data (sensitive, local)
 portfolio/scripts/
 
-# Cloudflare Functions (not used with static export)
-portfolio/frontend/functions/
-
 # Next.js build outputs
 portfolio/frontend/out/
 portfolio/frontend/.next/
