@@ -11,6 +11,8 @@
   .hero {
     grid-template-columns: 1.5fr 1fr;
     gap: 4rem;
+    grid-template-areas: 
+      "text portrait"; /* Define areas for desktop */
   }
   
   /* Reset mobile specific wrappers for desktop */
@@ -19,14 +21,56 @@
   }
   
   .mobileSplitContent {
-    display: contents; /* Allows children to participate in the main grid */
+    display: contents; 
   }
 
   /* Target content inside what used to be .content */
   .textContent {
-    display: flex;
+    display: flex; /* Restore flex column behavior */
     flex-direction: column;
     gap: 2rem;
+    grid-area: text; /* Assign to text area */
+  }
+  
+  /* The title is outside textContent in HTML but inside mobileTitleWrapper. 
+     Since mobileTitleWrapper is display:contents, .title is a direct grid child.
+     We need to pull it into the left column or make it span?
+     
+     Actually, on Desktop, we want Title + Bio + Focus ALL on the left.
+     But HTML structure is: 
+       div(Title)
+       div(div(Bio, Focus), div(Portrait))
+     
+     If we use display: contents on the wrappers, the grid children are:
+       Title
+       TextContent (Bio + Focus)
+       Portrait
+       
+     We can put Title in Col 1 Row 1.
+     TextContent in Col 1 Row 2.
+     Portrait in Col 2 Row 1/Span 2.
+  */
+  
+  .title {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0; /* Let gap handle it */
+  }
+  
+  .textContent {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .portrait {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-items: flex-start;
+  }
+  
+  .portraitImage {
+    max-width: 100%; /* Allow full width of column */
+    width: 100%;
   }
 }
 
