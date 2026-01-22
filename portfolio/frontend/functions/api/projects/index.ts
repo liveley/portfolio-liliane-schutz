@@ -8,6 +8,16 @@ interface Env {
   DB: D1Database;
 }
 
+function safeJsonArray(value: unknown): string[] {
+  if (!value || typeof value !== 'string') return [];
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { DB } = context.env;
   const url = new URL(context.request.url);
@@ -41,13 +51,18 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     // Execute query
     const { results } = await DB.prepare(query).bind(...params).all();
     
-    // Parse JSON fields
+    // Map DB rows to Project shape (list view only)
     const projects = results.map((row: any) => ({
-      ...row,
-      tags: JSON.parse(row.tags),
-      links: JSON.parse(row.links),
-      detail: JSON.parse(row.detail),
+      id: row.id?.toString?.() ?? row.id,
+      slug: row.slug,
+      title: row.title,
+      year: row.year,
+      category: row.category,
       featured: row.featured === 1,
+      status: row.status,
+      shortDescription: row.short_description,
+      tags: safeJsonArray(row.tags),
+      coverImage: row.cover_image ?? undefined,
     }));
     
     return new Response(

@@ -1,7 +1,8 @@
 /** Author: Liliane Schutz */
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { fetchProjectBySlug, fetchProjects } from '@/lib/api';
 import PageShell from '@/components/layout/PageShell';
 import ProjectDetail from '@/components/projects/ProjectDetail';
@@ -9,12 +10,8 @@ import ProjectMeta from '@/components/projects/ProjectMeta';
 import styles from './ProjectDetailPageClient.module.css';
 
 export default function ProjectDetailPageClient() {
-  // Extract slug from URL pathname
-  const slug = useMemo(() => {
-    if (typeof window === 'undefined') return '';
-    const parts = window.location.pathname.split('/');
-    return parts[parts.length - 1] || '';
-  }, []);
+  const params = useParams();
+  const slug = typeof params?.slug === 'string' ? params.slug : '';
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
