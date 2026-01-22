@@ -181,7 +181,7 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   body {
     background-attachment: scroll;
   }
