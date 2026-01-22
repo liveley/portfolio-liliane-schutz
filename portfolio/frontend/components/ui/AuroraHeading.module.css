@@ -144,10 +144,35 @@
   animation: none;
 }
 
-/* Responsive: smaller radius on mobile */
+/* Responsive: smaller radius AND smaller bubbles on mobile */
 @media (max-width: 768px) {
   .heading {
     --radius: 80px;
+  }
+  
+  .auraText {
+    background-image: 
+      /* Smaller Bubble 1 */
+      radial-gradient(
+        circle 40px at calc(var(--mx) - 15px) calc(var(--my) - 15px),
+        rgba(138, 43, 226, 0.9),
+        rgba(138, 43, 226, 0.4) 40%,
+        transparent 70%
+      ),
+      /* Smaller Bubble 2 */
+      radial-gradient(
+        circle 45px at calc(var(--mx) + 15px) var(--my),
+        rgba(67, 97, 238, 0.85),
+        rgba(67, 97, 238, 0.35) 45%,
+        transparent 75%
+      ),
+      /* Smaller Bubble 3 */
+      radial-gradient(
+        circle 40px at calc(var(--mx) - 10px) calc(var(--my) + 15px),
+        rgba(0, 180, 180, 0.8),
+        rgba(0, 180, 180, 0.3) 40%,
+        transparent 70%
+      );
   }
   
   .size-large {
@@ -165,7 +190,15 @@
 
 @media (max-width: 480px) {
   .heading {
-    --radius: 40px; /* Reduced from 60px to 40px to prevent edge bleeding on narrow screens */
+    --radius: 40px; 
+  }
+  
+  /* Even smaller bubbles for very small screens */
+  .auraText {
+    background-image: 
+      radial-gradient(circle 25px at calc(var(--mx) - 10px) calc(var(--my) - 10px), rgba(138, 43, 226, 0.9), transparent 70%),
+      radial-gradient(circle 30px at calc(var(--mx) + 10px) var(--my), rgba(67, 97, 238, 0.85), transparent 75%),
+      radial-gradient(circle 25px at calc(var(--mx) - 5px) calc(var(--my) + 10px), rgba(0, 180, 180, 0.8), transparent 70%);
   }
 }
 
