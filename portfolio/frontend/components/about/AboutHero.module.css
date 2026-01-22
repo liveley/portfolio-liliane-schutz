@@ -207,11 +207,11 @@
   }
   
   .focusTitle {
-    font-size: 1rem;
+    font-size: 1.5rem; /* Match section title size */
     margin-top: 1rem;
   }
   
   .focusItem {
-    font-size: 0.85rem;
+    font-size: 0.9rem; /* Match bio text size */
   }
 }
