@@ -105,16 +105,17 @@
   .navList {
     flex-direction: column;
     gap: 0;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
   }
 
   .navLink,
   .navLinkActive {
-    padding: 1rem 1.5rem;
+    padding: 0.6rem 1.25rem;
     border-bottom: none;
     border-left: 3px solid transparent;
     border-radius: 0;
     font-size: 1rem;
+    line-height: 1.2;
   }
 
   .navLink {
