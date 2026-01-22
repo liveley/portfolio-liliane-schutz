@@ -27,7 +27,7 @@
 
 @media (max-width: 767px) {
   .group {
-    padding: var(--s3);
+    padding: 0.75rem; /* Reduced padding (smaller than var(--s3)) */
     min-width: 0; /* Prevent flex/grid overflow */
   }
   

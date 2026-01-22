@@ -6,27 +6,20 @@
   align-items: center;
   padding: var(--s2) 0;
   gap: var(--s2);
+  width: 100%; /* Ensure full width */
   cursor: default;
   /* No background transition - only dots animate on hover */
 }
 
-.info {
-  display: flex;
-  align-items: center;
-  gap: var(--s1);
-}
-
-.name {
-  font-size: var(--font-size-sm);
-  color: var(--wb-card-fg);
-  font-weight: var(--font-weight-medium);
-}
+/* ... existing styles ... */
 
 .level {
   display: flex;
   gap: 6px;
   align-items: center;
+  flex-shrink: 0; /* Prevent dots from shrinking/wrapping */
 }
+
 
 .dot {
   width: 12px;
