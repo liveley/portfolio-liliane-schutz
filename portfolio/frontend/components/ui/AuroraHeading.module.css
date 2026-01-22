@@ -163,6 +163,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .heading {
+    --radius: 60px;
+  }
+}
+
 /* Disable effect on touch devices (optional) */
 @media (hover: none) and (pointer: coarse) {
   .auraText {
