@@ -1,46 +1,16 @@
 /**
  * Author: Liliane Schutz
- * Project Detail Page - Static Export with generateStaticParams
+ * Project Detail Page - Dynamic with D1 Database
  * 
- * This page generates static HTML for all project detail routes
- * Required for Cloudflare Pages static export compatibility
+ * This page fetches project data from Cloudflare Pages Functions (D1 database)
  */
 
 import { notFound } from 'next/navigation';
 import ProjectDetailPageClient from '@/components/projects/ProjectDetailPageClient';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 
-export const dynamic = 'error'; // Ensure this only generates static pages
-
-/**
- * Generate static params for all project slugs
- * Loads directly from JSON file (no API call needed at build time)
- */
-export async function generateStaticParams() {
-  try {
-    // Load projects from JSON file in frontend/data
-    const projectsPath = join(process.cwd(), 'data', 'projects-data.json');
-    const projectsData = JSON.parse(readFileSync(projectsPath, 'utf-8'));
-    
-    if (!Array.isArray(projectsData) || projectsData.length === 0) {
-      console.warn('⚠️  No projects found in projects-data.json');
-      return [];
-    }
-    
-    const params = projectsData.map((project: any) => ({
-      slug: project.slug,
-    }));
-    
-    console.log(`✓ Generated static params for ${params.length} project routes`);
-    return params;
-  } catch (error) {
-    console.error('Failed to generate static params for projects:', error);
-    return [];
-  }
-}
-
-export const dynamicParams = false; // Disable dynamic route generation for unknown slugs
+// Allow dynamic params (runtime data fetching from D1)
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
 
 interface ProjectDetailPageProps {
   params: Promise<{
