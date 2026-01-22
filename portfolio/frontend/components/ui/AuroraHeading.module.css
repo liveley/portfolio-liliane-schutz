@@ -165,7 +165,7 @@
 
 @media (max-width: 480px) {
   .heading {
-    --radius: 60px;
+    --radius: 40px; /* Reduced from 60px to 40px to prevent edge bleeding on narrow screens */
   }
 }
 

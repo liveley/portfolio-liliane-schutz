@@ -159,12 +159,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--color-bg);
-  /* Static base layer with stronger colors */
-  background-image: 
-    radial-gradient(ellipse 900px 700px at 15% 25%, var(--aurora-purple), transparent 70%),
-    radial-gradient(ellipse 800px 600px at 85% 75%, var(--aurora-blue), transparent 70%),
-    radial-gradient(ellipse 700px 500px at 50% 95%, var(--aurora-cyan), transparent 60%);
-  background-attachment: fixed;
+  /* Static base layer MOVED to ::after for better mobile support */
   color: var(--color-fg);
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
@@ -182,16 +177,20 @@ body {
 }
 
 @media (max-width: 1024px) {
+  /* On mobile/tablet, prevent weird scrolling behavior if fixed was used */
   body {
-    background-attachment: scroll;
+    /* No special overrides needed anymore since we use ::after for background */
   }
 
+  /* Make drift animation absolute on small screens to prevent repaint issues?
+     Actually, kept typical fixed behavior usually works better if we use ::before/after pattern.
+     Let's revert to fixed to ensure coverage, since we have the ::after layer now. */
   body::before {
-    position: absolute;
+     /* Reverting to standard fixed behavior as it's cleaner with the new system */
   }
 }
 
-/* Aurora Drift Animation Overlay */
+/* Aurora Drift Animation Overlay (Moving) */
 body::before {
   content: '';
   position: fixed;
@@ -209,6 +208,32 @@ body::before {
   animation: aurora-drift var(--aurora-duration) ease-in-out infinite;
   pointer-events: none;
   will-change: transform;
+}
+
+/* Static Background Gradient Layer (Fixed)
+   Solves "black box" scrolling issue on mobile/tablet by using fixed element 
+   instead of background-attachment: fixed which is buggy on iOS */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* Fallback */
+  height: 100dvh;
+  z-index: -2; /* Behind animation */
+  background-image: 
+    radial-gradient(ellipse 900px 700px at 15% 25%, var(--aurora-purple), transparent 70%),
+    radial-gradient(ellipse 800px 600px at 85% 75%, var(--aurora-blue), transparent 70%),
+    radial-gradient(ellipse 700px 500px at 50% 95%, var(--aurora-cyan), transparent 60%);
+  background-color: var(--color-bg);
+  pointer-events: none;
+}
+
+@supports (height: 100dvh) {
+  body {
+    min-height: 100dvh;
+  }
 }
 
 /* Aurora drift animation - subtly visible at 60s */
