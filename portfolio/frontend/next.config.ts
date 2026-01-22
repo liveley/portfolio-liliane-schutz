@@ -20,8 +20,8 @@ const nextConfig: NextConfig = {
     unoptimized: true, // Cloudflare Pages doesn't support Next.js Image Optimization
   },
   
-  // No static export - use Cloudflare Pages Functions for D1 database access
-  // output: 'export', // REMOVED - we need server-side functions for D1
+  // Export static site for Cloudflare Pages (API calls happen client-side via D1)
+  output: 'export',
 };
 
 export default nextConfig;
