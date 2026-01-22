@@ -76,6 +76,19 @@
   color: var(--wb-card-fg);
 }
 
+@media (max-width: 767px) {
+  .title {
+    font-size: 1rem; /* Smaller title on mobile to fit 2 columns */
+  }
+  .content {
+    padding: 0.75rem; /* Reduce padding on mobile */
+    gap: 0.5rem;
+  }
+  .thumbnail {
+    height: 120px; /* Shorter image on mobile */
+  }
+}
+
 .description {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);

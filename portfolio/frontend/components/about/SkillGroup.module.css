@@ -27,19 +27,18 @@
 
 @media (max-width: 767px) {
   .group {
-    padding: 0.75rem; /* Reduced padding (smaller than var(--s3)) */
-    min-width: 0; /* Prevent flex/grid overflow */
+    padding: 0.5rem; /* Further reduced padding */
+    min-width: 0; 
   }
   
   .title {
-    font-size: 1rem;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.9rem; /* Smaller title */
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
   }
   
-  /* Compacter vertical spacing for skills on mobile */
   .skills > div {
-     padding: 0.25rem 0; /* Reduce padding of SkillBadge (from var(--s2) 0) */
-     gap: 0.5rem;
+     padding: 0.15rem 0; 
+     gap: 0.25rem;
   }
 }
