@@ -8,7 +8,6 @@ import "./globals.css";
 import "./styles/white-box.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import ProjectDetailRouter from "@/components/projects/ProjectDetailRouter";
 import IntroRedirect from "@/components/IntroRedirect";
 
 // Body font: Source Sans 3
@@ -50,7 +49,6 @@ export default function RootLayout({
         <IntroRedirect />
         <Header />
         <main className="main-container">
-          <ProjectDetailRouter />
           {children}
         </main>
         <Footer />
