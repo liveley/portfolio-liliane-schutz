@@ -32,7 +32,7 @@ export type SocialType = "GitHub" | "LinkedIn" | "E-Mail";
  * - Filtering (category)
  */
 export interface Project {
-  id: string;
+  id?: string; // Optional: not needed for static export
   slug: string; // URL-friendly identifier for dynamic routes
   title: string;
   year: number;
