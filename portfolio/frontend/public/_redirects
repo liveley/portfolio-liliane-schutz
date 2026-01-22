@@ -1,1 +1,2 @@
-/* /index.html 200
+# No redirects needed for static export
+# All routes are pre-rendered as static HTML

@@ -7,25 +7,25 @@
   margin-top: 2rem;
 }
 
-/* Desktop: 2 Spalten */
+/* Tablet: 2 Spalten */
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Large desktop: still 2 spalten (not 3) */
+/* Desktop: 3 Spalten */
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
   }
 }
 
-/* Mobile: 1 Spalte */
+/* Mobile: 2 Spalten */
 @media (max-width: 767px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 }
