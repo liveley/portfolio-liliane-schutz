@@ -39,7 +39,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="mailto:lilly.schutz.ls@gmail.com"
+            href="mailto:liliane.v.schutz@gmail.com"
             className={styles.socialLink}
             aria-label="E-Mail"
             title="E-Mail"
