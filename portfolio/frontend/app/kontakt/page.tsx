@@ -45,7 +45,7 @@ export default function KontaktPage() {
             </svg>
           </a>
           <a
-            href="mailto:lilly.schutz.ls@gmail.com"
+            href="mailto:liliane.v.schutz@gmail.com"
             className={styles.iconLink}
             aria-label="E-Mail"
             title="E-Mail"
