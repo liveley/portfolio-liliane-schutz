@@ -14,23 +14,29 @@ walkable-memory-moosburg
 WiSe 2025/2026
 
 **Status:**  
-In Arbeit
+Abgeschlossen
 
 **Kategorie:**  
 uiux
 
+**Projektart:**  
+Uni-Projekt
+
 **1-Satz-Teaser (max 120 Zeichen):**  
-App-Prototyp für eine selbstgeführte Walking-Tour zu 13 historischen Orten in Moosburg an der Isar.
+Web-App-Prototyp für eine selbstgeführte Erinnerungstour zu 13 historischen Orten in Moosburg an der Isar.
 
 **Kurzbeschreibung (2–3 Sätze, sachlich):**  
-Walkable Memory ist ein interaktiver Hi-Fi-Prototyp für eine selbstgeführte Stadttour durch Moosburg, die an die Geschichte des Kriegsgefangenenlagers Stalag VII-A erinnert. Nutzer können 13 authentische Orte auf einer Karte auswählen, vor Ort Geschichten lesen, historische Fotos betrachten und AR-Overlays aktivieren. Das Projekt entstand im Rahmen eines Universitätsprojekts zur digitalen Erinnerungskultur und wurde aus einem Figma-Design in einen funktionsfähigen React-Prototyp übersetzt.
+Walkable Memory ist ein interaktiver Hi-Fi-Prototyp für eine selbstgeführte Stadttour durch Moosburg, die an die Geschichte des Kriegsgefangenenlagers Stalag VII-A erinnert. Nutzer können 13 Orte auf einer Karte auswählen, vor Ort Geschichten lesen, historische Fotos ansehen sowie AR- und Audio-Ansichten aufrufen. Das Projekt wurde im Rahmen eines Uni-Projekts konzipiert, gestaltet und aus einem Figma-Design in einen funktionsfähigen React/Vite-Prototyp übersetzt.
 
 **Tags (max 6):**  
-React, TypeScript, Figma, Vite, UX Design, Prototyping
+React, TypeScript, Vite, Leaflet, Figma, UX Design
+
+**Meine Rolle:**  
+UI/UX-Design und Frontend-Entwicklung des funktionsfähigen Prototyps.
 
 **Links:**  
-- GitHub: auf Anfrage  
-- Demo/Live: auf Anfrage  
+- GitHub: nicht öffentlich  
+- Demo/Live: keine öffentliche Demo  
 - Figma: [Walkable Memory Hi-Fi Prototype 5](https://www.figma.com/design/JRH47zvltUhwvxAj2QCLEF/Walkable-Memory-Hi-Fi-Prototype-5)
 
 ---
@@ -40,10 +46,13 @@ React, TypeScript, Figma, Vite, UX Design, Prototyping
 ### B1) Intro
 
 **One-liner:**  
-Eine digitale Walking-Tour-App, die vergessene Geschichte an authentischen Orten in Moosburg erlebbar macht.
+Eine digitale Walking-Tour-App, die die Geschichte des Stalag VII-A an realen Orten in Moosburg zugänglich macht.
 
 **Kontext:**  
-Das Projekt entstand im 3. Semester im Kurs "Research and Usability" an der Hochschule München. Ziel war es, ein UI/UX-Konzept für eine lokale Geschichts-App mit AR-Funktion zu entwickeln und als funktionsfähigen Prototyp umzusetzen. Der Fokus lag auf der Erkundung historischer Orte des ehemaligen Kriegsgefangenenlagers Stalag VII-A in Moosburg, die heute unter Wohnhäusern und Gewerbeflächen verborgen sind.
+Das Projekt entstand im 3. Semester im Kurs „Research and Usability“ an der Hochschule München. Ziel war es, Erinnerungskultur in ein mobiles, niedrigschwelliges Nutzungserlebnis zu übersetzen und als klickbaren Hi-Fi-Prototyp technisch umzusetzen. Denn die historischen Orte des ehemaligen Kriegsgefangenenlagers Stalag VII-A in Moosburg, sind heute unter Wohnhäusern und Gewerbeflächen verborgen.
+
+**Kurzfazit:**  
+Das Ergebnis ist ein abgeschlossener, funktionsfähiger Frontend-Prototyp mit vollständigem Tour-Flow, Kartenlogik und zweisprachiger Oberfläche.
 
 ---
 
@@ -51,17 +60,16 @@ Das Projekt entstand im 3. Semester im Kurs "Research and Usability" an der Hoch
 
 **Ausgangssituation:**  
 Die Geschichte des Stalag VII-A – eines der größten Kriegsgefangenenlager in Deutschland – ist in Moosburg heute kaum noch sichtbar. Originale Baracken wurden umgebaut, Gedenkstätten sind schwer auffindbar, und vielen Bewohnern ist die Historie ihres Stadtviertels unbekannt. Traditionelle Geschichtsvermittlung über Tafeln oder Museen erreicht vor allem jüngere Zielgruppen nicht, die an ihren Smartphones gewöhnt sind. Es fehlte ein niedrigschwelliges, mobiles Angebot, das vor Ort nutzbar ist und Geschichte mit modernen Mitteln erlebbar macht.
-
 **Ziele:**  
-- Historische Orte digital kartieren und mit Geschichten, Fotos und AR-Features verknüpfen  
-- Eine benutzerfreundliche, selbsterklärende App-Oberfläche entwickeln, die keine Einweisung benötigt  
-- Ein flexibles Erkundungskonzept schaffen: Nutzer können an jedem Ort starten und in beliebiger Reihenfolge erkunden  
+- 13 historische Orte in einer mobilen, selbsterklärenden Tour erfahrbar machen  
+- Geschichten, Kontext, Bilder sowie AR-/Audio-Interaktion pro Ort bündeln  
+- Flexible Nutzung ermöglichen: freier Einstieg oder geführte Route
 
 **Constraints/Requirements:**  
 - Funktionsfähiger Hi-Fi-Prototyp auf Basis eines Figma-Designs (keine Backend-Anbindung)  
-- Responsive für Mobile (primär Smartphone-Nutzung vor Ort)  
-- Mehrsprachigkeit (Deutsch/Englisch) für internationale Besucher  
-- Technische Umsetzung mit React/TypeScript, ohne externe Datenbanken oder Server-Logik  
+- Mobile-first Nutzung vor Ort, responsive umgesetzt  
+- Mehrsprachigkeit (Deutsch/Englisch)für internationale Besucher  
+- Frontend-Realisierung mit React/TypeScript/Vite
 
 ---
 
@@ -71,15 +79,15 @@ Die Geschichte des Stalag VII-A – eines der größten Kriegsgefangenenlager in
 UI/UX-Designer und Frontend-Developer
 
 **Verantwortung:**  
-- Übersetzung des Figma-Designs in funktionsfähigen React-Code  
-- Implementierung der Navigation und State-Management-Logik (ohne externe Libraries wie Redux)  
-- Entwicklung wiederverwendbarer Komponenten (Header, Karten, Modals, Navigation)  
-- Integration einer Leaflet-Karte mit Custom Markers für alle 13 Orte  
-- Aufbau der Bildergalerien, AR-Modal-Platzhalter und Audio-Feature-Interfaces  
-- Responsive Anpassung und Polishing der Interaktionen  
+- Übersetzung des Figma-Designs in funktionsfähige React-Komponenten  
+- Modellierung der Ortsdaten inkl. Story, Kontext, Koordinaten und Medien  
+- Implementierung des Seitenflusses (Landing, Karte, Detail, Liste, Completion, About)  
+- Integration der Karte mit Marker-Interaktion und optionaler Routenberechnung  
+- Umsetzung von AR- und Audio-Modal als interaktive Prototyp-Features  
+- Responsives UI-Polishing und Iteration entlang des Test-Feedbacks
 
 **Zusammenarbeit:**  
-Teamprojekt im Rahmen eines Uni-Kurses. Zusammenarbeit mit einem Mitarbeiter des Stalag-Museums in Moosburg, der historische Bilder und Archivmaterial bereitstellte. Innerhalb des Teams wurden Aufgaben in Research, Konzept, Design und Entwicklung aufgeteilt. Zusätzliche Fotos wurden vor Ort in Moosburg selbst aufgenommen.
+Teamprojekt mit Aufteilung in Research, Konzept, Design und Entwicklung. Es fanden Interviews mit lokalen Personen und Museumsbezug statt; historische Materialien und Ortsbezüge wurden in die Inhalte überführt. Mein Schwerpunkt lag auf UX-Übersetzung in Interface-Logik und technischer Umsetzung des klickbaren Prototyps.
 
 ---
 
@@ -100,85 +108,86 @@ Wir übersetzten die Wireframes in einen vollständigen Figma-Prototyp mit 7+ Sc
 **5. Technische Umsetzung**  
 Anschließend übersetzten wir das Figma-Design in einen funktionsfähigen React-Prototyp (Vite, TypeScript, Radix UI). Die 13 historischen Orte wurden mit GPS-Koordinaten, Bildern (bereitgestellt vom Stalag-Museum und selbst aufgenommen) und Geschichten modelliert. Die Leaflet-Karte integriert Custom Markers, der AR-Modal simuliert Kamera-Overlays. State Management erfolgt über React Hooks ohne externe Libraries.
 
-**6. Peer Testing und Iteration (laufend)**  
-Aktuell führen wir Peer-Testing mit Kommilitonen durch, um Usability-Probleme zu identifizieren. Getestet werden Navigation, Verständlichkeit der Inhalte und AR-Interaktion. Die Ergebnisse werden genutzt, um den Prototyp iterativ zu verbessern. Das Projekt ist noch in Arbeit.
+**6. Testing, Iteration und Abschluss**  
+Feedback aus Testläufen floss in Struktur, Texte und Interaktionsdetails ein. Der Prototyp wurde funktional abgeschlossen und als Portfolio-fähige Projektarbeit konsolidiert. KI-Tools wurden punktuell zur Unterstützung bei Formulierung und Feinschliff genutzt; Konzeption und Umsetzung lagen im Projektteam.
 
 ---
 
 ### B5) Umsetzung / Lösung
 
 **Kernfeatures:**  
+
 - **Interaktive Karte:** Leaflet-basierte Übersichtskarte mit 13 Markern, Dark Theme, Custom Icons und User-Position-Simulation  
 - **13 historische Orte:** Jeder Ort hat Titel, Teaser, Story, historischen Kontext, Bilder, GPS-Koordinaten und AR-Instruktionen  
 - **Memory Moment Screens:** Detailseiten mit Bildergalerien, scrollbarem Storytelling, AR-Button und Audio-Feature-Integration  
 - **Flexibles Entdecken:** Nutzer können an jedem Ort starten, in beliebiger Reihenfolge erkunden, Fortschritt wird angezeigt  
 - **Mehrsprachigkeit:** Deutsch/Englisch toggle im Header (translations.ts mit zentralen Übersetzungen)  
 - **AR-Modal-Platzhalter:** Simuliert AR-Ansicht mit Kamera-Mock und historischen Overlays (echte AR würde native App/WebXR erfordern)  
-- **Completion-Screen:** Nach Besuch mehrerer Orte kann die Tour abgeschlossen und neu gestartet werden  
-
+- **Completion-Screen:** Nach Besuch mehrerer Orte kann die Tour abgeschlossen und neu gestartet werden
 **Wichtige technische Entscheidungen:**  
-- **Vite statt Create-React-App:** Schnelleres Build-Tool, bessere Developer Experience, kleinere Bundle-Größe  
-- **TypeScript:** Typsicherheit für Location-Objekte, Page-States und Component-Props reduziert Fehler im Prototyp  
-- **Radix UI:** Barrierefreie, ungestylte Komponenten (Dialog, Accordion, etc.) als Basis – schneller als alles von Grund auf zu bauen  
-- **Leaflet für Karten:** Open-Source-Alternative zu Google Maps, keine API-Keys nötig für Prototyp, einfache Integration  
-- **Kein Backend/Database:** Alle Daten in App.tsx hardcoded – für einen Prototyp ausreichend, produktionsreif wäre eine CMS-Integration nötig  
+- **React + Vite:** schneller Prototyping-Stack mit schlanker Build-Pipeline  
+- **Zentraler App-State statt Router:** klare, direkte Steuerung des Tour-Flows  
+- **Leaflet für Kartenfunktion:** flexible Marker-/Routenlogik ohne proprietäre Maps-Integration  
+- **Statische Datenhaltung im Frontend:** hoher Iterationstempo im Prototypstadium
 
 **Architektur:**  
-Die App folgt einem einfachen Single-Page-Ansatz: App.tsx ist die zentrale Orchestrierungsebene, die per State den aktuellen Screen steuert (landing → map → memory → discover). Jeder Screen ist eine eigenständige Komponente, die Props für Daten (locations, currentLocation) und Callbacks (onSelectLocation, onContinue) erhält. Das translations.ts-Modul exportiert alle Texte in DE/EN als Objekt-Lookup. Custom Hooks (wie useMobile aus components/ui/) ermöglichen responsive Anpassungen. Das Design-System basiert auf Tailwind-Klassen mit Custom-Colors (#7BA8A3 für Türkis, #E8B4A8 für Salmon). Animationen sind per CSS @keyframes und Tailwind-Animation-Utilities realisiert. Die Ordnerstruktur ist flach (src/components/, src/utils/), da der Prototyp nicht auf Skalierung ausgelegt ist, sondern auf Demonstration und User-Testing.
+Die Anwendung ist als Single-Page-App aufgebaut. In `App.tsx` werden Seitenzustand, aktuelle Ortsauswahl, Besuchsfortschritt und Sprache verwaltet. Die Hauptscreens (`LandingPage`, `MapPage`, `MemoryMomentPage`, `LocationListPage`, `CompletionPage`, `AboutPage`) sind als getrennte Komponenten organisiert und über Props/Callbacks verbunden. Ortsdaten liegen in einem zentralen Datenarray mit einheitlichem Typmodell (Titel, Story, Koordinaten, Medien, AR-/Audio-Texte). Die Leaflet-Map wird in der Kartenkomponente initialisiert, Marker dynamisch aus den Ortsdaten erzeugt und Interaktionen in den App-Flow zurückgespielt. Für Mehrsprachigkeit kommt ein translations-Objekt mit DE/EN-Keys zum Einsatz. Styling und UI-Verhalten basieren auf Utility-CSS, ergänzt durch Radix-UI-Bausteine.
 
-**Optional: Code-Snippet-Idee**  
-Die MapPage-Komponente ([MapPage.tsx](src/components/MapPage.tsx), Zeilen 40-95) zeigt die Leaflet-Integration: dynamisches Laden der Library, Custom Marker mit divIcon, Event-Handler für Marker-Clicks. Das demonstriert den Hybrid-Ansatz zwischen React und externen Libraries.
+**Technische Herausforderungen:**  
+- Lifecycle-sichere Integration einer extern geladenen Kartenbibliothek  
+- Konsistente State-Übergänge über mehrere Screens ohne Router-Stack  
+- Balance zwischen historischer Informationsdichte und mobilem Lesefluss  
+- Klare Kennzeichnung von Simulation (AR/Audio) im Prototypkontext
+
+**Code-Snippet-Idee:**  
+`src/components/MapPage.tsx` eignet sich gut als Portfolio-Ausschnitt, weil dort Kartenintegration, Marker-Interaktion und Route-Berechnung in einer zentralen UI-Logik zusammenkommen.
 
 ---
 
 ### B6) Design & Screens (mit Bildplan)
 
-**Screens zur Dokumentation (vorgeschlagene Reihenfolge):**
+1. **Dateiname-Vorschlag:** `screen-01-landing.png`  
+   **Wo aufnehmen / erstellen:** Startzustand (`landing`)  
+   **Was zeigen:** Einstieg, Sprachumschaltung, klare Haupt-CTA  
+   **Caption:** Einstieg in die Tour mit klarer Handlungsführung.  
+   **Alt-Text:** Startscreen mit Titel und Button „Geschichte starten“.
 
-1. **screen-01-landing.png**  
-   - **Woher:** Landing-Screen beim ersten Laden (App.tsx state: "landing")  
-   - **Caption:** Einstiegsscreen mit animierten Feature-Tags und CTA-Button  
-   - **Alt-Text:** Dunkler Screen mit großem Titel "Ein Ort. Eine Geschichte. Eine Minute." und scrollenden Tags wie "AR-Ansichten" und "Audio-Geschichten"
+2. **Dateiname-Vorschlag:** `screen-02-map-overview.png`  
+   **Wo aufnehmen / erstellen:** Kartenansicht ohne selektierten Marker  
+   **Was zeigen:** Gesamtüberblick über die 13 Orte  
+   **Caption:** Karte als primäre Navigation für die historische Tour.  
+   **Alt-Text:** Kartenansicht von Moosburg mit mehreren Ortsmarkern.
 
-2. **screen-02-map-overview.png**  
-   - **Woher:** Map-Screen nach Klick auf "Geschichte starten" (App.tsx state: "map")  
-   - **Caption:** Interaktive Karte mit 13 Orten und User-Position, Dark Theme  
-   - **Alt-Text:** Leaflet-Karte von Moosburg mit weißen Marker-Pins und türkisem User-Standort-Punkt
+3. **Dateiname-Vorschlag:** `screen-03-route-mode.png`  
+   **Wo aufnehmen / erstellen:** Routenmodus nach Startpunktwahl  
+   **Was zeigen:** nummerierte Reihenfolge und Verbindungslogik  
+   **Caption:** Optionaler geführter Modus mit automatisch berechneter Reihenfolge.  
+   **Alt-Text:** Karte mit nummerierten Wegpunkten und Route.
 
-3. **screen-03-location-selection.png**  
-   - **Woher:** Map-Screen, nachdem ein Marker angeklickt wurde (selectedLocationIndex !== null)  
-   - **Caption:** Bottom-Sheet mit Ort-Details und "Ort ansehen"-Button  
-   - **Alt-Text:** Karte mit aufgeklappter Karte am unteren Bildschirmrand, zeigt Titel, Teaser und Gehzeit
+4. **Dateiname-Vorschlag:** `screen-04-memory-moment.png`  
+   **Wo aufnehmen / erstellen:** Detailseite eines Ortes (`memory`)  
+   **Was zeigen:** Storytext, Kontextbereich, Medien und AR-Zugang  
+   **Caption:** Ortsdetailseite mit inhaltlichem Fokus und Medienzugriff.  
+   **Alt-Text:** Detailansicht eines historischen Ortes mit Text und AR-Button.
 
-4. **screen-04-memory-moment.png**  
-   - **Woher:** Memory Moment Screen nach Ort-Auswahl (App.tsx state: "memory")  
-   - **Caption:** Detailseite mit Bildergalerie, Story-Text und AR-Button im Header  
-   - **Alt-Text:** Scrollbare Seite mit historischem Foto, Story-Text und türkisem AR-Button oben rechts
+5. **Dateiname-Vorschlag:** `screen-05-list-progress.png`  
+   **Wo aufnehmen / erstellen:** `LocationListPage` mit bereits besuchten Orten  
+   **Was zeigen:** Fortschritt und alternative Navigation zur Karte  
+   **Caption:** Listenansicht als schneller Zugriff mit Besuchsstatus.  
+   **Alt-Text:** Ortsliste mit Vorschaubildern und markierten besuchten Orten.
 
-5. **screen-05-ar-modal.png**  
-   - **Woher:** Memory Moment Screen, nach Klick auf AR-Button (showAR: true)  
-   - **Caption:** AR-Modal mit Kamera-Simulation und historischem Overlay  
-   - **Alt-Text:** Vollbild-Modal mit Kamera-Platzhalter und eingeblendeten historischen Gebäudestrukturen
-
-6. **screen-06-discover.png**  
-   - **Woher:** Discover-Screen nach "Weiter erkunden" (App.tsx state: "discover")  
-   - **Caption:** Übersicht der nächsten Orte mit Fortschrittsanzeige  
-   - **Alt-Text:** Liste von Ortskarten mit Thumbnails, Teaser und "Ort ansehen"-Buttons, oben Badge mit "3 von 13 erkundet"
-
-7. **screen-07-completion.png**  
-   - **Woher:** Completion-Screen nach "Rundgang abschließen" (App.tsx state: "completion")  
-   - **Caption:** Abschlussscreen mit Zusammenfassung und Option zum Neustart  
-   - **Alt-Text:** Zentrierter Screen mit "Glückwunsch"-Titel, Fortschrittsanzeige und "Tour neu starten"-Button
+6. **Dateiname-Vorschlag:** `screen-06-completion.png`  
+   **Wo aufnehmen / erstellen:** `completion`-Screen  
+   **Was zeigen:** Abschlusszustand und Neustartoption  
+   **Caption:** Abschlussansicht nach Tourdurchlauf mit Restart-Funktion.  
+   **Alt-Text:** Abschlussseite mit Anzahl erkundeter Orte und Neustart-Button.
 
 ---
 
 ### B7) Ergebnisse / Outcome
 
 **Ergebnis:**  
-Der Prototyp ist funktionsfähig und demonstriert alle wesentlichen User Flows: Onboarding, Karten-Navigation, Ort-Details, AR-Simulation und Tour-Abschluss. Die App ist responsive und auf Smartphones nutzbar, die Sprache kann per Toggle umgeschaltet werden. Das laufende Peer-Testing mit Kommilitonen liefert erste Eindrücke: Die Verbindung von historischem Content und modernen UX-Patterns (Karten, AR-Modals, scrollende Tags) wird als gelungen wahrgenommen. Die technische Umsetzung zeigt, wie ein komplexes Figma-Design systematisch in React übersetzt werden kann.
-
-**Impact:**  
-Das Projekt zeigt den vollständigen UX-Research-Prozess: von Interviews und Konzeptentwicklung über Wireframes bis zum funktionsfähigen Hi-Fi-Prototyp. Die Zusammenarbeit mit dem Stalag-Museum ermöglichte authentische historische Inhalte. Die modulare Struktur und Verwendung von TypeScript machen den Code wartbar und erweiterbar – etwa für Backend-Anbindung (CMS für Ort-Daten) oder erweiterte AR-Features. Aus UX-Sicht entstand ein niedrigschwelliges Konzept, das verschiedene Zielgruppen (Touristen, Schulklassen, lokale Bewohner) anspricht und ohne Tutorial nutzbar ist.
+Walkable Memory liegt als abgeschlossener, klickbarer Web-Prototyp mit vollständigem User-Flow vor. Die Anwendung bündelt historische Inhalte, Ortsbezug und Tour-Navigation in einer klaren mobilen Oberfläche. Das Projekt diente dazu, ein reales Erinnerungsthema von Research und Konzept bis zur funktionsfähigen UI-Implementierung praktisch umzusetzen.
 
 ---
 
@@ -186,78 +195,49 @@ Das Projekt zeigt den vollständigen UX-Research-Prozess: von Interviews und Kon
 
 **Learnings:**
 
-1. **State Management für Multi-Screen-Apps:** Der Page-State-Ansatz (string enum: "landing" | "map" | ...) funktioniert gut für Prototypen, stößt aber bei komplexeren Navigationsmustern an Grenzen. Für eine produktionsreife App wäre ein Router (React Router) sinnvoller.
-
-2. **Leaflet in React:** Das dynamische Nachladen von Leaflet (Script-Tag im useEffect) ist eine pragmatische Lösung für Prototypen, aber fehleranfällig. Eine dedizierte React-Leaflet-Bibliothek (react-leaflet) wäre stabiler.
-
-3. **AR-Simulation vs. echtes AR:** Der AR-Modal ist ein Mock – echtes AR würde WebXR oder native Apps (ARKit/ARCore) erfordern. Für User-Testing war der Mock ausreichend, aber Nutzer erwarten echte Kamera-Overlays.
-
-4. **Hardcodierte Daten:** Alle 13 Orte sind in App.tsx hardcoded. Das macht Änderungen mühsam. Ein JSON-File oder CMS-Integration wäre flexibler und würde Content-Updates ohne Code-Changes ermöglichen.
-
-5. **Barrierefreiheit:** Radix UI bringt gute Accessibility-Basics mit (Keyboard-Navigation, ARIA-Attribute), aber Bilder brauchen Alt-Texte und die Karte braucht Screenreader-Unterstützung. Das wurde im Prototyp vernachlässigt.
-
-6. **Performance:** Das gleichzeitige Laden aller Bilder (13 Orte × mehrere Fotos) verlangsamt den initialen Load. Lazy Loading oder progressive Image-Loading wären für eine Live-App essenziell.
-
-**Nächstes sinnvolles Improvement:**  
-Eine Backend-Integration mit CMS (z.B. Strapi oder Contentful), um Orte, Bilder und Texte redaktionell zu pflegen. Außerdem echte GPS-Tracking-Logik, um Nutzer automatisch zum nächsten Ort zu navigieren, und Offline-Support via Service Worker für Nutzung ohne Mobilfunknetz vor Ort.
-
+1. **State-Flow früh sauber definieren:** Bei Multi-Screen-Prototypen spart ein klarer Seitenzustand später viel Refactoring.  
+2. **Kartenlogik ist UX-kritisch:** Markerzustände, Auswahlfeedback und Routing beeinflussen die Verständlichkeit der Tour stark.  
+3. **Informationsdichte steuern:** Historische Inhalte brauchen Kontext, müssen mobil aber in gut lesbare Abschnitte übersetzt werden.  
+4. **Simulation transparent machen:** AR-/Audio-Mocks sind für Prototyping sinnvoll, sollten aber klar von Produktfeatures abgegrenzt sein.  
+5. **Struktur für spätere Skalierung mitdenken:** Statische Daten beschleunigen Prototyping, ein späterer Schritt Richtung CMS ist sinnvoll.
+---
 ---
 
 ## D) QUELLENHINWEISE (Repo-Belege)
 
-**README.md:**  
-- Projekttitel: "Walkable Memory Hi-Fi Prototype 5"  
-- Referenz auf Figma-Design: [Link](https://www.figma.com/design/JRH47zvltUhwvxAj2QCLEF/Walkable-Memory-Hi-Fi-Prototype-5)  
-- Setup-Anleitung: npm install, npm run dev  
+- `README.md`: Projektkontext, Setup, Figma-Referenz  
+- `package.json`: Stack, Dependencies, Build-/Run-Skripte  
+- `src/App.tsx`: zentrale App-Logik, Ortsdaten, Navigation, Statusverwaltung  
+- `src/components/MapPage.tsx`: Kartenintegration, Markerlogik, Routenmodus  
+- `src/components/MemoryMomentPage.tsx`: Detailansicht, AR-/Audio-Trigger  
+- `src/components/ARModal.tsx`: AR-Interaktionsansicht  
+- `src/components/AudioModal.tsx`: Audio-Interaktion  
+- `src/components/LocationListPage.tsx`: Listenansicht und Fortschritt  
+- `src/components/CompletionPage.tsx`: Abschluss-Flow  
+- `src/utils/translations.ts`: DE/EN-Übersetzungsstruktur  
+- `src/assets/`: visuelle Projektassets  
+- `PORTFOLIO-CONTENT-walkable-memory.md`: bestehende Projekttextbasis
 
-**package.json:**  
-- Tech-Stack: React 18.3.1, TypeScript, Vite 6.3.5  
-- UI-Libraries: Radix UI (diverse Komponenten), Tailwind (via tailwind-merge/clsx)  
-- Weitere Dependencies: Leaflet (Karten), Lucide (Icons), Embla Carousel (Bildergalerien)  
+---
 
-**src/App.tsx (Zeilen 1-200):**  
-- Zentrale State-Management-Logik (currentPage, currentLocationIndex, visitedLocations, language)  
-- Location-Datenmodell mit 13 Orten (Titel, Teaser, Story, GPS, Bilder, AR-Instruktionen)  
-- Beispiel-Orte: Heimatmuseum, Stalag-Gedenkplatz, Franzosenfriedhof, Sabathielbaracke  
+## E) OPTIONAL: COPY-PASTE-VERSION FÜR DATENSTRUKTUR
 
-**src/components/LandingPage.tsx:**  
-- Animierter Einstiegsscreen mit scrollenden Feature-Tags (CSS Keyframes)  
-- Mehrsprachigkeit (DE/EN toggle)  
-- CTA-Button "Geschichte starten"  
-
-**src/components/MapPage.tsx:**  
-- Leaflet-Integration mit Custom Markers  
-- Dark Theme (CartoDB)  
-- User-Position-Simulation  
-
-**src/components/MemoryMomentPage.tsx:**  
-- Detailseiten mit Bildergalerien, Story-Text, AR-Button  
-- Audio-Modal und AR-Modal-Integration  
-
-**src/components/DiscoverPage.tsx:**  
-- Übersicht der nächsten Orte  
-- Fortschrittsanzeige ("3 von 13 erkundet")  
-- "Rundgang abschließen"-Button  
-
-**src/components/AboutPage.tsx:**  
-- Projektbeschreibung: "Geschichte vor Ort erleben"  
-- Features: Vor Ort erleben, Digital entdecken, Erinnerung bewahren  
-
-**src/utils/translations.ts:**  
-- Zentrales Übersetzungs-Objekt für DE/EN  
-- Übersetzungen für Header, Navigation, Screens  
-
-**src/Attributions.md:**  
-- Credits für shadcn/ui (MIT License)  
-- Credits für Unsplash-Fotos  
-
-**Externe Quellen:**  
-- Historische Bilder: Stalag-Museum Moosburg (Mitarbeiter-Kooperation)  
-- Zusätzliche Fotos: Eigene Aufnahmen vor Ort in Moosburg  
-- Texte: Recherche basierend auf Museum-Material und historischen Quellen  
-
-**Ordnerstruktur:**  
-- src/components/: Alle Screen-Komponenten + wiederverwendbare UI-Elemente (components/ui/)  
-- src/utils/: Hilfsfunktionen (translations.ts)  
-- src/styles/: globals.css  
-- src/guidelines/: Guidelines.md (Leitfaden für AI-generierte Komponenten)  
+```ts
+{
+  title: "Walkable Memory – Digitale Erinnerungstour Stalag VII-A",
+  slug: "walkable-memory-moosburg",
+  year: "WiSe 2025/2026",
+  status: "Abgeschlossen",
+  category: "uiux",
+  projectType: "Uni-Projekt",
+  teaser: "Web-App-Prototyp für eine selbstgeführte Erinnerungstour zu 13 historischen Orten in Moosburg.",
+  description: "Interaktiver React/Vite-Prototyp mit Kartenansicht, Ortsstories, AR-/Audio-Interaktionen und Tour-Fortschritt.",
+  tags: ["React", "TypeScript", "Vite", "Leaflet", "Figma", "UX Design"],
+  role: "UI/UX-Design und Frontend-Entwicklung des funktionsfähigen Prototyps.",
+  links: {
+    github: "nicht öffentlich",
+    live: "keine öffentliche Demo",
+    figma: "https://www.figma.com/design/JRH47zvltUhwvxAj2QCLEF/Walkable-Memory-Hi-Fi-Prototype-5"
+  }
+}
+```
