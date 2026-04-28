@@ -20,7 +20,7 @@ export const dynamic = 'error'; // Ensure this only generates static pages
  */
 export async function generateStaticParams() {
   try {
-    // Load projects from JSON file (for route generation at build time)
+    // Load projects from backend JSON file (single source of truth)
     const projectsPath = join(process.cwd(), '..', 'backend', 'src', 'data', 'projects-data.json');
     const projectsData = JSON.parse(readFileSync(projectsPath, 'utf-8'));
     

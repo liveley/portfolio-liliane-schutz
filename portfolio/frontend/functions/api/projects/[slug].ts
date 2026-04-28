@@ -8,6 +8,10 @@ interface Env {
   DB: D1Database;
 }
 
+const LEGACY_SLUG_MAP: Record<string, string> = {
+  "swm-change-management-automation": "swm-change-management-portal",
+};
+
 function safeJsonArray(value: unknown): string[] {
   if (!value || typeof value !== 'string') return [];
   try {
@@ -20,7 +24,8 @@ function safeJsonArray(value: unknown): string[] {
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { DB } = context.env;
-  const slug = context.params.slug as string;
+  const rawSlug = context.params.slug as string;
+  const slug = LEGACY_SLUG_MAP[rawSlug] ?? rawSlug;
   
   if (!slug) {
     return new Response(

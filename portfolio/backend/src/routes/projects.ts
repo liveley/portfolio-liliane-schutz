@@ -10,6 +10,9 @@ import { Project } from '../models/Project';
 import { asyncHandler, AppError } from '../middleware/errorHandler';
 
 const router = Router();
+const LEGACY_SLUG_MAP: Record<string, string> = {
+  'swm-change-management-automation': 'swm-change-management-portal',
+};
 
 /**
  * GET /api/projects
@@ -61,7 +64,8 @@ router.get(
 router.get(
   '/:slug',
   asyncHandler(async (req, res) => {
-    const { slug } = req.params;
+    const rawSlug = req.params.slug;
+    const slug = LEGACY_SLUG_MAP[rawSlug] ?? rawSlug;
 
     const project = await Project.findOne({ slug }).select('-__v');
 
