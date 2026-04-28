@@ -218,13 +218,16 @@ function getDefaultProcessSteps() {
 }
 
 function formatImageLabel(imagePath: string, fallbackIndex: number): string {
+  const fixedCaption = getFixedImageCaption(imagePath);
+  if (fixedCaption) return fixedCaption;
+
   const file = imagePath.split('/').pop() ?? '';
   const noExt = file.replace(/\.[a-zA-Z0-9]+$/, '');
 
   const normalized = noExt
     .replace(/^screen[-_. ]*\d+[-_. ]*/i, '')
     .replace(/- iMockup - iPhone \d+ Pro Max/i, '')
-    .replace(/[_-.]+/g, ' ')
+    .replace(/[_.-]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 
@@ -240,4 +243,46 @@ function formatImageLabel(imagePath: string, fallbackIndex: number): string {
     .join(' ');
 
   return titled;
+}
+
+function getFixedImageCaption(imagePath: string): string | null {
+  const captions: Record<string, string> = {
+    "/projects/life-threads/screen-01-intro-hero.png": "Intro mit Kennzahlen und Kontext",
+    "/projects/life-threads/screen-02-year-at-a-glance.png": "Jahresansicht mit Aktivitätsmustern",
+    "/projects/life-threads/screen-03-day-clock-phase.png": "Day-Clock mit Phasenvergleich",
+    "/projects/life-threads/screen-04-sunburst-sportmix.png": "Sunburst: Aktivitätsmix über Phasen",
+    "/projects/life-threads/screen-05-phase-explorer.png": "Phase Explorer für freie Vergleiche",
+
+    "/projects/ressource-realms/screen-00-start-screen.png": "Startmenü des Spiels",
+    "/projects/ressource-realms/screen-02-game-explanation.png": "Spielerklärung und Einstieg",
+    "/projects/ressource-realms/screen-03-hexagons-chosen.png": "3D-Spielbrett mit Hexfeldern",
+    "/projects/ressource-realms/screen-06-Entwicklungskarten.png": "Entwicklungskarten-Interface",
+    "/projects/ressource-realms/screen-08-victory-screen.png": "Siegansicht mit Endstand",
+
+    "/projects/studyid/screen-01-welcome.png": "Willkommensansicht von Joy",
+    "/projects/studyid/screen-02-chat-example.png": "Fachliche Frage im Chatverlauf",
+    "/projects/studyid/screen-03-chat-window-big.png": "Chatfenster mit Lernkontext",
+    "/projects/studyid/Screenshot 2025-01-20 205411.png": "Upload-Feedback für neue PDFs",
+    "/projects/studyid/Screenshot 2025-01-23 174928.png": "Geladener Verlauf aus gespeicherten Chats",
+
+    "/projects/walkable-memory/screen-01-landing-laptop.png": "Landing mit Tour-Einstieg",
+    "/projects/walkable-memory/screen-02-map-overview-single.png": "Kartenübersicht der Stationen",
+    "/projects/walkable-memory/screen-03-route-mode.png": "Geführter Routenmodus",
+    "/projects/walkable-memory/screen-04-memory-moment2.png": "Memory-Moment Detailansicht",
+    "/projects/walkable-memory/screen-05-list-progress.png": "Listenansicht mit Fortschritt",
+
+    "/projects/swm/screen-01-landing.png": "Landing des Change Portals",
+    "/projects/swm/screen-02-classification.png": "Projektklassifizierung mit Leitfragen",
+    "/projects/swm/screen-03-dynamic-form.png": "Dynamisches Formular mit Feldlogik",
+    "/projects/swm/screen-04-chat-assistant-2.png": "Chat-Assistent im Formularflow",
+    "/projects/swm/screen-05-dashboard-session-details.png": "Dashboard mit Session-Details",
+
+    "/projects/uchimizu/Uchimizu-preview-screen.png": "Uchimizu Startscreen und visuelle Vorschau",
+    "/projects/uchimizu/impactseite-2.png": "Impact-Seite mit Wirkung und FAQ",
+    "/projects/uchimizu/join-2.png": "Join-Bereich mit Beteiligungsstufen",
+    "/projects/uchimizu/uchimizu-empathize-and-discover.png": "Research: Empathize & Discover",
+    "/projects/uchimizu/uchimizu-user-journey-empathy-map.png": "Journey und Empathy Map aus der Synthese",
+  };
+
+  return captions[imagePath] ?? null;
 }
