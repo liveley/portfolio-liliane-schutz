@@ -37,7 +37,7 @@ export default function AboutHero({ content }: AboutHeroProps) {
 
         <div className={styles.portrait}>
           <Image 
-            src="/liliane.jpg" 
+            src="/liliane.png" 
             alt="Liliane Schutz"
             width={400}
             height={400}
