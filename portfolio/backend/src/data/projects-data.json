@@ -49,12 +49,17 @@
         "Abgeschlossene Scrollytelling-Anwendung mit mehreren verknüpften Datenperspektiven",
         "Kohärente Darstellung von Routinen, Überlastung und Balance über Phasen hinweg",
         "Statisches Deployment mit lokal ausgelieferten Datenfiles"
+      ],
+      "images": [
+        "/projects/life-threads/screen-01-intro-hero.png",
+        "/projects/life-threads/screen-03-day-clock-phase.png",
+        "/projects/life-threads/screen-05-phase-explorer.png"
       ]
     }
   },
   {
     "slug": "resource-realms-3d",
-    "title": "resource Realms – 3D-Strategiespiel im Browser",
+    "title": "Resource Realms – 3D-Strategiespiel im Browser",
     "year": 2025,
     "category": "coding",
     "featured": true,
@@ -63,7 +68,7 @@
     "tags": ["Three.js", "JavaScript", "WebGL", "Blender", "Vite", "Game Development"],
     "role": "Full-Stack Game Developer im 4-Personen-Team",
     "techStack": ["Three.js", "JavaScript", "Vite", "Blender", "WebGL", "Cannon-es"],
-    "coverImage": "/projects/resource-realms.png",
+    "coverImage": "/projects/ressource-realms.png",
     "links": {
       "note": "auf Anfrage"
     },
@@ -87,7 +92,7 @@
         },
         {
           "title": "Spiellogik-Implementierung",
-          "description": "Core-Mechaniken: Bau-, resourcen-, Handels- und Entwicklungskartenlogik implementiert."
+          "description": "Core-Mechaniken: Bau-, Ressourcen-, Handels- und Entwicklungskartenlogik implementiert."
         },
         {
           "title": "Polish & Testing",
@@ -98,6 +103,11 @@
         "Voll spielbare 3D-Umsetzung für 2 Spieler im Browser",
         "Automatische Siegpunkt- und Regelverwaltung",
         "Abgeschlossen mit Note 1,0"
+      ],
+      "images": [
+        "/projects/ressource-realms/screen-00-start-screen.png",
+        "/projects/ressource-realms/screen-03-hexagons-chosen.png",
+        "/projects/ressource-realms/screen-08-victory-screen.png"
       ]
     }
   },
@@ -143,6 +153,11 @@
         "Funktionsfähiger MVP mit dokumentbasierten Antworten",
         "PDF-Upload mit Re-Indexierung und Chat-Verwaltung",
         "Lokal nutzbares Tool für Lernunterstützung"
+      ],
+      "images": [
+        "/projects/studyid/screen-01-welcome.png",
+        "/projects/studyid/screen-02-chat-example.png",
+        "/projects/studyid/screen-03-chat-window-big.png"
       ]
     }
   },
@@ -188,6 +203,11 @@
         "Abgeschlossener klickbarer Frontend-Prototyp mit vollständigem User-Flow",
         "13 Orte mit Story, Medien und Karteninteraktion integriert",
         "Mobile-first und zweisprachig (DE/EN) umgesetzt"
+      ],
+      "images": [
+        "/projects/walkable-memory/screen-01-landing-laptop.png",
+        "/projects/walkable-memory/screen-03-route-mode.png",
+        "/projects/walkable-memory/screen-04-memory-moment2.png"
       ]
     }
   },
@@ -279,6 +299,11 @@
         "Abgeschlossener End-to-End-Flow für Intake und Session-Handling",
         "Stabiler Proof-of-Concept mit Formular, Chat und Workflow-Triggern",
         "Dashboard für Übersicht, Weiterverarbeitung und PDF-Export"
+      ],
+      "images": [
+        "/projects/swm/screen-01-landing.png",
+        "/projects/swm/screen-03-dynamic-form.png",
+        "/projects/swm/screen-05-dashboard-session-details.png"
       ]
     }
   },
@@ -323,6 +348,11 @@
         "Abgeschlossener mobiler Hackathon-Prototyp (2 Tage)",
         "Klare Informationsarchitektur von Verständnis bis Aktivierung",
         "Event- und Community-Fokus mit niedrigschwelligen Beteiligungswegen"
+      ],
+      "images": [
+        "/projects/uchimizu/Startseite 2 - iMockup - iPhone 16 Pro Max.png",
+        "/projects/uchimizu/Impactseite 2 - iMockup - iPhone 16 Pro Max.png",
+        "/projects/uchimizu/Join 2 - iMockup - iPhone 16 Pro Max.png"
       ]
     }
   }

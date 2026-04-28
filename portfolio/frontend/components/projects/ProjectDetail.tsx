@@ -125,18 +125,22 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
       <section className={styles.section}>
         <AuroraHeading as="h2" className={styles.sectionTitle}>Screens & Designs</AuroraHeading>
         <div className={styles.screens}>
-          {project.coverImage && (
+          {hasDetailContent && project.detail?.images && project.detail.images.length > 0 ? (
+            project.detail.images.map((imageSrc, index) => (
+              <ImageWithCaption
+                key={`${project.slug}-image-${index + 1}`}
+                src={imageSrc}
+                alt={`${project.title} - Screen ${index + 1}`}
+                caption={`Screen ${index + 1}`}
+              />
+            ))
+          ) : project.coverImage ? (
             <ImageWithCaption
               src={project.coverImage}
               alt={`${project.title} - Hauptansicht`}
               caption="Hauptansicht der Anwendung"
             />
-          )}
-          <ImageWithCaption
-            src=""
-            alt={`${project.title} - Weitere Ansicht`}
-            caption="Weitere Ansichten folgen"
-          />
+          ) : null}
         </div>
       </section>
 
