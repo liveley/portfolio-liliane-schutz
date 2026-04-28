@@ -1,56 +1,60 @@
 [
   {
     "slug": "life-threads-data-vis",
-    "title": "Life Threads – Interaktive Datenvisualisierung",
+    "title": "Life Threads – Persönliche Daten als Scrollytelling-Visualisierung",
     "year": 2025,
     "category": "data",
     "featured": true,
-    "status": "in-progress",
-    "shortDescription": "Scrollytelling-Visualisierung meines Jahres: Schlaf, Sport, Lesen und Uni – in interaktiven Datengeschichten.",
-    "tags": ["SvelteKit", "TypeScript", "D3.js", "Canvas API", "Scrollytelling", "Data Visualization"],
-    "role": "Solo-Entwicklerin und Information Designerin",
-    "techStack": ["SvelteKit", "TypeScript", "D3.js", "Canvas API", "IntersectionObserver"],
+    "status": "finished",
+    "shortDescription": "Interaktive Datenstory über Schlaf, Bewegung, Lesen und Uni-Routinen im Jahr 2025.",
+    "tags": ["SvelteKit", "TypeScript", "D3", "Scrollytelling", "Data Visualization", "Canvas"],
+    "role": "Konzeption, Datenaufbereitung, Visual Design und Implementierung (Einzelprojekt)",
+    "techStack": ["SvelteKit", "TypeScript", "D3", "Canvas", "SVG", "IntersectionObserver"],
     "coverImage": "/projects/life-threads.png",
     "links": {
       "note": "auf Anfrage"
     },
     "detail": {
-      "context": "Universitätsprojekt im Rahmen des Kurses 'Information Design'. Ziel war es, persönliche Daten nicht nur zu visualisieren, sondern eine nachvollziehbare Geschichte zu erzählen.",
-      "problem": "Rohdaten aus verschiedenen Quellen liegen als CSV-Dateien vor, aber die Geschichte dahinter bleibt unsichtbar.",
+      "context": "Universitätsprojekt im Kurs Information Design. Ziel war, persönliche Daten als zusammenhängende Geschichte statt als isoliertes Dashboard aufzubereiten.",
+      "problem": "Getrennte CSV-Datenquellen (Health, Reading, Uni) zeigten nur Einzelfakten; Zusammenhänge zwischen Schlaf, Aktivität, Lesen und Studienalltag blieben unsichtbar.",
       "goals": [
-        "Persönliche Daten aus drei Quellen in einer konsistenten Visualisierung zusammenführen",
-        "Scroll-basiertes Storytelling-Format entwickeln",
-        "Canvas-basierte Visualisierungen für Performance bei großen Datensätzen"
+        "Mehrere Datenquellen in ein konsistentes Modell und eine gemeinsame Story überführen",
+        "Ein scrollgesteuertes Format vom Überblick bis zur Detailanalyse entwickeln",
+        "Muster über Zeiträume und Phasen visuell klar vergleichbar machen"
       ],
-      "role": "Solo-Entwicklerin und Information Designerin: Datenaufbereitung, CSV-Parser-Entwicklung, Scrollytelling-System mit Svelte, Canvas-Rendering.",
+      "role": "Solo-Entwicklung: Datenlogik, Scrollytelling-Architektur, Visualisierung, Responsive-Umsetzung und Dokumentation.",
       "process": [
         {
-          "title": "Research & Datenanalyse",
-          "description": "Rohdaten runtergeladen und Data Wrangling durchgeführt. Erste explorative Visualisierungen in Python/Pandas."
+          "title": "Datenbasis strukturieren",
+          "description": "CSV-Quellen normalisiert, Formate vereinheitlicht und in typsichere Strukturen überführt."
         },
         {
-          "title": "Konzept & Wireframing",
-          "description": "Scrollytelling-Struktur definiert: Intro → Year at a Glance → A Day in My Life → Weekly Rhythm."
+          "title": "Narrative Phasen definieren",
+          "description": "Drei Jahresphasen als wiederkehrende Erzähl- und Filterlogik für Text und Visualisierung festgelegt."
         },
         {
-          "title": "Technische Architektur",
-          "description": "SvelteKit mit TypeScript. CSV-Parser in utils/, State Management mit Svelte Stores."
+          "title": "Scrollytelling-Architektur bauen",
+          "description": "Eigenes System mit Sticky-Bereich, Triggern und aktivem Step via IntersectionObserver umgesetzt."
         },
         {
-          "title": "Implementierung der Visualisierungen",
-          "description": "Start mit SVG-basierten Charts, Migration zu Canvas für Performance."
+          "title": "Visualisierungen entwickeln",
+          "description": "Year-at-a-Glance, Day Clock, Weekly Flow und Phase Explorer nach Fragestellung designt und synchronisiert."
+        },
+        {
+          "title": "Responsive Feinschliff",
+          "description": "Layout- und Scrollverhalten für Desktop, Tablet und Mobile stabilisiert und lesbar gemacht."
         }
       ],
       "results": [
-        "Funktionsfähige Scrollytelling-Visualisierung mit 4 interaktiven Charts",
-        "Performance-optimiert: 365 Tage Daten in Canvas mit 60fps",
-        "Custom Scrollytelling-System ohne externe Dependencies"
+        "Abgeschlossene Scrollytelling-Anwendung mit mehreren verknüpften Datenperspektiven",
+        "Kohärente Darstellung von Routinen, Überlastung und Balance über Phasen hinweg",
+        "Statisches Deployment mit lokal ausgelieferten Datenfiles"
       ]
     }
   },
   {
     "slug": "ressource-realms-3d",
-    "title": "Ressource Realms – 3D-Strategiespiel",
+    "title": "Ressource Realms – 3D-Strategiespiel im Browser",
     "year": 2025,
     "category": "coding",
     "featured": true,
@@ -58,42 +62,42 @@
     "shortDescription": "Browser-basiertes 3D-Strategiespiel mit WebGL-Rendering, interaktivem Spielbrett und komplexer Spiellogik.",
     "tags": ["Three.js", "JavaScript", "WebGL", "Blender", "Vite", "Game Development"],
     "role": "Full-Stack Game Developer im 4-Personen-Team",
-    "techStack": ["Three.js", "JavaScript", "Vite", "Blender", "WebGL"],
+    "techStack": ["Three.js", "JavaScript", "Vite", "Blender", "WebGL", "Cannon-es"],
     "coverImage": "/projects/ressource-realms.png",
     "links": {
       "note": "auf Anfrage"
     },
     "detail": {
-      "context": "Entwickelt im Rahmen des Projektmoduls 'Prozesse' (Hochschule München) als Teamprojekt über ein Semester.",
-      "problem": "Brettspiele erfordern physisches Material, Platz und oft lange Setupzeiten.",
+      "context": "Teamprojekt im Projektmodul Prozesse (Hochschule München) zur browserbasierten 3D-Umsetzung eines rundenbasierten Strategiespiels.",
+      "problem": "Klassische Brettspiele sind auf physisches Setup und manuelle Regelverwaltung angewiesen; es fehlte eine zugängliche, automatisierte Browser-Variante.",
       "goals": [
         "Vollständig spielbare Implementierung mit automatisierter Regelverwaltung",
-        "3D-Visualisierung einer hexagonalen Spielwelt",
-        "Modulare, erweiterbare Code-Architektur"
+        "3D-Visualisierung einer hexagonalen Spielwelt mit interaktiven Elementen",
+        "Modulare Architektur für Erweiterbarkeit"
       ],
-      "role": "Full-Stack Game Developer: Siegpunktezählung, Räuber-Mechanik, UX-Features, Spielbrett-Dynamik, Bugfixing.",
+      "role": "Full-Stack Game Developer: Siegpunktezählung, Räuber-Mechanik, UX-Features, Spielbrett-Dynamik, Bugfixing, Code-Reviews und Testing.",
       "process": [
         {
-          "title": "Konzeption & Technologie-Setup",
-          "description": "Analyse bestehender Brettspiel-Regeln. Setup von Vite und Three.js."
+          "title": "Konzeption & Setup",
+          "description": "Regeln analysiert, modulare Struktur definiert und Three.js/Vite-Basis aufgebaut."
         },
         {
-          "title": "3D-Umgebung & Asset-Integration",
-          "description": "Erstellung der hexagonalen Spielwelt. Integration von Blender-Modellen."
+          "title": "3D-Umgebung & Assets",
+          "description": "Hex-Grid und Blender-Modelle integriert, inklusive Licht- und Szenenaufbau."
         },
         {
           "title": "Spiellogik-Implementierung",
-          "description": "Core-Mechaniken: Bauvalidierung, Ressourcenverwaltung, Handelssysteme."
+          "description": "Core-Mechaniken: Bau-, Ressourcen-, Handels- und Entwicklungskartenlogik implementiert."
         },
         {
-          "title": "UI & Interaktionssysteme",
-          "description": "Benutzeroberfläche mit Ressourcenanzeigen, Baumenü, Hover-Previews."
+          "title": "Polish & Testing",
+          "description": "Längste-Straße-Algorithmus, Win-Condition, Bugfixing und Tests ergänzt."
         }
       ],
       "results": [
-        "Vollständig spielbare 3D-Umsetzung für 2 Spieler im Browser",
-        "Automatisierte Regelverwaltung reduziert Fehlerquellen",
-        "Modulare Architektur ermöglicht einfache Erweiterungen"
+        "Voll spielbare 3D-Umsetzung für 2 Spieler im Browser",
+        "Automatische Siegpunkt- und Regelverwaltung",
+        "Abgeschlossen mit Note 1,0"
       ]
     }
   },
@@ -113,81 +117,77 @@
       "note": "auf Anfrage"
     },
     "detail": {
-      "context": "Entwickelt im Projektmodul Start (1. Semester) als Teamprojekt. Ziel: KI-Lösung für 24/7 Wissenszugriff.",
-      "problem": "Erstsemester haben Schwierigkeiten, schnell Antworten auf fachspezifische Fragen zu finden.",
+      "context": "Teamprojekt im Projektmodul Start  im 1. Semester im Studiengang Informatik und Design.",
+      "problem": "Studierende brauchten schnellen, fachspezifischen Zugriff auf Modulwissen, ohne generische oder lösungsgebende KI-Antworten.",
       "goals": [
-        "Schnellen, kontextbezogenen Zugang zu fachspezifischem Wissen bieten",
-        "Lernmotivation durch interaktive Übungsaufgaben erhöhen",
-        "Eigene Materialien hochladen und integrieren"
+        "Kontextbezogenen Wissenszugang über hochgeladene Dokumente bieten",
+        "Lernmotivation über interaktive Hilfestellungen erhöhen",
+        "Eigene PDFs in die Wissensbasis integrierbar machen"
       ],
-      "role": "Full-Stack: Gradio-UI, LlamaIndex-Integration, RAG-System, System-Prompt, Chat-Speicher.",
+      "role": "Full-Stack: Gradio-UI, RAG-Integration, Prompting, Chat-Verwaltung und Upload-Flow.",
       "process": [
         {
-          "title": "Research & Anforderungsanalyse",
-          "description": "Analyse der Lernbedürfnisse durch Interviews. Recherche bestehender Lern-Chatbots."
+          "title": "Research & Anforderungen",
+          "description": "Lernbedürfnisse analysiert und Scope für Erstsemester-Module definiert."
         },
         {
-          "title": "Konzept & Architektur",
-          "description": "Entscheidung für RAG-System. LlamaIndex als Framework für PDF-Indexierung."
+          "title": "RAG-Architektur",
+          "description": "LlamaIndex mit PDF-Indexierung und OpenAI-Modell für dokumentbasierte Antworten aufgebaut."
         },
         {
-          "title": "Implementierung",
-          "description": "Gradio-UI mit Chat-Interface. Backend mit LlamaIndex: PDF-Indexierung, Streaming-Antworten."
+          "title": "UI & Iteration",
+          "description": "Gradio-Oberfläche, Chat-Speicherung, Upload und Streaming-UX implementiert und verbessert."
         }
       ],
       "results": [
-        "Funktionsfähiger RAG-basierter Chatbot mit Gradio-UI",
-        "Automatische PDF-Indexierung",
-        "Chat-Historie-Verwaltung mit JSON-Persistierung"
+        "Funktionsfähiger MVP mit dokumentbasierten Antworten",
+        "PDF-Upload mit Re-Indexierung und Chat-Verwaltung",
+        "Lokal nutzbares Tool für Lernunterstützung"
       ]
     }
   },
   {
     "slug": "walkable-memory-moosburg",
-    "title": "Walkable Memory – Digitale Erinnerungstour",
+    "title": "Walkable Memory – Digitale Erinnerungstour Stalag VII-A",
     "year": 2025,
     "category": "uiux",
     "featured": false,
-    "status": "in-progress",
-    "shortDescription": "App-Prototyp für eine selbstgeführte Walking-Tour zu 13 historischen Orten in Moosburg.",
-    "tags": ["React", "TypeScript", "Figma", "Vite", "UX Design", "Prototyping"],
-    "role": "UI/UX-Designer und Frontend-Developer",
+    "status": "finished",
+    "shortDescription": "Web-App-Prototyp für eine selbstgeführte Erinnerungstour zu 13 historischen Orten in Moosburg an der Isar.",
+    "tags": ["React", "TypeScript", "Vite", "Leaflet", "Figma", "UX Design"],
+    "role": "UI/UX-Design und Frontend-Entwicklung des funktionsfähigen Prototyps",
     "techStack": ["React", "TypeScript", "Vite", "Leaflet", "Figma"],
     "coverImage": "/projects/walkable-memory.png",
     "links": {
-      "note": "auf Anfrage"
+      "figma": "https://www.figma.com/design/JRH47zvltUhwvxAj2QCLEF/Walkable-Memory-Hi-Fi-Prototype-5"
     },
     "detail": {
-      "context": "Projekt im 3. Semester im Kurs 'Research and Usability'. UI/UX-Konzept für eine lokale Geschichts-App.",
-      "problem": "Die Geschichte des Stalag VII-A ist in Moosburg heute kaum noch sichtbar.",
+      "context": "Projekt  im 3. Semester im Kurs 'Research and Usability' zur digitalen Vermittlung der Geschichte des Stalag VII-A in Moosburg. Entwickeln eines UI/UX-Konzept für eine lokale Geschichts-App.",
+      "problem": "Historische Orte sind vor Ort kaum sichtbar und schwer zugänglich; es fehlte ein mobiles, niedrigschwelliges Vermittlungsformat.",
       "goals": [
-        "Historische Orte digital kartieren und mit Geschichten verknüpfen",
-        "Benutzerfreundliche, selbsterklärende App-Oberfläche entwickeln",
-        "Flexibles Erkundungskonzept schaffen"
+        "13 historische Orte in einer mobilen Tour erfahrbar machen",
+        "Story, Kontext, Bilder sowie AR-/Audio-Interaktion pro Ort bündeln",
+        "Freien Einstieg oder geführte Route ermöglichen"
       ],
-      "role": "UI/UX-Designer und Frontend-Developer: Figma-Design in React umsetzen, Navigation, Komponenten, Leaflet-Karte.",
+      "role": "UI/UX-Designer und Frontend-Developer: Übersetzung des Figma-Designs in React-Komponenten, Kartenlogik, Datenmodell, Screen-Flow und UI-Polishing.",
       "process": [
         {
-          "title": "Research und Problemanalyse",
-          "description": "Recherche zur Geschichte des Stalag VII-A. Interviews mit Anwohnern."
+          "title": "Research & Interviews",
+          "description": "Historischen Kontext recherchiert und Zielgruppenbedürfnisse vor Ort erhoben."
         },
         {
-          "title": "Wireframes und Entscheidung für App + AR",
-          "description": "Low-Fidelity-Wireframes. Entscheidung für mobile Web-App mit AR-Simulation."
+          "title": "Konzept & Hi-Fi Design",
+          "description": "Wireframes und Figma-Prototyp für Karte, Detailansichten und Tour-Flow entwickelt."
         },
         {
           "title": "Technische Umsetzung",
-          "description": "React/TypeScript mit Vite. Leaflet-Integration. Responsive Design."
+          "description": "React/Vite-Prototyp mit Leaflet, Ortsdaten, Mehrsprachigkeit und Modals umgesetzt."
         }
       ],
       "results": [
-        "Voll funktionsfähiger Hi-Fi-Prototyp mit 13 interaktiven Stationen",
-        "Leaflet-Karte mit individuellen Markern",
-        "Flexible Navigation: Nutzer können an beliebiger Station starten",
-        "Bildergalerien mit historischen Fotos für jede Station",
-        "AR-Overlay-Simulation für historischen Kontext",
-        "Mehrsprachige Unterstützung (Deutsch/Englisch)",
-        "Responsive Design optimiert für mobile Nutzung vor Ort"
+        "Abgeschlossener klickbarer Frontend-Prototyp mit vollständigem User-Flow",
+        "13 Orte mit Story, Medien und Karteninteraktion integriert",
+        "Mobile-first und zweisprachig (DE/EN) umgesetzt"
       ]
     }
   },
@@ -197,103 +197,132 @@
     "year": 2025,
     "category": "coding",
     "featured": false,
-    "status": "finished",
+    "status": "in-progress",
     "shortDescription": "Persönliches Vokabeltraining aus E-Book-Lesehistorie mit Spaced-Repetition-Algorithmus.",
     "tags": ["n8n", "Docker", "spaCy", "AnkiConnect", "API-Integration", "NLP"],
-    "role": "Solo Developer (Workflow Automation & Backend)",
+    "role": "Alleiniger Entwickler (Workflow-Automation & Backend)",
     "techStack": ["n8n", "Docker", "spaCy", "Flask", "LibreTranslate", "AnkiConnect"],
     "coverImage": "/projects/readera-vocabulary.png",
     "links": {
       "note": "auf Anfrage"
     },
     "detail": {
-      "context": "Privates Lernprojekt: Automatisierte ETL-Pipeline, die Vokabular aus ReadEra E-Reader-Backups extrahiert und direkt in Anki importiert.",
-      "problem": "ReadEra speichert markiertes Vokabular nur als JSON in .bak-Backup-Dateien. Manuelle Extraktion und Duplikatbehandlung waren ineffizient.",
+      "context": "Privates Lernprojekt zur vollautomatischen Verarbeitung von ReadEra-Vokabeln in Richtung Anki.",
+      "problem": "ReadEra liefert Vokabeln als .bak/JSON; manuelle Extraktion und Duplikatbehandlung waren ineffizient.",
       "goals": [
-        "Vollautomatische Pipeline: ReadEra .bak → Anki ohne manuelle Schritte",
-        "Lemmatisierung mit spaCy zur Reduzierung von Wortformen auf Grundformen",
-        "Multi-API-Anreicherung: Definitionen, Übersetzungen, Beispiele aus verschiedenen Quellen",
-        "Kontexterhaltung: Zitate aus E-Books als Karteninhalt für besseres kontextuelles Lernen"
+        "Vollautomatische Pipeline von ReadEra-Backup nach Anki",
+        "Lemmatisierung für robuste Duplikaterkennung",
+        "Anreicherung mit Definitionen, Übersetzungen und Kontextzitaten",
+        "Mehrsprachige Verarbeitung und Deck-Zuordnung"
       ],
-      "role": "Solo-Entwickler: n8n-Workflow-Design, Docker-Setup für spaCy und LibreTranslate-Services, AnkiConnect-Integration, Python-Service-Entwicklung.",
+      "role": "Solo-Entwickler: n8n-Workflow-Design, Docker-Infrastruktur, API-Orchestrierung, AnkiConnect-Integration und NLP-Service.",
       "process": [
         {
-          "title": "Initialer Flask-Prototyp",
-          "description": "Ursprüngliche Architektur: Flask-App mit SQLite-Datenbank und individuellem Web-Interface. Pivot zu n8n nach Erkenntnis, dass Anki das primäre Lerntool ist."
+          "title": "Flask-MVP",
+          "description": "Erster Ansatz mit eigener App und Datenbank, dann Pivot auf n8n für Automatisierung."
         },
         {
-          "title": "Migration zu n8n-Workflow",
-          "description": "Modulare Pipeline: Trigger (Google Drive) → Extraktion (Python) → Transformation (JSON) → Anreicherung (Multi-API) → Lemmatisierung (spaCy) → Export (AnkiConnect)."
+          "title": "n8n-Migration",
+          "description": "ETL-Workflow mit modularen Nodes für Extraktion, Transformation, Enrichment und Export aufgebaut."
         },
         {
-          "title": "Docker-Services (Offline-Infrastruktur)",
-          "description": "Zwei Docker-Container: spaCy-Service (Flask-API für Lemmatisierung) und LibreTranslate (selbst gehostete Übersetzungs-API)."
-        },
-        {
-          "title": "Lemmatisierung als Kernfunktion",
-          "description": "spaCy-Integration reduziert Wortformen auf Lemmas. Duplikaterkennung basierend auf Lemmas, nicht auf Originalformen."
+          "title": "NLP & Infrastruktur",
+          "description": "spaCy- und LibreTranslate-Container für Lemmatisierung und Übersetzungs-Fallback integriert."
         }
       ],
       "results": [
-        "Produktions-n8n-Workflow verarbeitet über 2000 Vokabeleinträge aus ReadEra-Backups",
-        "Unterstützung für 4 Sprachen (Deutsch, Englisch, Spanisch, Französisch)",
-        "Lemmatisierung via spaCy reduziert Duplikate erheblich",
-        "Multi-API-Integration liefert hochwertige Definitionen mit Fallback-Logik",
-        "Docker-Services ermöglichen vollständige Offline-Fähigkeit",
-        "Pivot von Flask zu n8n reduzierte Wartungsaufwand"
+        "Workflow verarbeitet bereits über 2000 Vokabeln mit Buchkontext",
+        "Lemma-basierte Deduplication reduziert Karten-Duplikate deutlich",
+        "Mehrsprachiger Deck-Export und Fallback-Logik implementiert"
       ]
     }
   },
   {
-    "slug": "swm-change-management-automation",
-    "title": "SWM Change Management – KI-gestützte Changebegleitung",
+    "slug": "swm-change-management-portal",
+    "title": "SWM Change Management Portal",
     "year": 2025,
     "category": "coding",
     "featured": true,
-    "status": "in-progress",
-    "shortDescription": "Automatisierte Change-Anfragen mit hybridem Form/Chat-System und n8n-Workflow-Ökosystem",
-    "tags": ["Next.js", "n8n", "TypeScript", "OpenAI GPT-4", "Workflow-Automation", "LLM-Integration"],
-    "role": "Full-Stack Developer (Frontend + Backend Workflows)",
-    "techStack": ["Next.js", "n8n", "TypeScript", "OpenAI GPT-4", "Tailwind CSS"],
+    "status": "finished",
+    "shortDescription": "Hybrides Change-Intake-Portal mit dynamischem Formular, Chat-Unterstützung und n8n-Workflow-Anbindung.",
+    "tags": ["Next.js", "n8n", "TypeScript", "React", "OpenAI", "Workflow-Automation"],
+    "role": "Umsetzung von UC1 (Frontend + n8n-Workflow) im Teamkontext",
+    "techStack": ["Next.js", "React", "TypeScript", "n8n", "OpenAI"],
     "coverImage": "/projects/swm-change-management.png",
     "links": {
       "note": "auf Anfrage"
     },
     "detail": {
-      "context": "Universitätsprojekt-Modul für Stadtwerke München (SWM): Ein hybrides System zur strukturierten Erfassung von Change-Anfragen.",
-      "problem": "Change Management in großen Organisationen erfordert strukturierte Informationserfassung (bis zu 20 Felder). Bisherige Praxis umfasste E-Mail-Anfragen und manuelle Meetings mit hohem administrativem Aufwand.",
+      "context": "Abgeschlossenes Universitätsprojekt im Projektmodul Web im 3. Semester mit Praxispartner SWM.",
+      "problem": "Change-Anfragen sollten vollständig und konsistent erfasst werden, ohne die Einstiegshürde für Anfragende zu erhöhen.",
       "goals": [
-        "Strukturierte, vollständige Erfassung von Change-Anfragen mit dynamischer Feldkonfiguration",
-        "Flexible Interaktion: Formular als Hauptkanal, Chat-Assistent als optionale Hilfe",
-        "Automatisierte Dokumentengenerierung (Word-Export, Markdown-Berichte) nach Abschluss",
-        "Workflow-Ökosystem: Datenübergabe an nachgelagerte Use Cases"
+        "Standardisierte Erfassung mit klaren Pflicht- und Optionalfeldern",
+        "Kontextbezogene Unterstützung über Chat-Interaktionen",
+        "Wiederverwendbare Session-Daten für Folgeprozesse und Dashboard"
       ],
-      "role": "Full-Stack-Developer verantwortlich für ~95% von UC1 (Hybrid-System): Frontend-Implementierung, n8n-Workflows, Session-Management, LLM-Integration, dynamische Formularregeln.",
+      "role": "Full-Stack für UC1: Frontend-Flow, n8n-Routing, Session-Handling, Feld-Mapping und Architektur.",
       "process": [
         {
-          "title": "Anforderungsanalyse & Use-Case-Definition",
-          "description": "Kick-off mit SWM-Change-Management-Team: 4 vordefinierte Use Cases basierend auf echten Prozessen. Entscheidung für n8n als zentrale Workflow-Engine."
+          "title": "Use-Case-Setup",
+          "description": "Scope mit SWM abgestimmt und n8n als Workflow-Zentrale festgelegt."
         },
         {
-          "title": "Prototyp UC1 – Chat-basierte Anfragenerfassung",
-          "description": "Initialer Prototyp: reine Chat-Lösung. Problem: unstrukturiert, keine klare Navigation. Entscheidung zum Pivot: Formular als Hauptkanal."
+          "title": "Pivot zum Hybrid-System",
+          "description": "Von reinem Chat auf Formular+Chat gewechselt, inklusive Klassifizierungs- und Regel-Engine."
         },
         {
-          "title": "Hybrid-System-Konzept (Formular + Chat)",
-          "description": "Formular mit 8 Sektionen als Primärkanal, Chat als optionales Hilfe-Widget. Regel-Engine: 4 Meta-Fragen bestimmen Projektklasse → dynamische Feldkonfiguration."
-        },
-        {
-          "title": "Frontend- & Backend-Implementierung",
-          "description": "Next.js-Frontend mit TypeScript und Tailwind CSS. n8n-Haupt-Workflow: Session-Management, Switch-Node-Architektur, LLM-Integration."
+          "title": "Integration & Dashboard",
+          "description": "Session-Restore, Auto-Save, Trigger für UC3/UC4 und operative Dashboard-Funktionen umgesetzt."
         }
       ],
       "results": [
-        "Funktionsfähiger Proof-of-Concept für UC1 (Hybrid-System) weitgehend implementiert",
-        "Formularbasierte Eingabe mit dynamischer Feldkonfiguration läuft stabil",
-        "Chat-Widget funktioniert als optionale Hilfe",
-        "Session-basierte Persistenz via n8n Data Tables",
-        "Integration mit nachgelagerten Use Cases (UC3 Kommunikationsplanung, UC4 Partnerauswahl)",
-        "Aktuell in Testphase mit iterativen Bugfixes"
+        "Abgeschlossener End-to-End-Flow für Intake und Session-Handling",
+        "Stabiler Proof-of-Concept mit Formular, Chat und Workflow-Triggern",
+        "Dashboard für Übersicht, Weiterverarbeitung und PDF-Export"
+      ]
+    }
+  },
+  {
+    "slug": "uchimizu",
+    "title": "Uchimizu – Cool the City",
+    "year": 2025,
+    "category": "uiux",
+    "featured": false,
+    "status": "finished",
+    "shortDescription": "Mobile Website-Konzept, das Münchner*innen zu gemeinschaftlichen Kühlaktionen motiviert.",
+    "tags": ["UX Research", "UI Design", "Mobile Web", "Prototyping", "Personas", "Journey Mapping"],
+    "role": "Teamarbeit über alle Bereiche (Research, Synthese, Konzept, UI/Prototyping)",
+    "techStack": ["Service Design", "UX Research", "Figma", "Mobile Prototyping"],
+    "links": {
+      "note": "auf Anfrage"
+    },
+    "detail": {
+      "context": "Teamprojekt im Kurs Service Design mit Fokus auf die Übertragung der Uchimizu-Praxis in den Münchner Stadtraum.",
+      "problem": "Die Praxis musste verständlich, glaubwürdig und niedrigschwellig vermittelt werden, inklusive Skepsis rund um Wasserverbrauch und Wirkung.",
+      "goals": [
+        "Uchimizu verständlich erklären und in München kontextualisieren",
+        "Über Events, Wirkung und nachhaltigen Umgang mit Wasser informieren",
+        "Teilnahme und lokale Organisation über klare Handlungswege erleichtern"
+      ],
+      "role": "Gemeinsame Arbeit an Research, Synthese, Personas, Journeys, Informationsarchitektur und mobilem Prototyp.",
+      "process": [
+        {
+          "title": "Research & Stakeholder",
+          "description": "Kontextanalyse, Stakeholder-Map und Interviews zu Hitze, Motivation und Informationskanälen durchgeführt."
+        },
+        {
+          "title": "Synthese",
+          "description": "Affinity Map, Empathy Map, Personas und Journey Maps zur Strukturierung der Erkenntnisse erstellt."
+        },
+        {
+          "title": "Konzept & Prototyp",
+          "description": "Mobile Website mit Bereichen für Home, Impact, Events, Community und Get Active prototypisiert."
+        }
+      ],
+      "results": [
+        "Abgeschlossener mobiler Hackathon-Prototyp (2 Tage)",
+        "Klare Informationsarchitektur von Verständnis bis Aktivierung",
+        "Event- und Community-Fokus mit niedrigschwelligen Beteiligungswegen"
       ]
     }
   }
