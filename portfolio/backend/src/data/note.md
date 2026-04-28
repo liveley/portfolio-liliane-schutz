@@ -1,0 +1,1 @@
+backend json geupdatet copy pasten frontend. wieso doppelt??
