@@ -1,14 +1,14 @@
-# Portfolio-Content: Ressource Realms
+# Portfolio-Content: resource Realms
 
 ---
 
 ## A) PROJECT CARD (für Overview)
 
 **Titel:**  
-Ressource Realms – 3D-Strategiespiel im Browser
+resource Realms – 3D-Strategiespiel im Browser
 
 **Slug-Vorschlag (kebab-case):**  
-ressource-realms-3d
+resource-realms-3d
 
 **Jahr (oder Zeitraum):**  
 Sommersemester 2025
@@ -23,7 +23,7 @@ coding
 Browser-basiertes 3D-Strategiespiel mit WebGL-Rendering, interaktivem Spielbrett und komplexer Spiellogik.
 
 **Kurzbeschreibung (2–3 Sätze, sachlich):**  
-Ressource Realms ist eine vollständig im Browser spielbare 3D-Umsetzung eines rundenbasierten Strategiespiels. Spieler bauen Siedlungen und Straßen auf einer hexagonalen Insel, handeln mit Rohstoffen und sammeln Siegpunkte. Das Projekt kombiniert Three.js-basiertes 3D-Rendering mit modularer Spiellogik für lokalen Multiplayer (2 Spieler).
+resource Realms ist eine vollständig im Browser spielbare 3D-Umsetzung eines rundenbasierten Strategiespiels. Spieler bauen Siedlungen und Straßen auf einer hexagonalen Insel, handeln mit Rohstoffen und sammeln Siegpunkte. Das Projekt kombiniert Three.js-basiertes 3D-Rendering mit modularer Spiellogik für lokalen Multiplayer (2 Spieler).
 
 **Tags (max 6, aus Tech/Methoden):**  
 Three.js, JavaScript, WebGL, Blender, Vite, Game Development
@@ -60,7 +60,7 @@ Brettspiele erfordern physisches Material, Platz und oft lange Setupzeiten. Zude
 **Constraints/Requirements:**
 - Browser-basiert, ohne Installation spielbar (lokaler Multiplayer für 2 Spieler)
 - Three.js als vorgegebene Technologie für 3D-Rendering
-- Vollständige Spiellogik: Bauphasen, Ressourcenmanagement, Handelssysteme, Entwicklungskarten
+- Vollständige Spiellogik: Bauphasen, resourcenmanagement, Handelssysteme, Entwicklungskarten
 - Agile Entwicklung mit GitLab, Node.js, Vite als Build-Tool
 
 ---
@@ -73,8 +73,8 @@ Full-Stack Game Developer im 4-Personen-Team (3 Full-Stack Developer, 1 3D Artis
 **Verantwortung:**
 - Automatische Siegpunktezählung: Implementierung des Victory-Points-Systems inkl. Längste-Straße-Logik und Win-Condition-Detection
 - Räuber-Mechanik: Platzierung, Bewegung und Interaktion mit Spielfeld-Highlighting
-- UX-Features: Ressourcen-Zähler mit visuellen Updates, Spielfeld-Vorladen, Highlighting gewürfelter Felder mit Halos
-- Spielbrett-Dynamik: Zufällige Anordnung der Ressourcenfelder beim Spielstart für mehr Variabilität
+- UX-Features: resourcen-Zähler mit visuellen Updates, Spielfeld-Vorladen, Highlighting gewürfelter Felder mit Halos
+- Spielbrett-Dynamik: Zufällige Anordnung der resourcenfelder beim Spielstart für mehr Variabilität
 - Bugfixing: Zahlenchip-Highlighting, Bau-Validierung am Wasser, diverse Spiellogik-Fehler
 - Code-Reviews: Regelmäßige Reviews zugewiesener Branches und Feedback im Team
 - 3D-Assets: Erste Schritte in Blender zur Erstellung von Wald- und Weidefeldern
@@ -94,10 +94,10 @@ Analyse bestehender Brettspiel-Regeln und Übertragung in digitale Mechaniken. E
 Erstellung der Spielwelt mit hexagonalem Gitter (Axial-Koordinatensystem). Integration von Blender-Modellen (.glb-Format) für Terrain-Tiles (Wald, Erz, Wüste etc.), Spielfiguren (Siedlungen, Städte, Straßen) und den Wächter. Implementierung der Skybox, Beleuchtung und Schatten für atmosphärische Darstellung.
 
 **Schritt 3: Spiellogik-Implementierung**  
-Aufbau der Core-Mechaniken: Bauvalidierung (Mindestabstand zwischen Siedlungen, Straßenverbindungen), Ressourcenverwaltung (Würfel-System, Rohstoffproduktion), Handelssysteme (Bank 4:1, Häfen 3:1/2:1). Implementierung der Entwicklungskarten (Wächter, Fortschritt, Siegpunkte) mit Kartenlimit und Spielregeln.
+Aufbau der Core-Mechaniken: Bauvalidierung (Mindestabstand zwischen Siedlungen, Straßenverbindungen), resourcenverwaltung (Würfel-System, Rohstoffproduktion), Handelssysteme (Bank 4:1, Häfen 3:1/2:1). Implementierung der Entwicklungskarten (Wächter, Fortschritt, Siegpunkte) mit Kartenlimit und Spielregeln.
 
 **Schritt 4: UI & Interaktionssysteme**  
-Entwicklung der Benutzeroberfläche: Ressourcenanzeigen mit Echtzeit-Updates, Baumenü mit Kostenanzeige, Spielerwechsel-Button, Entwicklungskarten-UI. Implementierung von Hover-Previews für Bauaktionen und visuellen Feedback-Systemen (Highlighting, Halos um Tiles). Main Menu mit Hexagon-basiertem Design.
+Entwicklung der Benutzeroberfläche: resourcenanzeigen mit Echtzeit-Updates, Baumenü mit Kostenanzeige, Spielerwechsel-Button, Entwicklungskarten-UI. Implementierung von Hover-Previews für Bauaktionen und visuellen Feedback-Systemen (Highlighting, Halos um Tiles). Main Menu mit Hexagon-basiertem Design.
 
 **Schritt 5: Erweiterte Features & Polishing**  
 Implementierung komplexer Algorithmen: Längste-Straße-Berechnung (DFS-basierter Graph-Traversal), Siegbedingungsprüfung mit automatischem Win-Screen. Debugging-Tools für Entwicklung. Optimierung der Performance, Bugfixing und Testing verschiedener Spielszenarien. Feintuning der Physik-Engine (Cannon-es) für Würfelwürfe.
@@ -139,7 +139,7 @@ Das Projekt folgt einer modularen Architektur mit klarer Trennung von Verantwort
 1. **screen-01-main-menu.png**
    - Woher nehmen: Startseite beim Laden (Main Menu mit Hexagon-Layout)
    - Caption: Startmenü mit hexagonalem Design und Terrain-Farben als visuelle Anker
-   - Alt-Text: Hauptmenü von Ressource Realms mit sechseckigen Buttons in Terrain-Farben
+   - Alt-Text: Hauptmenü von resource Realms mit sechseckigen Buttons in Terrain-Farben
 
 2. **screen-02-game-board-overview.png**
    - Woher nehmen: Spielbrett nach Initialisierung (Vogelperspektive, alle Tiles sichtbar)
@@ -148,12 +148,12 @@ Das Projekt folgt einer modularen Architektur mit klarer Trennung von Verantwort
 
 3. **screen-03-gameplay-building.png**
    - Woher nehmen: Während des Spiels mit gebauten Siedlungen, Straßen und geöffnetem Baumenü
-   - Caption: Aktive Spielsituation mit Bauoptionen, Ressourcenanzeige und Spieler-Overview
-   - Alt-Text: Spielansicht mit platzierter roter Siedlung, Baumenü im Vordergrund und Ressourcen-UI
+   - Caption: Aktive Spielsituation mit Bauoptionen, resourcenanzeige und Spieler-Overview
+   - Alt-Text: Spielansicht mit platzierter roter Siedlung, Baumenü im Vordergrund und resourcen-UI
 
 4. **screen-04-resource-ui.png**
-   - Woher nehmen: Close-up der rechten unteren UI-Ecke (Ressourcenanzeige)
-   - Caption: Ressourcen-Management-Interface mit Echtzeit-Updates nach Würfelwurf
+   - Woher nehmen: Close-up der rechten unteren UI-Ecke (resourcenanzeige)
+   - Caption: resourcen-Management-Interface mit Echtzeit-Updates nach Würfelwurf
    - Alt-Text: UI-Element zeigt Rohstoffkarten für Holz, Lehm, Erz, Wolle und Getreide mit Anzahl
 
 5. **screen-05-development-cards.png**
@@ -213,7 +213,7 @@ Das Spiel wurde erfolgreich im Rahmen des Moduls präsentiert und beim Deutschen
 
 **code/main.js:**
 - Zeile 1-45: Imports aller Module (Szene, Kamera, Lichter, Hex-Grid, Würfel, UI-Systeme, Spiellogik)
-- Zeile 47-70: Player-Array mit 2 Spielern, Ressourcen, Siegpunkten, Straßenlänge
+- Zeile 47-70: Player-Array mit 2 Spielern, resourcen, Siegpunkten, Straßenlänge
 - Zeile 72-73: Initialisierung Victory Points und Initial Placement Phase
 
 **code/modules/game_board.js:**
@@ -250,6 +250,6 @@ Das Spiel wurde erfolgreich im Rahmen des Moduls präsentiert und beim Deutschen
 - Test-Scripts: testLongestRoad.js, testVictoryPoints.js, undoRebuildTest.js
 
 **reflexionsbericht.md:**
-- Detaillierte Beschreibung meiner Beiträge: Ressourcen-Zähler (#57), Spielbrett-Vorladen (#54), Siegpunkte-Automatisierung (#67), Räuber-Mechanik (#49), zufällige Ressourcenfelder (#50), Tile-Highlighting (#48)
+- Detaillierte Beschreibung meiner Beiträge: resourcen-Zähler (#57), Spielbrett-Vorladen (#54), Siegpunkte-Automatisierung (#67), Räuber-Mechanik (#49), zufällige resourcenfelder (#50), Tile-Highlighting (#48)
 - Team-Zusammenarbeit und Rollenverteilung
 - Learnings zu KI-Einsatz, Kommunikation und Projektmanagement

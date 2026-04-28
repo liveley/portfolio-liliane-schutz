@@ -61,7 +61,7 @@
 Zu Beginn wurde die Leitfrage formuliert, wie ein digitales Tool Uchimizu in München bekannt machen und zur Teilnahme motivieren kann. Die Aufgabenstellung verband kulturelle Übersetzung, Klimaanpassung, digitale Aktivierung und städtische Infrastruktur.
 
 #### 2. Research und Kontextanalyse
-Wir recherchierten Uchimizu als traditionelle japanische Praxis und untersuchte, wie sie in moderne Umweltinitiativen übertragen werden kann. Dabei standen Wasserherkunft, soziale Wirkung, Stadtklima und nachhaltiger Ressourceneinsatz im Mittelpunkt.
+Wir recherchierten Uchimizu als traditionelle japanische Praxis und untersuchte, wie sie in moderne Umweltinitiativen übertragen werden kann. Dabei standen Wasserherkunft, soziale Wirkung, Stadtklima und nachhaltiger resourceneinsatz im Mittelpunkt.
 
 #### 3. Stakeholder und Interviews
 
@@ -160,7 +160,7 @@ Auf Basis der Synthese entstand ein mobiler Website-Prototyp mit klaren Bereiche
 
 ### B7) Ergebnisse / Outcome
 
-Das Ergebnis ist ein im Hackathon-Kontext abgeschlossener mobiler Website-Prototyp, der Uchimizu als gemeinschaftliche Stadtaktion für München vermittelt. Der Entwurf bündelt Erklärung, Wirkung, Event-Information und Beteiligungsmöglichkeiten in einer klaren Informationsarchitektur. Die Gestaltung macht sichtbar, dass das Konzept nicht nur auf Abkühlung zielt, sondern auch auf Gemeinschaft, Aufmerksamkeit für Hitze und nachhaltigen Umgang mit Ressourcen. Eine reale Umsetzung oder gemessene Wirkung des Prototyps ist weiterhin offen zu prüfen.
+Das Ergebnis ist ein im Hackathon-Kontext abgeschlossener mobiler Website-Prototyp, der Uchimizu als gemeinschaftliche Stadtaktion für München vermittelt. Der Entwurf bündelt Erklärung, Wirkung, Event-Information und Beteiligungsmöglichkeiten in einer klaren Informationsarchitektur. Die Gestaltung macht sichtbar, dass das Konzept nicht nur auf Abkühlung zielt, sondern auch auf Gemeinschaft, Aufmerksamkeit für Hitze und nachhaltigen Umgang mit resourcen. Eine reale Umsetzung oder gemessene Wirkung des Prototyps ist weiterhin offen zu prüfen.
 
 ### B8) Learnings
 
