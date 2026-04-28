@@ -15,7 +15,7 @@ Dieser Ordner enthält einen vollständigen Dump der `portfoliodb` Datenbank.
 ## Projekte im Dump
 
 1. **Life Threads** – Interaktive Datenvisualisierung (data, featured)
-2. **Ressource Realms** – 3D-Strategiespiel (coding, featured)
+2. **resource Realms** – 3D-Strategiespiel (coding, featured)
 3. **studyID Lern-Bot** – KI-Chatbot (coding)
 4. **Walkable Memory** – Digitale Erinnerungstour (uiux)
 5. **ReadEra Vokabellern-System** – n8n Workflow (coding)
@@ -99,7 +99,7 @@ mongorestore --db portfoliodb ./db-dump/portfoliodb
 
 ### Collection: projects
 - Life Threads – Interaktive Datenvisualisierung
-- Ressource Realms – 3D-Strategiespiel  
+- resource Realms – 3D-Strategiespiel  
 - studyID Lern-Bot
 - Walkable Memory – Digitale Erinnerungstour
 

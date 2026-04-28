@@ -53,8 +53,8 @@
     }
   },
   {
-    "slug": "ressource-realms-3d",
-    "title": "Ressource Realms – 3D-Strategiespiel im Browser",
+    "slug": "resource-realms-3d",
+    "title": "resource Realms – 3D-Strategiespiel im Browser",
     "year": 2025,
     "category": "coding",
     "featured": true,
@@ -63,7 +63,7 @@
     "tags": ["Three.js", "JavaScript", "WebGL", "Blender", "Vite", "Game Development"],
     "role": "Full-Stack Game Developer im 4-Personen-Team",
     "techStack": ["Three.js", "JavaScript", "Vite", "Blender", "WebGL", "Cannon-es"],
-    "coverImage": "/projects/ressource-realms.png",
+    "coverImage": "/projects/resource-realms.png",
     "links": {
       "note": "auf Anfrage"
     },
@@ -87,7 +87,7 @@
         },
         {
           "title": "Spiellogik-Implementierung",
-          "description": "Core-Mechaniken: Bau-, Ressourcen-, Handels- und Entwicklungskartenlogik implementiert."
+          "description": "Core-Mechaniken: Bau-, resourcen-, Handels- und Entwicklungskartenlogik implementiert."
         },
         {
           "title": "Polish & Testing",
