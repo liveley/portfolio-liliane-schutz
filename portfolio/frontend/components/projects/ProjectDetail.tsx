@@ -130,8 +130,8 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
               <ImageWithCaption
                 key={`${project.slug}-image-${index + 1}`}
                 src={imageSrc}
-                alt={`${project.title} - Screen ${index + 1}`}
-                caption={`Screen ${index + 1}`}
+                alt={`${project.title} - ${formatImageLabel(imageSrc, index + 1)}`}
+                caption={formatImageLabel(imageSrc, index + 1)}
               />
             ))
           ) : project.coverImage ? (
@@ -215,4 +215,29 @@ function getDefaultProcessSteps() {
       description: 'Technische Umsetzung mit modernen Frameworks und Tools, unter Berücksichtigung von Code-Qualität und Performance.'
     }
   ];
+}
+
+function formatImageLabel(imagePath: string, fallbackIndex: number): string {
+  const file = imagePath.split('/').pop() ?? '';
+  const noExt = file.replace(/\.[a-zA-Z0-9]+$/, '');
+
+  const normalized = noExt
+    .replace(/^screen[-_. ]*\d+[-_. ]*/i, '')
+    .replace(/- iMockup - iPhone \d+ Pro Max/i, '')
+    .replace(/[_-.]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (!normalized) return `Bild ${fallbackIndex}`;
+
+  const titled = normalized
+    .split(' ')
+    .map((word) => {
+      if (!word) return word;
+      if (/^[A-Z]{2,}$/.test(word)) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+
+  return titled;
 }

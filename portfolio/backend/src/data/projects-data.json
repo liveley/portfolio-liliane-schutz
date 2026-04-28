@@ -10,7 +10,7 @@
     "tags": ["SvelteKit", "TypeScript", "D3", "Scrollytelling", "Data Visualization", "Canvas"],
     "role": "Konzeption, Datenaufbereitung, Visual Design und Implementierung (Einzelprojekt)",
     "techStack": ["SvelteKit", "TypeScript", "D3", "Canvas", "SVG", "IntersectionObserver"],
-    "coverImage": "/projects/life-threads.png",
+    "coverImage": "/projects/life-threads/screen-01-intro-hero.png",
     "links": {
       "note": "auf Anfrage"
     },
@@ -52,7 +52,9 @@
       ],
       "images": [
         "/projects/life-threads/screen-01-intro-hero.png",
+        "/projects/life-threads/screen-02-year-at-a-glance.png",
         "/projects/life-threads/screen-03-day-clock-phase.png",
+        "/projects/life-threads/screen-04-sunburst-sportmix.png",
         "/projects/life-threads/screen-05-phase-explorer.png"
       ]
     }
@@ -68,7 +70,7 @@
     "tags": ["Three.js", "JavaScript", "WebGL", "Blender", "Vite", "Game Development"],
     "role": "Full-Stack Game Developer im 4-Personen-Team",
     "techStack": ["Three.js", "JavaScript", "Vite", "Blender", "WebGL", "Cannon-es"],
-    "coverImage": "/projects/ressource-realms.png",
+    "coverImage": "/projects/ressource-realms/screen-03-hexagons-chosen.png",
     "links": {
       "note": "auf Anfrage"
     },
@@ -106,7 +108,9 @@
       ],
       "images": [
         "/projects/ressource-realms/screen-00-start-screen.png",
+        "/projects/ressource-realms/screen-02-game-explanation.png",
         "/projects/ressource-realms/screen-03-hexagons-chosen.png",
+        "/projects/ressource-realms/screen-06-Entwicklungskarten.png",
         "/projects/ressource-realms/screen-08-victory-screen.png"
       ]
     }
@@ -122,7 +126,7 @@
     "tags": ["Python", "LlamaIndex", "OpenAI", "RAG", "Gradio", "LLM"],
     "role": "Full-Stack-Entwicklung und UI/UX-Design",
     "techStack": ["Python", "LlamaIndex", "OpenAI GPT-4o-mini", "Gradio"],
-    "coverImage": "/projects/studyid-chatbot.png",
+    "coverImage": "/projects/studyid/screen-02-chat-example.png",
     "links": {
       "note": "auf Anfrage"
     },
@@ -157,7 +161,9 @@
       "images": [
         "/projects/studyid/screen-01-welcome.png",
         "/projects/studyid/screen-02-chat-example.png",
-        "/projects/studyid/screen-03-chat-window-big.png"
+        "/projects/studyid/screen-03-chat-window-big.png",
+        "/projects/studyid/Screenshot 2025-01-20 205411.png",
+        "/projects/studyid/Screenshot 2025-01-23 174928.png"
       ]
     }
   },
@@ -172,7 +178,7 @@
     "tags": ["React", "TypeScript", "Vite", "Leaflet", "Figma", "UX Design"],
     "role": "UI/UX-Design und Frontend-Entwicklung des funktionsfähigen Prototyps",
     "techStack": ["React", "TypeScript", "Vite", "Leaflet", "Figma"],
-    "coverImage": "/projects/walkable-memory.png",
+    "coverImage": "/projects/walkable-memory/screen-01-landing-laptop.png",
     "links": {
       "figma": "https://www.figma.com/design/JRH47zvltUhwvxAj2QCLEF/Walkable-Memory-Hi-Fi-Prototype-5"
     },
@@ -206,8 +212,10 @@
       ],
       "images": [
         "/projects/walkable-memory/screen-01-landing-laptop.png",
+        "/projects/walkable-memory/screen-02-map-overview-single.png",
         "/projects/walkable-memory/screen-03-route-mode.png",
-        "/projects/walkable-memory/screen-04-memory-moment2.png"
+        "/projects/walkable-memory/screen-04-memory-moment2.png",
+        "/projects/walkable-memory/screen-05-list-progress.png"
       ]
     }
   },
@@ -268,7 +276,7 @@
     "tags": ["Next.js", "n8n", "TypeScript", "React", "OpenAI", "Workflow-Automation"],
     "role": "Umsetzung von UC1 (Frontend + n8n-Workflow) im Teamkontext",
     "techStack": ["Next.js", "React", "TypeScript", "n8n", "OpenAI"],
-    "coverImage": "/projects/swm-change-management.png",
+    "coverImage": "/projects/swm/screen-01-landing.png",
     "links": {
       "note": "auf Anfrage"
     },
@@ -302,7 +310,9 @@
       ],
       "images": [
         "/projects/swm/screen-01-landing.png",
+        "/projects/swm/screen-02-classification.png",
         "/projects/swm/screen-03-dynamic-form.png",
+        "/projects/swm/screen-04-chat-assistant-2.png",
         "/projects/swm/screen-05-dashboard-session-details.png"
       ]
     }
@@ -318,6 +328,7 @@
     "tags": ["UX Research", "UI Design", "Mobile Web", "Prototyping", "Personas", "Journey Mapping"],
     "role": "Teamarbeit über alle Bereiche (Research, Synthese, Konzept, UI/Prototyping)",
     "techStack": ["Service Design", "UX Research", "Figma", "Mobile Prototyping"],
+    "coverImage": "/projects/uchimizu/Uchimizu-preview-screen.png",
     "links": {
       "note": "auf Anfrage"
     },
@@ -350,10 +361,13 @@
         "Event- und Community-Fokus mit niedrigschwelligen Beteiligungswegen"
       ],
       "images": [
-        "/projects/uchimizu/Startseite 2 - iMockup - iPhone 16 Pro Max.png",
-        "/projects/uchimizu/Impactseite 2 - iMockup - iPhone 16 Pro Max.png",
-        "/projects/uchimizu/Join 2 - iMockup - iPhone 16 Pro Max.png"
+        "/projects/uchimizu/startseite-2.png",
+        "/projects/uchimizu/impactseite-2.png",
+        "/projects/uchimizu/join-2.png",
+        "/projects/uchimizu/uchimizu-empathize-and-discover.png",
+        "/projects/uchimizu/uchimizu-user-journey-empathy-map.png"
       ]
     }
   }
 ]
+

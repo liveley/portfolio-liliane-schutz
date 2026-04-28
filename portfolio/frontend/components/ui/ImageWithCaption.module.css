@@ -9,6 +9,12 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
+  display: block;
+  margin-inline: auto;
+}
+
+.imagePortrait {
+  width: min(62%, 520px);
 }
 
 .placeholder {
