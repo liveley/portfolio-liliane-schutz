@@ -36,10 +36,6 @@ The frontend runs on port `3001` by default.
 
 ## Cloudflare
 
-The current setup uses Cloudflare Pages and D1. Keep dependency manifests
-committed (`package.json`, `package-lock.json`) and do not commit
-`node_modules/`, local Wrangler state, environment files, or generated seed SQL.
-
 Useful commands:
 
 ```powershell
@@ -51,9 +47,3 @@ cd frontend
 npm run pages:dev
 npm run pages:deploy
 ```
-
-## Git Notes
-
-Commit the application source, migrations, public assets, and content that the
-portfolio needs at runtime. Do not commit local dev notes, working references,
-generated outputs, `.env*` files, `.wrangler/`, or `node_modules/`.
