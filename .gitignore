@@ -1,14 +1,10 @@
-Webtech/**
-inspo/**
-Elegantdatavisualizationwebsite/
-references/
 # Wrangler local state
 .wrangler/
 .env.local
 .env.*.local
 
-# Scripts and seed data (sensitive, local)
-portfolio/scripts/
+# Generated D1 seed output
+portfolio/scripts/seed-d1-output.sql
 
 # Next.js build outputs
 portfolio/frontend/out/
