@@ -22,7 +22,7 @@ export default function DatenschutzPage() {
   return (
     <PageShell>
       <PageHeader
-        title="Datenschutzerklarung"
+        title="Datenschutzerklärung"
         lead="Stand: Juni 2026"
       />
 
@@ -92,11 +92,11 @@ export default function DatenschutzPage() {
             Kontaktanfragen).
           </p>
           <p>
-            Speicherdauer: [z. B. 90 Tage nach Beantwortung der Anfrage, danach manuelle Loschung].
-            Du kannst jederzeit die Loschung deiner gespeicherten Daten verlangen (siehe Abschnitt 8).
+            Speicherdauer: [z. B. 90 Tage nach Beantwortung der Anfrage, danach manuelle Löschung].
+            Du kannst jederzeit die Löschung deiner gespeicherten Daten verlangen (siehe Abschnitt 8).
           </p>
           <p>
-            Die Ubertragung des Formulars erfolgt verschlusselt (HTTPS/TLS).
+            Die Übertragung des Formulars erfolgt verschlüsselt (HTTPS/TLS).
           </p>
         </section>
 
@@ -116,13 +116,13 @@ export default function DatenschutzPage() {
             <tbody>
               <tr>
                 <td><code>intro_seen</code></td>
-                <td>Speichert, ob die Intro-Animation bereits gezeigt wurde, um sie bei erneuten Besuchen zu uberspringen.</td>
-                <td>Session / bis zum Loschen des Browser-Caches</td>
+                <td>Speichert, ob die Intro-Animation bereits gezeigt wurde, um sie bei erneuten Besuchen zu überspringen.</td>
+                <td>Session / bis zum Löschen des Browser-Caches</td>
               </tr>
             </tbody>
           </table>
           <p>
-            Das Cookie dient ausschließlich der Steuerung der Seitennavigation und enthalt keine
+            Das Cookie dient ausschließlich der Steuerung der Seitennavigation und enthält keine
             personenbezogenen Daten. Es wird kein Tracking oder Profiling vorgenommen.
           </p>
           <p>
@@ -133,16 +133,16 @@ export default function DatenschutzPage() {
         <section className={styles.section}>
           <h2 className={styles.heading}>6. Externe Links</h2>
           <p>
-            Diese Website enthalt Links zu externen Profilen auf GitHub und LinkedIn. Das Anklicken dieser
-            Links fuhrt dich zu den jeweiligen Plattformen, die ihrerseits eigene Datenschutzbestimmungen
-            haben. Fur die Datenverarbeitung durch diese Plattformen bin ich nicht verantwortlich.
+            Diese Website enthält Links zu externen Profilen auf GitHub und LinkedIn. Das Anklicken dieser
+            Links führt dich zu den jeweiligen Plattformen, die ihrerseits eigene Datenschutzbestimmungen
+            haben. Für die Datenverarbeitung durch diese Plattformen bin ich nicht verantwortlich.
           </p>
           <ul className={styles.list}>
             <li>
-              GitHub: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" className={styles.link} target="_blank" rel="noopener noreferrer">GitHub Datenschutzerklarung</a>
+              GitHub: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" className={styles.link} target="_blank" rel="noopener noreferrer">GitHub Datenschutzerklärung</a>
             </li>
             <li>
-              LinkedIn: <a href="https://de.linkedin.com/legal/privacy-policy" className={styles.link} target="_blank" rel="noopener noreferrer">LinkedIn Datenschutzerklarung</a>
+              LinkedIn: <a href="https://de.linkedin.com/legal/privacy-policy" className={styles.link} target="_blank" rel="noopener noreferrer">LinkedIn Datenschutzerklärung</a>
             </li>
           </ul>
         </section>
@@ -151,23 +151,23 @@ export default function DatenschutzPage() {
           <h2 className={styles.heading}>7. Keine Analyse- oder Tracking-Tools</h2>
           <p>
             Diese Website verwendet keine Analyse- oder Tracking-Dienste (z. B. Google Analytics,
-            Matomo oder ahnliche). Es werden keine Nutzungsprofile erstellt.
+            Matomo oder ähnliche). Es werden keine Nutzungsprofile erstellt.
           </p>
         </section>
 
         <section className={styles.section}>
           <h2 className={styles.heading}>8. Deine Rechte</h2>
-          <p>Du hast gemaß DSGVO folgende Rechte:</p>
+          <p>Du hast gemäß DSGVO folgende Rechte:</p>
           <ul className={styles.list}>
-            <li><strong>Auskunft</strong> (Art. 15 DSGVO): Auskunft uber die uber dich gespeicherten Daten</li>
+            <li><strong>Auskunft</strong> (Art. 15 DSGVO): Auskunft über die über dich gespeicherten Daten</li>
             <li><strong>Berichtigung</strong> (Art. 16 DSGVO): Berichtigung unrichtiger Daten</li>
-            <li><strong>Loschung</strong> (Art. 17 DSGVO): Loschung deiner Daten, sofern keine gesetzliche Aufbewahrungspflicht besteht</li>
-            <li><strong>Einschrankung</strong> (Art. 18 DSGVO): Einschrankung der Verarbeitung</li>
-            <li><strong>Datenubertragbarkeit</strong> (Art. 20 DSGVO): Ubertragung deiner Daten in einem maschinenlesbaren Format</li>
+            <li><strong>Löschung</strong> (Art. 17 DSGVO): Löschung deiner Daten, sofern keine gesetzliche Aufbewahrungspflicht besteht</li>
+            <li><strong>Einschränkung</strong> (Art. 18 DSGVO): Einschränkung der Verarbeitung</li>
+            <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO): Übertragung deiner Daten in einem maschinenlesbaren Format</li>
             <li><strong>Widerspruch</strong> (Art. 21 DSGVO): Widerspruch gegen die Verarbeitung auf Basis berechtigter Interessen</li>
           </ul>
           <p>
-            Zur Ausubung dieser Rechte wende dich per E-Mail an:{' '}
+            Zur Ausübung dieser Rechte wende dich per E-Mail an:{' '}
             <a href={`mailto:${email}`} className={styles.link}>{email}</a>
           </p>
         </section>
@@ -175,11 +175,11 @@ export default function DatenschutzPage() {
         <section className={styles.section}>
           <h2 className={styles.heading}>9. Beschwerderecht</h2>
           <p>
-            Du hast das Recht, dich bei einer Datenschutzaufsichtsbehorde zu beschweren. Die zustandige
-            Behorde richtet sich nach deinem Wohnort. Eine Ubersicht aller deutschen Aufsichtsbehorden
+            Du hast das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren. Die zuständige
+            Behörde richtet sich nach deinem Wohnort. Eine Übersicht aller deutschen Aufsichtsbehörden
             findest du auf der Website des{' '}
             <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html" className={styles.link} target="_blank" rel="noopener noreferrer">
-              Bundesbeauftragten fur den Datenschutz und die Informationsfreiheit (BfDI)
+              Bundesbeauftragten für den Datenschutz und die Informationsfreiheit (BfDI)
             </a>.
           </p>
         </section>
@@ -187,15 +187,15 @@ export default function DatenschutzPage() {
         <section className={styles.section}>
           <h2 className={styles.heading}>10. Sicherheit</h2>
           <p>
-            Diese Website ubertragt alle Daten verschlusselt uber HTTPS (TLS). Trotz technischer und
-            organisatorischer Maßnahmen kann keine vollstandige Sicherheit garantiert werden.
+            Diese Website überträgt alle Daten verschlüsselt über HTTPS (TLS). Trotz technischer und
+            organisatorischer Maßnahmen kann keine vollständige Sicherheit garantiert werden.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.heading}>11. Anderungen dieser Datenschutzerklarung</h2>
+          <h2 className={styles.heading}>11. Änderungen dieser Datenschutzerklärung</h2>
           <p>
-            Diese Datenschutzerklarung kann angepasst werden, wenn sich rechtliche Anforderungen andern
+            Diese Datenschutzerklärung kann angepasst werden, wenn sich rechtliche Anforderungen ändern
             oder neue Dienste eingesetzt werden. Die jeweils aktuelle Version ist auf dieser Seite
             abrufbar. Stand: Juni 2026.
           </p>
