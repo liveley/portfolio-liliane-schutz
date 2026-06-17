@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "pages:dev": "start /B npm run dev:local && timeout /T 5 && wrangler pages dev --proxy=3001 --port=8788 --binding DB=portfoliodb",
-    "pages:deploy": "npm run build && wrangler pages deploy .next --project-name=portfolio-website"
+    "pages:deploy": "npm run build && wrangler pages deploy out --project-name=portfolio-liliane-schutz"
   },
   "dependencies": {
     "next": "16.1.1",
