@@ -1,6 +1,7 @@
 /** Author: Liliane Schutz */
 'use client';
 
+import Link from 'next/link';
 import { useState, FormEvent, ChangeEvent, FocusEvent } from 'react';
 import Input from '../ui/Input';
 import Textarea from '../ui/Textarea';
@@ -282,6 +283,12 @@ export default function ContactForm() {
           disabled={isSubmitting}
           rows={6}
         />
+
+        <p className={styles.privacyNote}>
+          Mit dem Absenden stimmst du der Verarbeitung deiner Daten zur Beantwortung deiner Anfrage zu.
+          Weitere Informationen findest du in der{' '}
+          <Link href="/datenschutz" className={styles.privacyLink}>Datenschutzerklarung</Link>.
+        </p>
 
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? 'Wird gesendet...' : 'Nachricht senden'}

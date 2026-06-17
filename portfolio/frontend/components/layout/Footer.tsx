@@ -1,16 +1,24 @@
 /**
  * Author: Liliane Schutz
- * Footer mit Copyright und Social Links
+ * Footer mit Copyright, Legal Links und Social Links
  */
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <div className={styles.copyright}>
-          © 2026 Liliane Schutz. Alle Rechte vorbehalten.
+        <div className={styles.left}>
+          <div className={styles.copyright}>
+            © 2026 Liliane Schutz. Alle Rechte vorbehalten.
+          </div>
+          <nav className={styles.legalLinks} aria-label="Rechtliche Seiten">
+            <Link href="/impressum" className={styles.legalLink}>Impressum</Link>
+            <Link href="/datenschutz" className={styles.legalLink}>Datenschutz</Link>
+          </nav>
         </div>
+        <div className={styles.right}>
         <div className={styles.socials}>
           <a
             href="https://github.com/liveley"
@@ -49,6 +57,7 @@ export default function Footer() {
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
           </a>
+        </div>
         </div>
       </div>
     </footer>

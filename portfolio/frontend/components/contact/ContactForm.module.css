@@ -41,3 +41,20 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
+.privacyNote {
+  font-size: 0.8125rem;
+  color: rgba(245, 245, 247, 0.45);
+  line-height: 1.6;
+  margin: -0.5rem 0 0;
+}
+
+.privacyLink {
+  color: rgba(245, 245, 247, 0.6);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.privacyLink:hover {
+  color: var(--color-accent, #4361EE);
+}
