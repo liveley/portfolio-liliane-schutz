@@ -1,130 +1,100 @@
-# Portfolio-Website – Liliane Schutz
+# Portfolio - Liliane Schutz
 
-Vollständige Portfolio-Website mit Next.js Frontend und Express/MongoDB Backend.
+Next.js frontend with Cloudflare D1 database, deployed on Cloudflare Pages.
 
-## 🚀 Schnellstart
+> Previously used a MongoDB + Express backend (see `backend/` and `db-dump/`). That stack has been replaced by Cloudflare D1 (SQLite-compatible) accessed directly from the Next.js app via a Cloudflare binding.
 
-### Voraussetzungen
-- Node.js 18+ und npm
-- Docker & Docker Compose
+## Quick Start
 
-### Setup
+### Prerequisites
+
+- Node.js 18+
+- Wrangler CLI (`npx wrangler` or global install)
+- A Cloudflare account with D1 enabled
+
+### Local Setup
 
 ```bash
-# 1. MongoDB starten
-docker compose up -d
-
-# 2. Backend Dependencies installieren & starten
-cd backend
+# 1. Install D1 script dependencies
+cd portfolio
 npm install
-npm run seed    # Datenbank mit Projekten füllen
-npm run dev     # Backend startet auf Port 4000
 
-# 3. Frontend Dependencies installieren & starten (neues Terminal)
+# 2. Set up local D1 database (migrate + seed)
+npm run db:setup:local
+
+# 3. Install frontend dependencies and start dev server
 cd frontend
 npm install
-npm run dev     # Frontend startet auf Port 3000
+npm run dev        # runs on port 3001
 ```
 
-Öffne [http://localhost:3000](http://localhost:3000) im Browser.
+Open [http://localhost:3001](http://localhost:3001) in your browser.
 
-## 📁 Projekt-Struktur
+### Cloudflare Pages Preview (with D1 binding)
+
+```bash
+cd frontend
+npm run pages:dev  # Cloudflare Pages local preview on port 8788
+```
+
+## Project Structure
 
 ```
 portfolio/
-├── backend/           # Express/TypeScript REST API
-│   ├── src/
-│   │   ├── models/    # Mongoose Schemas
-│   │   ├── routes/    # API Endpoints
-│   │   ├── middleware/# Error Handling
-│   │   └── data/      # Seed-Daten (projects-data.json)
-│   └── package.json
-├── frontend/          # Next.js 15 App
-│   ├── app/           # Pages & Layouts
-│   ├── components/    # React Components
-│   └── lib/           # Utils & Types
-├── db-dump/           # MongoDB Exports (mongodump)
-└── docker-compose.yml # MongoDB Container Config
+├── frontend/          # Next.js 16 app (main codebase)
+│   ├── app/           # Pages and layouts (App Router)
+│   ├── components/    # React components
+│   └── lib/           # Utilities and types
+├── migrations/        # D1 SQL migrations
+├── scripts/           # Seed scripts (TypeScript)
+├── backend/           # Legacy Express/MongoDB backend (not in use)
+├── db-dump/           # Legacy MongoDB exports (not in use)
+└── package.json       # D1 / wrangler scripts
 ```
 
-## 🛠 Technologie-Stack
+## Tech Stack
 
 **Frontend:**
-- Next.js 15 (App Router)
+- Next.js 16 (App Router)
 - React 19
 - TypeScript
 - Tailwind CSS
 - Framer Motion
 
-**Backend:**
-- Express.js
-- TypeScript
-- Mongoose ODM
-- MongoDB 7.0
+**Database:**
+- Cloudflare D1 (SQLite-compatible)
+- Binding name: `DB`
+- Database name: `portfoliodb`
 
-## 🔧 Verfügbare Befehle
+## Available Commands
 
-### Backend
+### Frontend (`frontend/`)
+
 ```bash
-npm run dev      # Development Server (Port 4000)
-npm run build    # TypeScript Kompilierung
-npm run start    # Production Server
-npm run seed     # Datenbank mit Seed-Daten füllen
+npm run dev            # Dev server on port 3001
+npm run build          # Production build
+npm run start          # Production server
+npm run lint           # ESLint
+npm run pages:dev      # Cloudflare Pages preview (port 8788)
+npm run pages:deploy   # Deploy to Cloudflare Pages
 ```
 
-### Frontend
+### Database (`portfolio/`)
+
 ```bash
-npm run dev      # Development Server (Port 3000)
-npm run build    # Production Build
-npm run start    # Production Server
-npm run lint     # ESLint
+npm run db:setup:local   # Migrate + seed D1 locally
+npm run db:setup:prod    # Migrate + seed D1 in production
+npm run migrate:local    # Run migration locally only
+npm run seed:local       # Generate and apply seed locally
+npm run db:query:local   # Run raw SQL against local D1
+npm run db:query:prod    # Run raw SQL against production D1
 ```
 
-### MongoDB
+## Deployment
+
+Deployed on Cloudflare Pages. Configuration is in `wrangler.toml` at the repo root.
+
 ```bash
-docker compose up -d              # Container starten
-docker compose down               # Container stoppen
-docker compose down -v            # Container + Daten löschen
-docker exec -it portfolio-mongodb mongosh --username admin --password portfolio2026 --authenticationDatabase admin
+cd frontend
+npm run pages:deploy
 ```
-
-## 📊 API Endpoints
-
-**Projekte:**
-- `GET /api/projects` - Alle Projekte abrufen
-- `GET /api/projects?featured=true` - Nur Featured Projekte
-- `GET /api/projects?category=coding` - Nach Kategorie filtern
-- `GET /api/projects/:slug` - Einzelnes Projekt
-
-**Kontakt:**
-- `POST /api/contact` - Kontaktformular-Submission
-
-## 🗄 MongoDB
-
-**Datenbank:** `portfoliodb`
-
-**Collections:**
-- `projects` - Portfolio-Projekte (6 Einträge)
-- `contactSubmissions` - Kontaktformular-Einreichungen
-
-**Credentials:**
-- Root User: `admin` / `portfolio2026`
-- App User: `portfolio_app` / `portfolio_app_2026`
-
-**MongoDB Compass Connection:**
-```
-mongodb://admin:portfolio2026@localhost:27017/?authSource=admin
-```
-
-## 📦 Deployment
-
-Für Production:
-1. Umgebungsvariablen in `.env` setzen
-2. MongoDB Atlas oder eigenen Server nutzen
-3. Backend und Frontend separat deployen (z.B. Vercel + Railway)
-
-## 📝 Entwickelt von
-
-Liliane Schutz  
-Hochschule München – Informatik und Design  
-Webtechnologien Praktikum 07

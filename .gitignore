@@ -1,7 +1,23 @@
+# Local planning
+_local_planning/
+
+# Secrets
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+private/
+client-data/
+
+# Local databases and dumps
+*.sqlite
+*.db
+*.dump
+*.bak
+
 # Wrangler local state
 .wrangler/
-.env.local
-.env.*.local
 
 # Generated D1 seed output
 portfolio/scripts/seed-d1-output.sql
