@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   },
 };
 
+const name  = process.env.NEXT_PUBLIC_IMPRESSUM_NAME   ?? '[Name]';
+const strasse = process.env.NEXT_PUBLIC_IMPRESSUM_STRASSE ?? '[Straße Hausnummer]';
+const ort   = process.env.NEXT_PUBLIC_IMPRESSUM_ORT    ?? '[PLZ Stadt]';
+const email = process.env.NEXT_PUBLIC_IMPRESSUM_EMAIL  ?? '[E-Mail]';
+
 export default function DatenschutzPage() {
   return (
     <PageShell>
@@ -28,11 +33,11 @@ export default function DatenschutzPage() {
             Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:
           </p>
           <p>
-            [Vorname Nachname]<br />
-            [Straße Hausnummer]<br />
-            [PLZ Stadt]<br />
+            {name}<br />
+            {strasse}<br />
+            {ort}<br />
             Deutschland<br />
-            E-Mail: <a href="mailto:liliane.v.schutz@gmail.com" className={styles.link}>liliane.v.schutz@gmail.com</a>
+            E-Mail: <a href={`mailto:${email}`} className={styles.link}>{email}</a>
           </p>
         </section>
 
@@ -163,7 +168,7 @@ export default function DatenschutzPage() {
           </ul>
           <p>
             Zur Ausubung dieser Rechte wende dich per E-Mail an:{' '}
-            <a href="mailto:liliane.v.schutz@gmail.com" className={styles.link}>liliane.v.schutz@gmail.com</a>
+            <a href={`mailto:${email}`} className={styles.link}>{email}</a>
           </p>
         </section>
 

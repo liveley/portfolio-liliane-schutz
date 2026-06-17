@@ -13,6 +13,13 @@ export const metadata: Metadata = {
   },
 };
 
+const name     = process.env.NEXT_PUBLIC_IMPRESSUM_NAME    ?? '[Name]';
+const strasse  = process.env.NEXT_PUBLIC_IMPRESSUM_STRASSE ?? '[Straße Hausnummer]';
+const ort      = process.env.NEXT_PUBLIC_IMPRESSUM_ORT     ?? '[PLZ Stadt]';
+const email    = process.env.NEXT_PUBLIC_IMPRESSUM_EMAIL   ?? '[E-Mail]';
+const telefon  = process.env.NEXT_PUBLIC_IMPRESSUM_TELEFON ?? '[Telefonnummer]';
+const wIdNr    = process.env.NEXT_PUBLIC_IMPRESSUM_W_IDNR;
+
 export default function ImpressumPage() {
   return (
     <PageShell>
@@ -21,11 +28,10 @@ export default function ImpressumPage() {
       <div className={styles.content}>
         <section className={styles.section}>
           <h2 className={styles.heading}>Angaben gemäß § 5 DDG</h2>
-
           <p>
-            [Vorname Nachname]<br />
-            [Straße Hausnummer]<br />
-            [PLZ Stadt]<br />
+            {name}<br />
+            {strasse}<br />
+            {ort}<br />
             Deutschland
           </p>
         </section>
@@ -33,24 +39,24 @@ export default function ImpressumPage() {
         <section className={styles.section}>
           <h2 className={styles.heading}>Kontakt</h2>
           <p>
-            E-Mail: <a href="mailto:liliane.v.schutz@gmail.com" className={styles.link}>liliane.v.schutz@gmail.com</a><br />
-            Telefon: [Telefonnummer]
+            E-Mail: <a href={`mailto:${email}`} className={styles.link}>{email}</a><br />
+            Telefon: {telefon}
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.heading}>Wirtschafts-Identifikationsnummer</h2>
-          <p>
-            [W-IdNr. eintragen, sobald vom Bundeszentralamt für Steuern zugeteilt]
-          </p>
-        </section>
+        {wIdNr && (
+          <section className={styles.section}>
+            <h2 className={styles.heading}>Wirtschafts-Identifikationsnummer</h2>
+            <p>{wIdNr}</p>
+          </section>
+        )}
 
         <section className={styles.section}>
           <h2 className={styles.heading}>Verantwortlich für den Inhalt</h2>
           <p>
-            [Vorname Nachname]<br />
-            [Straße Hausnummer]<br />
-            [PLZ Stadt]
+            {name}<br />
+            {strasse}<br />
+            {ort}
           </p>
         </section>
 
